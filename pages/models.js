@@ -4,10 +4,16 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import Select from 'react-select'
 import makeAnimated from 'react-select/lib/animated';
+import AutomaticEvaluationTable from '../components/AutomaticEvaluationTable';
 
 class Models extends Component {
-  async handleModelChange() {
+  constructor(props) {
+    super(props);
+    this.state = { models: [] };
+  }
 
+  handleModelChange = models => {
+    
   }
 
   render() {
@@ -26,6 +32,20 @@ class Models extends Component {
             onChange={this.handleModelChange}
           />    
           </main>
+
+          <div class="row">
+            {this.state.models.map(model =>
+              <div className="col-md-6">
+                <div className="card">
+                  <div class="card-body">
+                    <h5 class="card-title">{model.name}</h5>
+                    {model.evaluations.map(evaluation => <AutomaticEvaluationTable evaluation={evaluation} />)}
+                  </div>
+                </div>
+              </div>
+            )};
+          </div>
+
         <Footer />
       </div>
     );

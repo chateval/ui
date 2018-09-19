@@ -4,18 +4,18 @@ import Footer from '../components/Footer';
 const Index = () => (
   <div>
     <Header />
-    <main role="main" class="container">
-      <h1 class="mt-5"> ChatEval</h1>
-      <p class="lead">ChatEval is a scientific framework for evaluating neural open domain chatbots. Researchers can submit their trained models to effortlessly receive comparisons with baselines and prior work. Since all evaluation code is open-source, we ensure evaluation is performed in a standardized and transparent way. Additionally, open source baseline models and an ever growing groups public evaluation sets are available for public use.</p>
-      <button type="button" class="btn btn-primary">Upload Model</button>
-      <h1 class="mt-5">FAQ</h1>
-      <h5 class="card-title"> How much does ChatEval cost? </h5>
-      <p class="card-text">ChatEval is free for developers. It is actively developed by researchers at NLP group of the University of Pennyslvania.</p>
-      <h5 class="card-title"> How is automatic chatbot evaluation performed? </h5>
-      <p class="card-text">Read more about how automatic evaluation is done <a href="/about">here</a>.</p>
-      <h5 class="card-title"> How was ChatEval built? </h5>
-      <p class="card-text">The ChatEval webapp built using Flask and React (front-end) using Magnitude word embeddings for evaluation. Our source code is available on <a href="https://github.com/chateval">Github</a>.</p>
-      <h1 class="mt-5">References</h1>
+    <main role="main" className="container">
+      <h1 className="mt-5"> ChatEval</h1>
+      <p className="lead">ChatEval is a scientific framework for evaluating neural open domain chatbots. Researchers can submit their trained models to effortlessly receive comparisons with baselines and prior work. Since all evaluation code is open-source, we ensure evaluation is performed in a standardized and transparent way. Additionally, open source baseline models and an ever growing groups public evaluation sets are available for public use.</p>
+      <button type="button" className="btn btn-primary">Upload Model</button>
+      <h1 className="mt-5">FAQ</h1>
+      <h5 className="card-title"> How much does ChatEval cost? </h5>
+      <p className="card-text">ChatEval is free for developers. It is actively developed by researchers at NLP group of the University of Pennyslvania.</p>
+      <h5 className="card-title"> How is automatic chatbot evaluation performed? </h5>
+      <p className="card-text">Read more about how automatic evaluation is done <a href="/about">here</a>.</p>
+      <h5 className="card-title"> How was ChatEval built? </h5>
+      <p className="card-text">The ChatEval webapp is built using Flask and React (front-end) using Magnitude word embeddings for evaluation. Our source code is available on <a href="https://github.com/chateval">Github</a>.</p>
+      <h1 className="mt-5">References</h1>
       <p>
         Higashinaka, Ryuichiro, Kotaro Funakoshi, Yuka Kobayashi, and Michimasa Inaba. "The dialogue breakdown detection challenge: Task description, datasets, and evaluation metrics." In <i>LREC</i>. 2016.
       </p>

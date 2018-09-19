@@ -4,78 +4,81 @@ import Select from 'react-select'
 import makeAnimated from 'react-select/lib/animated';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
-import Turn from '../components/Turn';
+import TurnList from '../components/TurnList';
 
 class Conversations extends Component {
   constructor(props) {
     super(props)
-    this.handleEvaluationDatasetChange = this.handleEvaluationDatasetChange.bind(this);
-    this.handleModelChange = this.handleModelChange.bind(this);
-    this.state = { turns: [] }
+    this.state = { prompts: [], responses: [] };
+    this.updateTurns = this.updateTurns.bind(this);
   }
 
-  async handleEvaluationDatasetChange(selectedOption) {
+  handleEvaluationDatasetChange = (selectedOption) => {
     this.setState({ evalset: selectedOption.value });
   }
 
   handleModelChange = models => {
     this.setState({ models });
-    this.setTurns();
   }
 
-  async setTurns(models) {
-    let turns = [];
+  async updateTurns() {
+    const promptsRequest = await fetch('http://localhost:8000/api/prompts?evalset=' + this.state.evalset);
+    const promptsData = await promptsRequest.json();
+    const prompts = promptsData.prompts.slice(0, 200);
 
-    this.state.prompts.forEach(prompt => {
-      let turn = { prompt: prompt.prompt_text, responses: [] };
-      turns.push(turn);  
-      this.setState({ turns });
-    });
+    let responses = [];
+    for (const model of this.state.models) {
+      const responsesRequest = await fetch('http://localhost:8000/api/responses?evalset=' + this.state.evalset + "&model_id=" + model.value);
+      const responsesData = await responsesRequest.json();
+      responses.push({ model_id: model.value, responses: responsesData.responses.slice(0, 200), name: model.label });
+    };
 
-    for (let i = 0; i < models.length; i += 1) {
-      const model = { name: models[i].label, model_id: models[i].value }
-      const route = "http://localhost:8000" + '/responses?evalset=' + this.state.evalset + '&model_id=' + models[i].value;
-    }
+    this.setState({ prompts });
+    this.setState({ responses });
   }
 
   render() {
     return (
-      <div>
+      <main role="main">
         <Header />
         <div className="container">
-        <h1 className="mt-5">View Conversations</h1>
-        <p className="lead">Model responses for a given dataset are available to view and compare against other models. 
-          First, select an evaluation dataset and add the model you wish to compare (you can compare multiple models at once). 
-          Automatic evaluations can be similarly viewed <a href="evaluations">here</a> or as a leaderboard (per metric) <a href="/leaderboard">here</a>.
-        </p>
-      
-          <div classNameName="columns">
-            <div classNameName="column">
-            <h2>Dataset</h2>
+          <h1 className="mt-5">View Conversations</h1>
+          <p className="lead">Model responses for a given dataset are available to view and compare against other models. 
+            First, select an evaluation dataset and add the model you wish to compare (you can compare multiple models at once). 
+            Automatic evaluations can be similarly viewed <a href="evaluations">here</a> or as a leaderboard (per metric) <a href="/leaderboard">here</a>.
+          </p>
+        
+          <div className="row">
+            <div className="col-md-6">
+              <h2>Dataset</h2>
               <Select 
                 options={this.props.evalsets} 
+                className="vmargin"
                 placeholder="Select Evaluation Dataset"
                 onChange={this.handleEvaluationDatasetChange}
               />
-            <h2 className="vmargin">Model</h2>
-            <Select
+            </div>
+            <div className="col-md-6">
+              <h2>Model</h2>
+              <Select
                 closeMenuOnSelect={false}
                 components={makeAnimated()}
+                className="vmargin"
                 isMulti
-                placeholder="Select Models"
+                placeholder="Add Model"
                 options={this.props.models}
                 onChange={this.handleModelChange}
               />
-              <button className="btn btn-primary vmargin">View</button>
-              <div classNameName="columns is-multiline">
-                {this.state.turns.map(turn => <Turn turn={turn} />)}
-              </div>
             </div>
           </div>
-        </div>
-        <Footer />
+          
+          <button className="btn btn-primary vmargin" onClick={this.updateTurns}>Update Conversation</button>
 
-      </div>
+          <br /> <br />
+          <TurnList prompts={this.state.prompts} responses={this.state.responses} />
+          </div>
+        <Footer />
+      </main>
     );
   }
 }

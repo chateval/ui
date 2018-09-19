@@ -1,22 +1,12 @@
-import React, { Component } from 'react';
-
-class Turn extends Component {
-  render() {
-    const renderResponses = Array.from(this.props.turn.responses).map(response => 
-      <p> <span className="tag is-success" > {response.model.name} </span> {response.text} </p>
-    );
-
-    return (
-      <div className="column is-half">
-        <div className="card">
-          <div className="card-content">
-            <strong> <p> {this.props.turn.prompt} </p> </strong>
-            {renderResponses}
-          </div>
-        </div>  
+const Turn = (props) => (
+  <div class="col-md-3">
+    <div class="card">
+      <div class="card-body">
+        <h6 class="card-subtitle mb-2 text-muted vmargin">{props.prompt.prompt_text}</h6>
+        {props.responses.map(response => <div> <a class="badge badge-light"> {response.name} </a>: {response.response.response_text} </div> )}
       </div>
-    );
-  }
-}
-
+    </div>
+    <br />
+  </div>
+)
 export default Turn;
