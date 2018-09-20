@@ -42,7 +42,6 @@ const About = (props) => (
           </div>
         )}
       </div>
-      
     </main>
     <Footer />
   </div>
@@ -50,16 +49,15 @@ const About = (props) => (
 
 About.getInitialProps = async function() {
   let data = {};
-
-  const baselineRequest = await fetch('http://localhost:8000/api/baselines');
+  const baselineRequest = await fetch('https://chateval.org/api/baselines');
   const baselineData = await baselineRequest.json();
   data.baselines = baselineData.baselines;
 
-  const evalsetRequest = await fetch('http://localhost:8000/api/evaluationdatasets');
+  const evalsetRequest = await fetch('https://chateval.org/api/evaluationdatasets');
   const evalsetData = await evalsetRequest.json();
   data.evalsets = evalsetData.evaluationdatasets;
 
-  const metricRequest = await fetch('http://localhost:8000/api/metrics');
+  const metricRequest = await fetch('https://chateval.org/api/metrics');
   const metricData = await metricRequest.json();
   data.metrics = metricData.metrics;
 

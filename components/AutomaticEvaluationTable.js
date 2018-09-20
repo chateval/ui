@@ -1,6 +1,7 @@
 const AutomaticEvaluationTable = (props) => (
-  <div>
-    <h3 class="mt-4"> {props.evaluation.evalset.name} </h3>
+  <div className="col-md-12">
+    <br />
+    <h3 class="card-title"> {props.evaluation.evalset.name} </h3>
     <table class="table table-bordered">
       <thead>
         <tr>

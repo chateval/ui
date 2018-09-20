@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import fetch from 'isomorphic-unfetch';
-import Select from 'react-select'
+import Select from 'react-select';
 import makeAnimated from 'react-select/lib/animated';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
@@ -9,7 +9,7 @@ import TurnList from '../components/TurnList';
 class Conversations extends Component {
   constructor(props) {
     super(props)
-    this.state = { prompts: [], responses: [] };
+    this.state = { prompts: [], responses: [], show: false };
     this.updateTurns = this.updateTurns.bind(this);
   }
 
@@ -22,13 +22,13 @@ class Conversations extends Component {
   }
 
   async updateTurns() {
-    const promptsRequest = await fetch('http://localhost:8000/api/prompts?evalset=' + this.state.evalset);
+    const promptsRequest = await fetch('https://chateval.org/api/prompts?evalset=' + this.state.evalset);
     const promptsData = await promptsRequest.json();
     const prompts = promptsData.prompts.slice(0, 200);
 
     let responses = [];
     for (const model of this.state.models) {
-      const responsesRequest = await fetch('http://localhost:8000/api/responses?evalset=' + this.state.evalset + "&model_id=" + model.value);
+      const responsesRequest = await fetch('https://chateval.org/api/responses?evalset=' + this.state.evalset + "&model_id=" + model.value);
       const responsesData = await responsesRequest.json();
       responses.push({ model_id: model.value, responses: responsesData.responses.slice(0, 200), name: model.label });
     };
@@ -85,9 +85,8 @@ class Conversations extends Component {
 
 Conversations.getInitialProps = async function() {
   let evalsets = [], models = [];
-
-  const modelRequest = await fetch('http://localhost:8000/api/models');
-  const evalsetRequest = await fetch('http://localhost:8000/api/evaluationdatasets');
+  const modelRequest = await fetch('https://chateval.org/api/models');
+  const evalsetRequest = await fetch('https://chateval.org/api/evaluationdatasets');
   const modelData = await modelRequest.json();
   const evalsetData = await evalsetRequest.json();
  

@@ -27,20 +27,6 @@ const Header = () => (
           <li className="nav-item">
             <a className="nav-link" href="/conversations">Conversations</a>
           </li>
-          <li className="nav-item">
-            <a className="nav-link" href="/leaderboard">Leaderboard</a>
-          </li>
-          <li className="nav-item dropdown">
-            <a className="nav-link dropdown-toggle" href="/profile" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Profile
-            </a>
-            <div className="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a className="dropdown-item" href="/profile">Uploads</a>
-              <a className="dropdown-item" href="#">Settings</a>
-              <div className="dropdown-divider"></div>
-              <a className="dropdown-item" href="#">Log Out</a>
-            </div>
-          </li>
         </ul>
       </div>
     </nav>

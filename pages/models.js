@@ -12,8 +12,18 @@ class Models extends Component {
     this.state = { models: [] };
   }
 
-  handleModelChange = models => {
-    
+   handleModelChange = async selections => {
+    let models = [];
+
+    for (const selection of selections) {
+      const modelRequest = await fetch('https://chateval.org/api/model?id=' + selection.value);
+      const modelData = await modelRequest.json();
+      const evaluationRequest = await fetch('https://chateval.org/api/automatic_evaluations?model_id=' + selection.value);
+      const evaluationData = await evaluationRequest.json();      
+      models.push({ model: modelData.model, evaluations: evaluationData.evaluations });
+    }
+
+    this.setState({ models });
   }
 
   render() {
@@ -28,24 +38,26 @@ class Models extends Component {
             components={makeAnimated()}
             isMulti
             placeholder="Select Models"
-            options={this.props.models}
+            options={this.props.options}
             onChange={this.handleModelChange}
           />    
-          </main>
-
+          <br />
           <div class="row">
             {this.state.models.map(model =>
               <div className="col-md-6">
                 <div className="card">
                   <div class="card-body">
-                    <h5 class="card-title">{model.name}</h5>
-                    {model.evaluations.map(evaluation => <AutomaticEvaluationTable evaluation={evaluation} />)}
+                    <h3 class="card-title">{model.model.name}</h3>
+                    <a class="card-link" href={"/model?id=" + model.model.model_id}>View Model</a>
+                    {model.evaluations.map(evaluation => 
+                      <AutomaticEvaluationTable evaluation={evaluation} /> 
+                    )} 
                   </div>
                 </div>
               </div>
-            )};
+            )}
           </div>
-
+        </main>
         <Footer />
       </div>
     );
@@ -55,14 +67,14 @@ class Models extends Component {
 Models.getInitialProps = async function() {
   let models = [];
 
-  const modelRequest = await fetch('http://localhost:8000/api/models');
+  const modelRequest = await fetch('https://chateval.org/api/models');
   const modelData = await modelRequest.json();
   
   modelData.models.forEach(model => {
     models.push({ 'value': model.model_id, 'label': model.name})
   });
 
-  return { models };
+  return { options: models };
 };
 
 export default Models;
