@@ -61,7 +61,6 @@ About.getInitialProps = async function() {
   const metricData = await metricRequest.json();
   data.metrics = metricData.metrics;
 
-  console.log(data);
   return data;
 };
 

@@ -1,6 +1,5 @@
 const AutomaticEvaluationTable = (props) => (
   <div className="col-md-12">
-    <br />
     <h3 class="card-title"> {props.evaluation.evalset.name} </h3>
     <table class="table table-bordered">
       <thead>

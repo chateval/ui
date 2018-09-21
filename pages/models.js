@@ -45,13 +45,18 @@ class Models extends Component {
           <div class="row">
             {this.state.models.map(model =>
               <div className="col-md-6">
+                <br />
                 <div className="card">
+                  <div class="card-header">
+                  <h3 class="card-title vmargin">{model.model.name}</h3>
+                  </div>
                   <div class="card-body">
-                    <h3 class="card-title">{model.model.name}</h3>
-                    <a class="card-link" href={"/model?id=" + model.model.model_id}>View Model</a>
                     {model.evaluations.map(evaluation => 
-                      <AutomaticEvaluationTable evaluation={evaluation} /> 
+                      <div>
+                        <AutomaticEvaluationTable evaluation={evaluation} /> 
+                      </div>
                     )} 
+                    <a class="card-link" href={"/model?id=" + model.model.model_id}>View Model</a>
                   </div>
                 </div>
               </div>
