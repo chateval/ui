@@ -19,9 +19,9 @@ const Model = (props) => (
 
 Model.getInitialProps = async function(props) {
   const { query } = props;
-  const modelRequest = await fetch('https://chateval.org/api/model?id=' + query.id);
+  const modelRequest = await fetch('https://api.chateval.org/api/model?id=' + query.id);
   const modelData = await modelRequest.json();
-  const evaluationRequest = await fetch('https://chateval.org/api/automatic_evaluations?model_id=' + query.id);
+  const evaluationRequest = await fetch('https://api.chateval.org/api/automatic_evaluations?model_id=' + query.id);
   const evaluationData = await evaluationRequest.json();
   return { model: modelData.model, evaluations: evaluationData.evaluations };
 };

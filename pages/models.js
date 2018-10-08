@@ -16,9 +16,9 @@ class Models extends Component {
     let models = [];
 
     for (const selection of selections) {
-      const modelRequest = await fetch('https://chateval.org/api/model?id=' + selection.value);
+      const modelRequest = await fetch('https://api.chateval.org/api/model?id=' + selection.value);
       const modelData = await modelRequest.json();
-      const evaluationRequest = await fetch('https://chateval.org/api/automatic_evaluations?model_id=' + selection.value);
+      const evaluationRequest = await fetch('https://api.chateval.org/api/automatic_evaluations?model_id=' + selection.value);
       const evaluationData = await evaluationRequest.json();      
       models.push({ model: modelData.model, evaluations: evaluationData.evaluations });
     }
@@ -72,7 +72,7 @@ class Models extends Component {
 Models.getInitialProps = async function() {
   let models = [];
 
-  const modelRequest = await fetch('https://chateval.org/api/models');
+  const modelRequest = await fetch('https://api.chateval.org/api/models');
   const modelData = await modelRequest.json();
   
   modelData.models.forEach(model => {
