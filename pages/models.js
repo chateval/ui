@@ -41,14 +41,13 @@ class Models extends Component {
             options={this.props.options}
             onChange={this.handleModelChange}
           />    
-          <br />
           <div class="row">
             {this.state.models.map(model =>
               <div className="col-md-6">
                 <br />
                 <div className="card">
                   <div class="card-header">
-                  <h3 class="card-title vmargin">{model.model.name}</h3>
+                  <h3 class="card-title vmargin"><a href={"/model?id=" + model.model.model_id}>{model.model.name}</a></h3>
                   </div>
                   <div class="card-body">
                     {model.evaluations.map(evaluation => 
@@ -56,7 +55,6 @@ class Models extends Component {
                         <AutomaticEvaluationTable evaluation={evaluation} /> 
                       </div>
                     )} 
-                    <a class="card-link" href={"/model?id=" + model.model.model_id}>View Model</a>
                   </div>
                 </div>
               </div>

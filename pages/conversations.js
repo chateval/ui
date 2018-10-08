@@ -89,6 +89,8 @@ Conversations.getInitialProps = async function() {
   const evalsetRequest = await fetch('https://api.chateval.org/api/evaluationdatasets');
   const modelData = await modelRequest.json();
   const evalsetData = await evalsetRequest.json();
+
+  console.log(modelData);
  
   modelData.models.forEach(model => {
     models.push({ 'value': model.model_id, 'label': model.name})
