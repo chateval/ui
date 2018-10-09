@@ -6,11 +6,13 @@ const Index = () => (
     <Header />
     <main role="main" className="container">
       <h1 className="mt-5"> ChatEval</h1>
+      <span class="badge badge-primary">2IS&NLG 2018</span>
+      <br /> <br />
       <p className="lead">ChatEval is a scientific framework for evaluating <mark>neural open domain chatbots</mark>. 
       Researchers can submit their trained models to effortlessly receive comparisons with baselines and prior work. 
       Since all evaluation code is <mark>open source</mark>, we ensure evaluation is performed in a <mark>standardized</mark> and transparent way. 
       Additionally, open source baseline models and an ever growing groups public evaluation sets are available for public use.</p>
-      <button type="button" className="btn btn-primary">Upload Model</button>
+      <a href="https://my.chateval.org/upload" className="btn btn-primary">Upload Model</a>
       <h1 className="mt-5">FAQ</h1>
       <h5 className="card-title"> How much does ChatEval cost? </h5>
       <p className="card-text">ChatEval is <mark>free</mark> for developers. It is actively developed by researchers at the NLP Group of the University of Pennyslvania.</p>
