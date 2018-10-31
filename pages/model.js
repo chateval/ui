@@ -7,7 +7,7 @@ const Model = (props) => (
   <div>
     <Header />
     <main role="main" class="container">
-      <h1 class="mt-5"> {props.model.name}</h1>
+      <h1 class="mt-5 font-weight-bold"> {props.model.name}</h1>
       <p class="lead">{props.model.description}</p>
       <div class="row">
         {props.evaluations.map(evaluation => <AutomaticEvaluationTable evaluation={evaluation}/>)}

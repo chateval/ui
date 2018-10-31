@@ -31,7 +31,7 @@ class Models extends Component {
       <div>
         <Header />
         <main role="main" class="container">
-          <h1 class="mt-5">Models</h1>
+          <h1 class="mt-5 font-weight-bold">Models</h1>
           <p>Compare multiple models at once.</p>
           <Select
             closeMenuOnSelect={false}

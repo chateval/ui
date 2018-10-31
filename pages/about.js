@@ -7,11 +7,11 @@ const About = (props) => (
   <div>
     <Header />
     <main role="main" class="container">
-      <h1 class="mt-5">About Evaluation</h1>
+      <h1 class="mt-5 font-weight-bold">About Evaluation</h1>
       <p class="lead">Model responses are generated using an evaluation dataset of prompts and then uploaded to ChatEval. The responses are then 
       evaluated using a series of automatic evaluation metrics, and are compared against selected baseline/ground truth models (e.g. humans). </p>
 
-      <h2 class="mt-4">Evaluation Datasets</h2>
+      <h2 class="mt-4 font-weight-bold">Evaluation Datasets</h2>
       <p>ChatEval offers evaluation datasets consisting of prompts that uploaded chatbots are to respond to. Evaluation datasets are available
         to download for free and have corresponding baseline models. </p>
       <div class="row">
@@ -23,7 +23,7 @@ const About = (props) => (
         )}
       </div>
 
-      <h2 class="mt-4">ChatEval Baselines</h2>
+      <h2 class="mt-4 font-weight-bold">ChatEval Baselines</h2>
       <p>
         ChatEval offers "ground-truth" baselines to compare uploaded models with. Baseline models range from human responders to established chatbot models.
         Baselines are handpicked and uploaded by the ChatEval Team.
@@ -37,7 +37,7 @@ const About = (props) => (
         )}
       </div>
 
-      <h2 class="mt-4">Automated Evaluation Methods</h2>
+      <h2 class="mt-4 font-weight-bold">Automated Evaluation Methods</h2>
       <p> The ChatEval Platform handles certain automated evaluations of chatbot responses. These metrics are documented <a href="https://github.com/chateval/evaluation">here</a>. 
       Models can be ranked according to a specific metric and viewed as a leaderboard.</p>
       <div class="row">
@@ -48,7 +48,7 @@ const About = (props) => (
           </div>
         )}
       </div>
-      <h1 className="mt-5">References</h1>
+      <h1 className="mt-5 font-weight-bold">References</h1>
       <p>
         Higashinaka, Ryuichiro, Kotaro Funakoshi, Yuka Kobayashi, and Michimasa Inaba. "The dialogue breakdown detection challenge: Task description, datasets, and evaluation metrics." In <i>LREC</i>. 2016.
       </p>

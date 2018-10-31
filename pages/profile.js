@@ -5,7 +5,7 @@ const Account = (props) => (
   <div>
     <Header />
     <main role="main" class="container">
-      <h1 class="mt-5"> Profile</h1>
+      <h1 class="mt-5 font-weight-bold">Profile</h1>
       <p class="lead">A ChatEval account is required for uploading models. Creating an account is simple and 100% free for researchers. </p>
       <hr />
       <div class="row">
