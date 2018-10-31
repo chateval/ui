@@ -12,6 +12,7 @@ const Model = (props) => (
       <div class="row">
         {props.evaluations.map(evaluation => <AutomaticEvaluationTable evaluation={evaluation}/>)}
       </div>
+
     </main>
     <Footer />
   </div>
