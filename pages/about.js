@@ -43,7 +43,7 @@ const About = (props) => (
       <div class="row">
         {props.metrics.map(metric => 
           <div className="col-md-3">
-            <Card title={metric.name} subtitle={"Metric"} description={metric.info} link={"View Source"} url={"https://github.com/chateval/evaluation"} />
+            <Card title={metric.name} subtitle={"Metric"} description={metric.info} link={"View Source"} url={"https://raw.githubusercontent.com/chateval/evaluation/master/auto_eval_utils.py"} />
             <br />
           </div>
         )}
