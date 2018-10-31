@@ -11,7 +11,7 @@ const Index = () => (
       Since all evaluation code is <mark>open source</mark>, we ensure evaluation is performed in a <mark>standardized</mark> and transparent way. 
       Additionally, open source baseline models and an ever growing groups public evaluation sets are available for public use.</p>
       <a href="https://my.chateval.org/upload" className="btn btn-primary">Upload Model</a>
-      <br />
+      <br /> <br />
       <h5 className="card-title"> How much does ChatEval cost? </h5>
       <p className="card-text">ChatEval is <mark>free</mark> for developers. It is actively developed by researchers at the NLP Group of the University of Pennyslvania.</p>
       <h5 className="card-title"> How is automatic chatbot evaluation performed? </h5>
