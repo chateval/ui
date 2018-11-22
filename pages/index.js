@@ -20,6 +20,7 @@ const Index = () => (
       <p className="card-text">Read more about how automatic model assessment and evaluation is done <a href="/about">here</a>.</p>
       <h5 className="card-title"> How was ChatEval built? </h5>
       <p className="card-text">The ChatEval webapp is built using Django and React (front-end) using Magnitude word embeddings format for evaluation. Our source code is available on <a href="https://github.com/chateval">Github</a>.</p>
+      <script src="https://widget.flow.ai/w/ZjExYWZmM2UtOWY4OS00NDQ4LTk2ZDUtZGE5N2RhOTNmYzUwfDBiNGY0MTE4LTRkM2MtNGMxOS1iNjYxLWQ1ZGY1Zjk5ZTJjOQ==/flow-webclient-1.1.2.min.js"></script>
     </main>
     <Footer />
   </div>
