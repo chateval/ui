@@ -45,7 +45,7 @@ class Conversations extends Component {
           <h1 className="mt-5 font-weight-bold">View Conversations</h1>
           <p className="lead">Model responses for a given dataset are available to view and compare against other models. 
             First, select an evaluation dataset and add the model you wish to compare (you can compare multiple models at once). 
-            Automatic evaluations can be similarly viewed <a href="evaluations">here</a> or as a leaderboard (per metric) <a href="/leaderboard">here</a>.
+            Human and automatic evaluations can be similarly viewed <a href="models">here</a> or as a leaderboard (per metric) <a href="/leaderboard">here</a>.
           </p>
         
           <div className="row">
