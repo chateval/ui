@@ -3,6 +3,22 @@ import Footer from '../components/Footer';
 import Card from '../components/Card';
 import fetch from 'isomorphic-unfetch';
 
+const citation = `@InProceedings{W18-6709
+  author = "Sedoc, Jo{\~a}o
+    and Ippolito, Daphne
+    and Kirubarajan, Arun
+    and Thirani, Jai
+    and Ungar, Lyle
+    and Callison-Burch, Chris",
+  title = 	"ChatEval: A Tool for the Systematic Evaluation of Chatbots",
+  booktitle = 	"Proceedings of the Workshop on Intelligent Interactive Systems and Language Generation (2IS{\&}NLG) ",
+  year = 	"2018",
+  publisher = 	"Association for Computational Linguistics",
+  pages = 	"42--44",
+  location = 	"Tilburg, the Netherlands",
+  url = 	"http://aclweb.org/anthology/W18-6709"
+}`;
+
 const About = (props) => (
   <div>
     <Header />
@@ -71,23 +87,9 @@ const About = (props) => (
         Vinyals, Oriol, and Quoc Le. "A neural conversational model." arXiv preprint arXiv:1506.05869 (2015).
       </p>
       <h2>Citation</h2>
-      <code>
-      @InProceedings{W18-6709,
-        author = 	"Sedoc, Jo{\~a}o
-          and Ippolito, Daphne
-          and Kirubarajan, Arun
-          and Thirani, Jai
-          and Ungar, Lyle
-          and Callison-Burch, Chris",
-        title = 	"ChatEval: A Tool for the Systematic Evaluation of Chatbots",
-        booktitle = 	"Proceedings of the Workshop on Intelligent Interactive Systems and Language Generation (2IS{\&}NLG) ",
-        year = 	"2018",
-        publisher = 	"Association for Computational Linguistics",
-        pages = 	"42--44",
-        location = 	"Tilburg, the Netherlands",
-        url = 	"http://aclweb.org/anthology/W18-6709"
-      }
-      </code>
+      <p>
+        {citation}
+      </p>
     </main>
     <Footer />
   </div>
