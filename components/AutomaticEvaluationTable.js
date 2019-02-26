@@ -31,7 +31,8 @@ const AutomaticEvaluationTable = (props) => (
       filename={props.evaluation.evalset.name + ".csv"}
     >
       Download CSV
-  </CSVLink>
+    </CSVLink>
+    <br /> <br />
   </div>
 );
 
