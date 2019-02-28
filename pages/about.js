@@ -86,6 +86,12 @@ const About = (props) => (
       <p>
         Vinyals, Oriol, and Quoc Le. "A neural conversational model." arXiv preprint arXiv:1506.05869 (2015).
       </p>
+      <p>
+        Baheti, Ashutosh, Alan Ritter, Jiwei Li, and Bill Dolan. "Generating More Interesting Responses in Neural Conversation Models with Distributional Constraints." In <i>Proceedings of the 2018 Conference on Empirical Methods in Natural Language Processing</i>, pp. 3970-3980. 2018.
+      </p>
+      <p>
+        Danescu-Niculescu-Mizil, C. and Lee, L., 2011. Chameleons in imagined conversations: A new approach to understanding coordination of linguistic style in dialogs. ACL HLT 2011, p.76.
+      </p>
       <h2>Citation</h2>
       <p>
         {citation}
