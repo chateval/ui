@@ -97,7 +97,7 @@ class Conversations extends Component {
 
 Conversations.getInitialProps = async function() {
   let evalsets = [], models = [];
-  const modelRequest = await fetch('http://localhost:8000/api/models');
+  const modelRequest = await fetch('https://api.chateval.org/api/models');
   const evalsetRequest = await fetch('https://api.chateval.org/api/evaluationdatasets');
   const modelData = await modelRequest.json();
   const evalsetData = await evalsetRequest.json();
