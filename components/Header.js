@@ -28,9 +28,6 @@ const Header = () => (
             <a className="nav-link" href="/conversations">Conversations</a>
           </li>
           <li className="nav-item">
-            <a className="nav-link" href="/leaderboard">Leaderboard</a>
-          </li>
-          <li className="nav-item">
             <a className="nav-link" href="https://my.chateval.org">Account</a>
           </li>
         </ul>
