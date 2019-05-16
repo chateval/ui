@@ -26,6 +26,12 @@ const AutomaticEvaluationTable = (props) => (
         )}
       </tbody>
     </table>
+    <CSVLink 
+      data={getCSVArray(props.evaluation.auto_evals)}
+      filename={props.evaluation.evalset.name + ".csv"}
+    >
+      Download Evaluation CSV
+    </CSVLink>
   </div>
 );
 
