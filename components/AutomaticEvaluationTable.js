@@ -30,7 +30,7 @@ const AutomaticEvaluationTable = (props) => (
       data={getCSVArray(props.evaluation.auto_evals)}
       filename={props.evaluation.evalset.name + ".csv"}
     >
-      Download Evaluation CSV
+      Export Evaluation Results
     </CSVLink>
   </div>
 );

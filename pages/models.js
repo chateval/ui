@@ -31,13 +31,13 @@ class Models extends Component {
       <div>
         <Header />
         <main role="main" class="container">
-          <h1 class="mt-5 font-weight-bold">Models</h1>
-          <p>Compare multiple models at once.</p>
+          <h1 class="mt-5 font-weight-bold">Methods</h1>
+          <p>Compare multiple methods to each other.</p>
           <Select
             closeMenuOnSelect={false}
             components={makeAnimated()}
             isMulti
-            placeholder="Select Models"
+            placeholder="Select Methods"
             options={this.props.options}
             onChange={this.handleModelChange}
           />    
@@ -55,7 +55,7 @@ class Models extends Component {
                         <AutomaticEvaluationTable evaluation={evaluation} /> 
                       </div>
                     )} 
-                  <a style={{paddingLeft: "0.8rem"}} href={"/model?id=" + model.model.model_id}>View Model</a>
+                  <a style={{paddingLeft: "0.8rem"}} href={"/model?id=" + model.model.model_id}>View More Details</a>
                   </div>
                 </div>
               </div>
@@ -73,6 +73,8 @@ Models.getInitialProps = async function() {
 
   const modelRequest = await fetch('https://api.chateval.org/api/models');
   const modelData = await modelRequest.json();
+
+  console.log(modelData)
 
   modelData.models.forEach(model => {
     models.push({ 'value': model.id, 'label': model.name})
