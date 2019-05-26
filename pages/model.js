@@ -15,11 +15,11 @@ class Model extends Component {
   }
 
   handleEvaluationDatasetChange = async(evalset) => {
-    const promptsRequest = await fetch('http://localhost:8000/api/prompts?evalset=' + evalset.value);
+    const promptsRequest = await fetch('https://my.chateval.org/api/prompts?evalset=' + evalset.value);
     const promptsData = await promptsRequest.json();
     const prompts = promptsData.prompts.slice(0, 200);
 
-    const requestURL = 'http://localhost:8000/api/responses?evalset=' + evalset.value + "&model_id=" + this.props.model.id
+    const requestURL = 'https://my.chateval.org/api/responses?evalset=' + evalset.value + "&model_id=" + this.props.model.id
     const responsesRequest = await fetch(requestURL);
     const responsesData = await responsesRequest.json();
     const responses = [{ model_id: this.props.model.id, responses: responsesData.responses.slice(0, 200), name: this.props.model.name }];
@@ -90,9 +90,9 @@ class Model extends Component {
 
 Model.getInitialProps = async function(props) {
   const { query } = props;
-  const modelRequest = await fetch('http://localhost:8000/api/model?id=' + query.id);
+  const modelRequest = await fetch('https://my.chateval.org/api/model?id=' + query.id);
   const modelData = await modelRequest.json();
-  const evaluationRequest = await fetch('https://api.chateval.org/api/automatic_evaluations?model_id=' + query.id);
+  const evaluationRequest = await fetch('https://my.chateval.org/api/automatic_evaluations?model_id=' + query.id);
   const evaluationData = await evaluationRequest.json();
   let evalsets = [];
   modelData.model.evalsets.forEach(evalset => {
