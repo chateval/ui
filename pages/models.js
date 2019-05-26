@@ -22,7 +22,7 @@ class Models extends Component {
       const evaluationData = await evaluationRequest.json();      
       models.push({ model: modelData.model, evaluations: evaluationData.evaluations });
     }
-
+    console.log(models)
     this.setState({ models });
   }
 
@@ -55,7 +55,7 @@ class Models extends Component {
                         <AutomaticEvaluationTable evaluation={evaluation} /> 
                       </div>
                     )} 
-                  <a style={{paddingLeft: "0.8rem"}} href={"/model?id=" + model.model.model_id}>View More Details</a>
+                  <a style={{paddingLeft: "0.8rem"}} href={"/model?id=" + model.model.id}>View More Details</a>
                   </div>
                 </div>
               </div>
