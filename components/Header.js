@@ -25,7 +25,7 @@ const Header = () => (
           </li>
           <div class="vl"></div>
           <li class="nav-item">
-            <a class="nav-link" href="https://chateval.org/uploads">My ChatEval</a>
+            <a class="nav-link" href="https://my.chateval.org/uploads">My ChatEval</a>
           </li>
         </ul>
       </div>
