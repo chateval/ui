@@ -109,12 +109,12 @@ class Model extends Component {
     this.setState({ responses });
 
     // Update automatic evaluation data.
-		const autoEvalRequest = await fetch('http://my.chateval.org/api/automatic_evaluations?model_id=' + this.props.model.id + "&evaluationdataset_id=" + evalset.evalset_id);
+		const autoEvalRequest = await fetch('https://my.chateval.org/api/automatic_evaluations?model_id=' + this.props.model.id + "&evaluationdataset_id=" + evalset.evalset_id);
 		const autoEvaluationData = await autoEvalRequest.json();
     this.setState({autoEvaluationData: autoEvaluationData})
 
     // Update human evaluation data.
-		const humanEvalRequest = await fetch('http://my.chateval.org/api/human_evaluations?model_id=' + this.props.model.id + "&evaluationdataset_id=" + evalset.evalset_id);
+		const humanEvalRequest = await fetch('https://my.chateval.org/api/human_evaluations?model_id=' + this.props.model.id + "&evaluationdataset_id=" + evalset.evalset_id);
 		const humanEvaluationData = await humanEvalRequest.json();
     this.setState({humanEvaluationData: humanEvaluationData})
   }
@@ -196,7 +196,7 @@ class Model extends Component {
 
 Model.getInitialProps = async function(props) {
   const { query } = props;
-  const modelRequest = await fetch('http://my.chateval.org/api/model?id=' + query.id);
+  const modelRequest = await fetch('https://my.chateval.org/api/model?id=' + query.id);
   const modelData = await modelRequest.json();
   const evaluationRequest = await fetch('https://my.chateval.org/api/automatic_evaluations?model_id=' + query.id);
   const evaluationData = await evaluationRequest.json();
