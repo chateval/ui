@@ -15,17 +15,17 @@ const Header = () => (
       <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span className="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item">
-            <a class="nav-link" href="/models">View Systems</a>
+      <div className="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul className="navbar-nav mr-auto">
+          <li className="nav-item">
+            <a className="nav-link" href="/models">View Systems</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/conversations">View Conversations</a>
+          <li className="nav-item">
+            <a className="nav-link" href="/conversations">View Conversations</a>
           </li>
-          <div class="vl"></div>
-          <li class="nav-item">
-            <a class="nav-link" href="https://my.chateval.org/uploads">My ChatEval</a>
+          <div className="vl"></div>
+          <li className="nav-item">
+            <a className="nav-link" href="https://my.chateval.org/uploads">My ChatEval</a>
           </li>
         </ul>
       </div>

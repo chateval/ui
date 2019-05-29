@@ -7,79 +7,185 @@ import fetch from 'isomorphic-unfetch';
 import Select from 'react-select';
 import Chart from 'react-google-charts';
 
+
+ const options = {
+    title: 'Human evaluation',
+    chartArea: {width: '50%', height:'100%'},
+    isStacked: 'percent',
+    legend:'right',
+    annotations: {
+      alwaysOutside: false,
+      textStyle: {
+        fontSize: 12,
+        auraColor: 'none',
+        color: '#555'
+      },
+      boxStyle: {
+        stroke: '#ccc',
+        strokeWidth: 1,
+        gradient: {
+          color1: '#f3e5f5',
+          color2: '#f3e5f5',
+          x1: '0%', y1: '0%',
+          x2: '100%', y2: '100%'
+        }
+      }
+    },
+    bar: {groupWidth: '100px'},
+    hAxis: {
+      title: 'Fraction of Votes',
+      minValue: 0,
+    },
+    vAxis: {
+      title: 'Competing Model'
+    }
+  };
+
+
+function parseData(data, targetModel) {
+  const datasetTasks = data['evaluations']
+  var output = [];
+  output.push(['Model',
+    targetModel  + ' wins',
+    {type: 'string', role: 'annotation'},
+    'Compteting model wins',
+    {type: 'string', role: 'annotation'},
+    'Tie',
+    {type: 'string', role: 'annotation'}])
+  for (let task of datasetTasks) {
+    if (task['model1'] == targetModel) {
+      output.push([task['model2'],
+       parseFloat(task['m1win']),
+       task['m1win'].toString(),
+       parseFloat(task['m2win']),
+       task['m2win'].toString(),
+       parseFloat(task['tie']),
+       task['tie'].toString()]);
+    }
+    else if (task['model2'] == targetModel) { 
+      output.push([task['model1'],
+       parseFloat(task['m2win']),
+       task['m2win'].toString(),
+       parseFloat(task['m1win']),
+       task['m1win'].toString(),
+       parseFloat(task['tie']),
+       task['tie'].toString()]);    }
+    }
+    output = output.sort(function(a,b){return a[1]<b[1];});
+    return output
+}
+
+
 class Model extends Component {
   constructor(props) {
     super(props);
     this.state = { models: [], prompts: [], responses: [] };
     this.handleEvaluationDatasetChange.bind(this);
+    this.setState({autoEvaluationData: null, humanEvaluationData: null})
+
+		this.chart = this.chart.bind(this);
+		this.componentDidMount = this.componentDidMount.bind(this);
   }
 
   handleEvaluationDatasetChange = async(evalset) => {
-    const promptsRequest = await fetch('https://my.chateval.org/api/prompts?evalset=' + evalset.value);
+    this.updateToNewEvalset(evalset)
+  }
+
+  updateToNewEvalset = async(evalsetFromSelector) => {
+    const evalset = this.props.model.evalsets[evalsetFromSelector.value]
+
+    // Update prompts data.
+    this.setState({currentEvalset: evalset})
+    const promptsRequest = await fetch('https://my.chateval.org/api/prompts?evalset=' + evalset.evalset_id);
     const promptsData = await promptsRequest.json();
     const prompts = promptsData.prompts.slice(0, 200);
+    this.setState({ prompts });
 
-    const requestURL = 'https://my.chateval.org/api/responses?evalset=' + evalset.value + "&model_id=" + this.props.model.id
+    // Update response data.
+    const requestURL = 'https://my.chateval.org/api/responses?evalset=' + evalset.evalset_id + "&model_id=" + this.props.model.id
     const responsesRequest = await fetch(requestURL);
     const responsesData = await responsesRequest.json();
     const responses = [{ model_id: this.props.model.id, responses: responsesData.responses.slice(0, 200), name: this.props.model.name }];
-
-    console.log(prompts, responses)
-
-    this.setState({ prompts });
     this.setState({ responses });
+
+    // Update automatic evaluation data.
+		const autoEvalRequest = await fetch('http://my.chateval.org/api/automatic_evaluations?model_id=' + this.props.model.id + "&evaluationdataset_id=" + evalset.evalset_id);
+		const autoEvaluationData = await autoEvalRequest.json();
+    this.setState({autoEvaluationData: autoEvaluationData})
+
+    // Update human evaluation data.
+		const humanEvalRequest = await fetch('http://my.chateval.org/api/human_evaluations?model_id=' + this.props.model.id + "&evaluationdataset_id=" + evalset.evalset_id);
+		const humanEvaluationData = await humanEvalRequest.json();
+    this.setState({humanEvaluationData: humanEvaluationData})
+  }
+
+  chart() {
+    // Renders bar graph with human evaluation results.
+    if (this.state.humanEvaluationData == null ||
+        this.state.humanEvaluationData == "INVALID_QUERY") {
+		  return (<p>No human evaluation results available.</p>)
+    } else {
+      const data = parseData(this.state.humanEvaluationData, this.props.model.name)
+      return ( 
+				<Chart chartType="BarChart" width="100%" height="400px" options={options} data={data}/>
+			);
+    }
+  }
+
+  componentDidMount() {
+		this.updateToNewEvalset(this.props.evalsetsForSelector[0]);
   }
 
   render() {
+    var autoEvalResults = (<p>Loading...</p>)
+    if (this.state.autoEvaluationData !== undefined) {
+      const evalProps = {
+          autoEval:this.state.autoEvaluationData,
+          csvFileName:this.state.currentEvalset.name
+      }
+      autoEvalResults = (<AutomaticEvaluationTable autoEval={this.state.autoEvaluationData.evaluations} csvFileName={this.state.currentEvalset.name}
+/>);
+    }
+
+    var evalsetNameAddition = "";
+    if (this.state.currentEvalset !== undefined) {
+      evalsetNameAddition = " for " + this.state.currentEvalset.name;
+    }
+
     return (
       <div>
         <Header />
-        <main role="main" class="container">
-          <h1 class="mt-5 font-weight-bold"> {this.props.model.name}</h1>
-          <p class="lead">{this.props.model.description}</p>
+        <main role="main" className="container">
+          <h1 className="mt-5 font-weight-bold"> {this.props.model.name}</h1>
+          <p className="lead">{this.props.model.description}</p>
+          <p>
+            <b>Source code: </b>
+            <a href={this.props.model.repo_location}>{this.props.model.repo_location}</a>
+          </p>
+          <p>
+            <b>Model weights: </b>
+            <a href={this.props.model.cp_location}>{this.props.model.cp_location}</a>
+          </p>
           <hr />
-          <h2 class="font-weight-bold">Automatic Evaluations</h2>
-          <div class="row">
-            {this.props.evaluations.map(evaluation => <AutomaticEvaluationTable evaluation={evaluation}/>)}
-          </div>
-          <hr />
-          <h2 class="font-weight-bold">Human Evaluations</h2>
-          <Chart
-            width={'800px'}
-            height={'300px'}
-            chartType="BarChart"
-            loader={<div>Loading Chart</div>}
-            data={[
-              ['City', this.props.model.name + "wins", 'Competing Model wins', 'Tie'],
-              ['New York City, NY', 8175000, 8008000, 0],
-              ['Los Angeles, CA', 3792000, 3694000, 0],
-              ['Chicago, IL', 2695000, 2896000, 0],
-              ['Houston, TX', 2099000, 1953000, 0],
-              ['Philadelphia, PA', 1526000, 1517000, 0],
-            ]}
-            options={{
-              title: 'A/B Comparisons',
-              chartArea: { width: '50%' },
-              isStacked: true,
-              hAxis: {
-                title: 'Number of Turns',
-                minValue: 0,
-              },
-              vAxis: {
-                title: 'Competing Model',
-              },
-            }}
-            // For tests
-            rootProps={{ 'data-testid': '3' }}
-          />
-          <hr />
-          <h2 class="font-weight-bold">Conversations</h2>
           <Select 
-            options={this.props.evalsets} 
+            options={this.props.evalsetsForSelector} 
             className="vmargin"
             placeholder="Select Evaluation Dataset"
             onChange={this.handleEvaluationDatasetChange}
+            selected="0"
           />
+          <br/>
+          <h2 className="font-weight-bold">Automatic Evaluations{evalsetNameAddition}</h2>
+          <div className="row">
+          {autoEvalResults}
+          </div>
+          <hr />
+          <h2 className="font-weight-bold">Human Evaluations{evalsetNameAddition}</h2>
+          <div className="row HumanEvalChart">
+          <this.chart />
+          </div>
+          <hr />
+          <h2 className="font-weight-bold">Conversations{evalsetNameAddition}</h2>
           <TurnList prompts={this.state.prompts} responses={this.state.responses} />
         </main>
         <Footer />
@@ -90,15 +196,27 @@ class Model extends Component {
 
 Model.getInitialProps = async function(props) {
   const { query } = props;
-  const modelRequest = await fetch('https://my.chateval.org/api/model?id=' + query.id);
+  const modelRequest = await fetch('http://my.chateval.org/api/model?id=' + query.id);
   const modelData = await modelRequest.json();
   const evaluationRequest = await fetch('https://my.chateval.org/api/automatic_evaluations?model_id=' + query.id);
   const evaluationData = await evaluationRequest.json();
-  let evalsets = [];
+
+  // Create list of evalsets that users should be able to select from in dropdown.
+  var evalsetsForSelector = []  
   modelData.model.evalsets.forEach(evalset => {
-    evalsets.push({ 'value': evalset.evalset_id, 'label': evalset.name})
+    evalsetsForSelector.push({ 'value': evalset.evalset_id, 'label': evalset.name})
   });
-  return { evalsets, model: modelData.model, evaluations: evaluationData.evaluations };
+
+  // Convert the eval sets from a list to a dictionary where the key is the evalset_id
+  const evalsetDict = {}
+  var evalset
+  for (var i = 0; i < modelData.model.evalsets.length; i++) {
+    evalset = modelData.model.evalsets[i]
+    evalsetDict[evalset.evalset_id] = evalset;
+  }
+  modelData.model.evalsets = evalsetDict;
+  return { evalsetsForSelector, model: modelData.model };
 };
+
 
 export default Model;

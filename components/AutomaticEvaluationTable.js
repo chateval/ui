@@ -7,32 +7,33 @@ function getCSVArray(auto_evals) {
   return csv;
 }
 
-const AutomaticEvaluationTable = (props) => (
-  <div className="col-md-12">
-    <p class="font-weight-bold"> {props.evaluation.evalset.long_name} </p>
-    <table class="table table-bordered">
-      <thead>
-        <tr>
-          <th scope="col">Measure</th>
-          <th scope="col">Value</th>
-        </tr>
-      </thead>
-      <tbody>
-        {props.evaluation.auto_evals.map(auto_eval => 
+const AutomaticEvaluationTable = (props) => {
+  return (
+    <div className="col-md-12">
+      <table className="table table-bordered">
+        <thead>
           <tr>
-            <td>{auto_eval.name}</td>
-            <td>{auto_eval.value}</td>
+            <th scope="col">Measure</th>
+            <th scope="col">Value</th>
           </tr>
-        )}
-      </tbody>
-    </table>
-    <CSVLink 
-      data={getCSVArray(props.evaluation.auto_evals)}
-      filename={props.evaluation.evalset.name + ".csv"}
-    >
-      Export Evaluation Results
-    </CSVLink>
-  </div>
-);
+        </thead>
+        <tbody>
+          {props.autoEval.map((metric, index) => 
+            <tr key={index}>
+              <td>{metric.name}</td>
+              <td>{metric.value}</td>
+            </tr>
+          )}
+        </tbody>
+      </table>
+      <CSVLink 
+        data={getCSVArray(props.autoEval)}
+        filename={props.csvFileName + ".csv"}
+      >
+        Export Evaluation Results
+      </CSVLink>
+    </div>
+  );
+}
 
 export default AutomaticEvaluationTable;
