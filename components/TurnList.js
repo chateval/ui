@@ -26,7 +26,7 @@ class TurnList extends Component {
 
     return(
       <div className="row">
-        {turns.map(turn => <Turn prompt={turn.prompt} responses={turn.responses}/>)}
+        {turns.map((turn, index) => <Turn key={index} prompt={turn.prompt} responses={turn.responses}/>)}
       </div>
     );
   }

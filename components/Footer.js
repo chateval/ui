@@ -1,7 +1,7 @@
 const Footer = () => (
-  <footer class="footer">
-    <div class="container">
-      <span class="text-muted">Built by the ChatEval Team</span>
+  <footer className="footer">
+    <div className="container">
+      <span className="text-muted">Built by the ChatEval Team</span>
     </div>
   </footer>
 );
