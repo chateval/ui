@@ -6,7 +6,16 @@ import AutomaticEvaluationTable from '../components/AutomaticEvaluationTable';
 import fetch from 'isomorphic-unfetch';
 import Select from 'react-select';
 import Chart from 'react-google-charts';
+import { CSVLink } from "react-csv";
 
+// returns CSV formatted array for each dataset's evaluation metrics
+function getCSVArray(auto_evals) {
+  let csv = [];
+  for (const auto_eval of auto_evals) { csv.push([auto_eval.name, auto_eval.value]) };
+  return csv;
+}
+
+const API_URL = process.env.API_URL;
 
  const options = {
     title: 'Human evaluation',
@@ -96,25 +105,25 @@ class Model extends Component {
 
     // Update prompts data.
     this.setState({currentEvalset: evalset})
-    const promptsRequest = await fetch('https://my.chateval.org/api/prompts?evalset=' + evalset.evalset_id);
+    const promptsRequest = await fetch(this.props.API_URL+ 'prompts?evalset=' + evalset.evalset_id);
     const promptsData = await promptsRequest.json();
     const prompts = promptsData.prompts.slice(0, 200);
     this.setState({ prompts });
 
     // Update response data.
-    const requestURL = 'https://my.chateval.org/api/responses?evalset=' + evalset.evalset_id + "&model_id=" + this.props.model.id
+    const requestURL = this.props.API_URL + 'responses?evalset=' + evalset.evalset_id + "&model_id=" + this.props.model.id
     const responsesRequest = await fetch(requestURL);
     const responsesData = await responsesRequest.json();
     const responses = [{ model_id: this.props.model.id, responses: responsesData.responses.slice(0, 200), name: this.props.model.name }];
     this.setState({ responses });
 
     // Update automatic evaluation data.
-		const autoEvalRequest = await fetch('https://my.chateval.org/api/automatic_evaluations?model_id=' + this.props.model.id + "&evaluationdataset_id=" + evalset.evalset_id);
+		const autoEvalRequest = await fetch(this.props.API_URL + 'automatic_evaluations?model_id=' + this.props.model.id + "&evaluationdataset_id=" + evalset.evalset_id);
 		const autoEvaluationData = await autoEvalRequest.json();
     this.setState({autoEvaluationData: autoEvaluationData})
 
     // Update human evaluation data.
-		const humanEvalRequest = await fetch('https://my.chateval.org/api/human_evaluations?model_id=' + this.props.model.id + "&evaluationdataset_id=" + evalset.evalset_id);
+		const humanEvalRequest = await fetch(this.props.API_URL + 'human_evaluations?model_id=' + this.props.model.id + "&evaluationdataset_id=" + evalset.evalset_id);
 		const humanEvaluationData = await humanEvalRequest.json();
     this.setState({humanEvaluationData: humanEvaluationData})
   }
@@ -159,10 +168,11 @@ class Model extends Component {
           <h1 className="mt-5 font-weight-bold"> {this.props.model.name}</h1>
           <p className="lead">{this.props.model.description}</p>
           <p>
+            <b> Institution: </b> {this.props.model.institution}
+            <br />
             <b>Source code: </b>
             <a href={this.props.model.repo_location}>{this.props.model.repo_location}</a>
-          </p>
-          <p>
+            <br />
             <b>Model weights: </b>
             <a href={this.props.model.cp_location}>{this.props.model.cp_location}</a>
           </p>
@@ -196,9 +206,9 @@ class Model extends Component {
 
 Model.getInitialProps = async function(props) {
   const { query } = props;
-  const modelRequest = await fetch('https://my.chateval.org/api/model?id=' + query.id);
+  const modelRequest = await fetch(API_URL + 'model?id=' + query.id);
   const modelData = await modelRequest.json();
-  const evaluationRequest = await fetch('https://my.chateval.org/api/automatic_evaluations?model_id=' + query.id);
+  const evaluationRequest = await fetch(API_URL + 'automatic_evaluations?model_id=' + query.id);
   const evaluationData = await evaluationRequest.json();
 
   // Create list of evalsets that users should be able to select from in dropdown.
@@ -215,7 +225,7 @@ Model.getInitialProps = async function(props) {
     evalsetDict[evalset.evalset_id] = evalset;
   }
   modelData.model.evalsets = evalsetDict;
-  return { evalsetsForSelector, model: modelData.model };
+  return { evalsetsForSelector, model: modelData.model, API_URL };
 };
 
 
