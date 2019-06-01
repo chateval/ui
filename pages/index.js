@@ -111,6 +111,7 @@ const Index = (props) => (
 );
 
 Index.getInitialProps = async function() {
+  console.log(process.env.API_URL)
   let data = {};
   const baselineRequest = await fetch(process.env.API_URL + 'baselines');
   const baselineData = await baselineRequest.json();
