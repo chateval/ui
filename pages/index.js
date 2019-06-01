@@ -114,15 +114,15 @@ const Index = (props) => (
 
 Index.getInitialProps = async function() {
   let data = {};
-  const baselineRequest = await fetch('https://api.chateval.org/api/baselines');
+  const baselineRequest = await fetch(process.env.API_URL + 'baselines');
   const baselineData = await baselineRequest.json();
   data.baselines = baselineData.baselines;
 
-  const evalsetRequest = await fetch('https://api.chateval.org/api/evaluationdatasets');
+  const evalsetRequest = await fetch(process.env.API_URL + 'evaluationdatasets');
   const evalsetData = await evalsetRequest.json();
   data.evalsets = evalsetData.evaluationdatasets;
 
-  const metricRequest = await fetch('https://api.chateval.org/api/metrics');
+  const metricRequest = await fetch(process.env.API_URL + 'metrics');
   const metricData = await metricRequest.json();
   data.metrics = metricData.metrics;
 
