@@ -37,8 +37,6 @@ const Index = (props) => (
       <p className="card-text">ChatEval is currently <mark>free</mark> for academic researchers. It is actively developed by the NLP Group of the University of Pennyslvania.</p>
       <h5 className="card-title"> Is there an online demo video? </h5>
       <p className="card-text">You can find a video tutorial for ChatEval <a href="https://youtu.be/36rAoujxLAA">here</a>.</p>
-      <h5 className="card-title"> How is automatic chatbot model assesment and evaluation performed? </h5>
-      <p className="card-text">Read more about how automatic model assessment and evaluation is done <a href="/about">here</a>.</p>
       <h5 className="card-title"> How was ChatEval built? </h5>
       <p className="card-text">The ChatEval webapp is built using Django and React (front-end) using Magnitude word embeddings format for evaluation. Our source code is available on <a href="https://github.com/chateval">Github</a>.</p>
       <h5>What should I cite?</h5>
