@@ -9,10 +9,10 @@ import Chart from 'react-google-charts';
 import { CSVLink } from "react-csv";
 
 // returns CSV formatted array for each dataset's evaluation metrics
-function getCSVArray(auto_evals) {
-  let csv = [];
-  for (const auto_eval of auto_evals) { csv.push([auto_eval.name, auto_eval.value]) };
-  return csv;
+function getCSVArray(evaluations, model_name) {
+  // for (const auto_eval of auto_evals) { csv.push([auto_eval.name, auto_eval.value]) };
+  const data = parseData(evaluations, model_name)
+  return data;
 }
 
 const API_URL = process.env.API_URL;
@@ -88,12 +88,13 @@ function parseData(data, targetModel) {
 class Model extends Component {
   constructor(props) {
     super(props);
-    this.state = { models: [], prompts: [], responses: [] };
+    this.state = { models: [], prompts: [], responses: [], humanEvaluationData: {evaluations: []} };
     this.handleEvaluationDatasetChange.bind(this);
     this.setState({autoEvaluationData: null, humanEvaluationData: null})
 
-		this.chart = this.chart.bind(this);
-		this.componentDidMount = this.componentDidMount.bind(this);
+    this.chart = this.chart.bind(this);
+    this.componentDidMount = this.componentDidMount.bind(this);
+    this.updateToNewEvalset(0)
   }
 
   handleEvaluationDatasetChange = async(evalset) => {
@@ -193,6 +194,12 @@ class Model extends Component {
           <h2 className="font-weight-bold">Human Evaluations{evalsetNameAddition}</h2>
           <div className="row HumanEvalChart">
           <this.chart />
+          <CSVLink 
+        data={getCSVArray(this.state.humanEvaluationData, this.props.model.name)}
+        filename={"human_evaluation.csv"}
+      >
+        Export Evaluation Results
+      </CSVLink>
           </div>
           <hr />
           <h2 className="font-weight-bold">Conversations{evalsetNameAddition}</h2>
