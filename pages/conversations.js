@@ -6,6 +6,8 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import TurnList from '../components/TurnList';
 
+const API_URL = process.env.API_URL;
+
 class Conversations extends Component {
   constructor(props) {
     super(props)
@@ -34,13 +36,13 @@ class Conversations extends Component {
 
   async updateTurns() {
     console.log(this.state.models)
-    const promptsRequest = await fetch('https://api.chateval.org/api/prompts?evalset=' + this.state.evalset);
+    const promptsRequest = await fetch(this.props.API_URL + 'prompts?evalset=' + this.state.evalset);
     const promptsData = await promptsRequest.json();
     const prompts = promptsData.prompts.slice(0, 200);
 
     let responses = [];
     for (const model of this.state.models) {
-      const responsesRequest = await fetch('https://api.chateval.org/api/responses?evalset=' + this.state.evalset + "&model_id=" + model.value);
+      const responsesRequest = await fetch(this.props.API_URL + 'responses?evalset=' + this.state.evalset + "&model_id=" + model.value);
       const responsesData = await responsesRequest.json();
       responses.push({ model_id: model.value, responses: responsesData.responses.slice(0, 200), name: model.label });
     };
@@ -97,8 +99,8 @@ class Conversations extends Component {
 
 Conversations.getInitialProps = async function() {
   let evalsets = [], models = [];
-  const modelRequest = await fetch('https://api.chateval.org/api/models');
-  const evalsetRequest = await fetch('https://api.chateval.org/api/evaluationdatasets');
+  const modelRequest = await fetch(API_URL + 'models');
+  const evalsetRequest = await fetch(API_URL + 'evaluationdatasets');
   const modelData = await modelRequest.json();
   const evalsetData = await evalsetRequest.json();
  
@@ -110,7 +112,7 @@ Conversations.getInitialProps = async function() {
     evalsets.push({ 'value': evalset.evalset_id, 'label': evalset.name})
   });
 
-  return { evalsets, models }
+  return { evalsets, models, API_URL }
 };
 
 export default Conversations;
