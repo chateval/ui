@@ -90,11 +90,9 @@ class Model extends Component {
     super(props);
     this.state = { models: [], prompts: [], responses: [], humanEvaluationData: {evaluations: []} };
     this.handleEvaluationDatasetChange.bind(this);
-    this.setState({autoEvaluationData: null, humanEvaluationData: null})
 
     this.chart = this.chart.bind(this);
     this.componentDidMount = this.componentDidMount.bind(this);
-    this.updateToNewEvalset(0)
   }
 
   handleEvaluationDatasetChange = async(evalset) => {
@@ -125,14 +123,16 @@ class Model extends Component {
 
     // Update human evaluation data.
 		const humanEvalRequest = await fetch(this.props.API_URL + 'human_evaluations?model_id=' + this.props.model.id + "&evaluationdataset_id=" + evalset.evalset_id);
-		const humanEvaluationData = await humanEvalRequest.json();
+		var humanEvaluationData = await humanEvalRequest.json();
+    if (humanEvaluationData == 'INVALID_QUERY') {
+      humanEvaluationData = { evaluations: [] };
+    }
     this.setState({humanEvaluationData: humanEvaluationData})
   }
 
   chart() {
     // Renders bar graph with human evaluation results.
-    if (this.state.humanEvaluationData == null ||
-        this.state.humanEvaluationData == "INVALID_QUERY") {
+    if (this.state.humanEvaluationData.evaluations.length == 0) {
 		  return (<p>No human evaluation results available.</p>)
     } else {
       const data = parseData(this.state.humanEvaluationData, this.props.model.name)
@@ -147,7 +147,7 @@ class Model extends Component {
   }
 
   render() {
-    var autoEvalResults = (<p>Loading...</p>)
+    var autoEvalResults = (<p>Loading...</p>);
     if (this.state.autoEvaluationData !== undefined) {
       const evalProps = {
           autoEval:this.state.autoEvaluationData,
@@ -188,18 +188,19 @@ class Model extends Component {
           <br/>
           <h2 className="font-weight-bold">Automatic Evaluations{evalsetNameAddition}</h2>
           <div className="row">
-          {autoEvalResults}
+            {autoEvalResults}
           </div>
           <hr />
           <h2 className="font-weight-bold">Human Evaluations{evalsetNameAddition}</h2>
-          <div className="row HumanEvalChart">
-          <this.chart />
-          <CSVLink 
-        data={getCSVArray(this.state.humanEvaluationData, this.props.model.name)}
-        filename={"human_evaluation.csv"}
-      >
-        Export Evaluation Results
-      </CSVLink>
+          <div className="HumanEvalChart">
+            <this.chart />
+            <p>
+              <CSVLink 
+              data={getCSVArray(this.state.humanEvaluationData, this.props.model.name)}
+              filename={"human_evaluation.csv"}>
+                Export Human Evaluation Results
+              </CSVLink>
+            </p>
           </div>
           <hr />
           <h2 className="font-weight-bold">Conversations{evalsetNameAddition}</h2>
