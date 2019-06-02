@@ -17,6 +17,7 @@ class Conversations extends Component {
 
   handleEvaluationDatasetChange = (selectedOption) => {
     this.setState({ evalset: selectedOption.value });
+    this.setState({ model_options: [] });
     let filtered = [];
     for (const model of this.props.models) {
       for (const evalset of model.evalsets) {
@@ -26,6 +27,7 @@ class Conversations extends Component {
       }
     }
 
+    this.setState({ models: [] })
     this.setState({ model_options: filtered });
   }
 
@@ -80,6 +82,7 @@ class Conversations extends Component {
                 className="vmargin"
                 isMulti
                 placeholder="Add Model"
+                value={this.state.models}
                 options={this.state.model_options}
                 onChange={this.handleModelChange}
               />
