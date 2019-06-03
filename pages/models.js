@@ -67,7 +67,10 @@ class Models extends Component {
                 <div className="card">
                   <div className="card-body">
                     <h5 className="card-title vmargin">{model.name}</h5>
-                    <p className="card-text">{model.description}</p>
+                    <div className="card-text">
+                      <p><b>Type:</b> {model.is_baseline}</p>
+                      <p><b>Description:</b> {model.description}</p>
+                    </div>
                     <a href={"/model?id=" + model.id}>View More Details</a>
                   </div>
                 </div>
