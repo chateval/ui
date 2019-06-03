@@ -49,27 +49,23 @@ class Models extends Component {
         <main role="main" className="container">
           <h1 className="mt-5 font-weight-bold">Methods</h1>
           <p>Select a dataset to see all the methods available for it.</p>
-					<div className="row">
-            <div className="col-md-6">
-              <Select 
-                options={this.props.evalsets} 
-                className="vmargin"
-                placeholder="Select Evaluation Dataset"
-                onChange={this.handleEvaluationDatasetChange}
-              />
-            </div>
-          </div>
-          <div className="row"><p>{this.state.help_text}</p></div>
+          <Select 
+            options={this.props.evalsets} 
+            className="vmargin"
+            placeholder="Select Evaluation Dataset"
+            onChange={this.handleEvaluationDatasetChange}
+          />
+          <p style={{marginTop: "0.5rem"}}>{this.state.help_text}</p>
           <div className="row">
             {this.state.filtered_models.map(model =>
               <div className="col-md-6">
                 <br />
                 <div className="card">
                   <div className="card-body">
-                    <h5 className="card-title vmargin">{model.name}</h5>
+                    <h5 className="card-title vmargin"><strong>{model.name}</strong></h5>
                     <div className="card-text">
-                      <p><b>Type:</b> {model.is_baseline}</p>
-                      <p><b>Description:</b> {model.description}</p>
+                      <p><b>Type:</b> {model.is_baseline}<br />
+                      <b>Description:</b> {model.description}</p>
                     </div>
                     <a href={"/model?id=" + model.id}>View More Details</a>
                   </div>
