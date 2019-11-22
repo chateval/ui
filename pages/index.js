@@ -3,15 +3,15 @@ import Footer from '../components/Footer';
 import Card from '../components/Card';
 import fetch from 'isomorphic-unfetch';
 
-const citation = `@InProceedings{W18-6709,
+const citation = `@InProceedings{N19-4011,
   author = "Sedoc, Jo{\~a}o and Ippolito, Daphne and Kirubarajan, Arun and Thirani, Jai and Ungar, Lyle and Callison-Burch, Chris",
-  title = 	"ChatEval: A Tool for the Systematic Evaluation of Chatbots",
-  booktitle = 	"Proceedings of the Workshop on Intelligent Interactive Systems and Language Generation (2IS{\&}NLG) ",
-  year = 	"2018",
+  title = 	"ChatEval: A Tool for Chatbot Evaluation",
+  booktitle = 	"Proceedings of the 2019 Conference of the North American Chapter of the Association for Computational Linguistics (Demonstrations) ",
+  year = 	"2019",
   publisher = 	"Association for Computational Linguistics",
-  pages = 	"42--44",
-  location = 	"Tilburg, the Netherlands",
-  url = 	"http://aclweb.org/anthology/W18-6709"
+  pages = 	"60--65",
+  location = 	"Minneapolis, Minnesota",
+  url = 	"http://aclweb.org/anthology/N19-4011"
 }`;
 
 const STYLE = {
