@@ -47,8 +47,8 @@ class Models extends Component {
       <div>
         <Header />
         <main role="main" className="container">
-          <h1 className="mt-5 font-weight-bold">Methods</h1>
-          <p>Select a dataset to see all the methods available for it.</p>
+          <h1 className="mt-5 font-weight-bold">Systems</h1>
+          <p>Select a dataset to see all the systems available for it.</p>
           <Select 
             options={this.props.evalsets} 
             className="vmargin"
