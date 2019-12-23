@@ -72,9 +72,9 @@ const Index = (props) => (
         )}
       </div>
 
-      <h2 class="mt-4 font-weight-bold">Automated Evaluation Methods</h2>
+      <h2 class="mt-4 font-weight-bold">Automated Evaluation Systems</h2>
       <p> The ChatEval Platform handles certain automated evaluations of chatbot responses. These metrics are documented <a href="https://github.com/chateval/evaluation">here</a>. 
-      Models can be ranked according to a specific metric and viewed as a leaderboard.</p>
+      Systems can be ranked according to a specific metric and viewed as a leaderboard.</p>
       <div class="row">
         {props.metrics.map(metric => 
           <div className="col-md-3">
