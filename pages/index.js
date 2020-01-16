@@ -30,7 +30,7 @@ const Index = (props) => (
       Researchers can submit their trained models to effortlessly receive comparisons with baselines and prior work. 
       Since all evaluation code is <mark>open source</mark>, we ensure evaluation is performed in a standardized and transparent way. 
       Additionally, open source baseline models and an ever growing groups public evaluation sets are available for public use.</p>
-      <a href="https://my.chateval.org/upload" className="btn btn-primary">Upload your method</a>
+      <a href="https://my.chateval.org/upload" className="btn btn-primary">Upload your system responses</a>
       <br/> <br/>
       <h2>FAQ</h2>
       <h5 className="card-title"> How much does ChatEval cost? </h5>
