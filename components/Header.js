@@ -23,6 +23,9 @@ const Header = () => (
           <li className="nav-item">
             <a className="nav-link" href="/conversations">View Conversations</a>
           </li>
+          <li className="nav-item">
+            <a className="nav-link" href="/shared_task">Shared Task</a>
+          </li>
           <div className="vl"></div>
           <li className="nav-item">
             <a className="nav-link" href="https://my.chateval.org/uploads">My ChatEval</a>
