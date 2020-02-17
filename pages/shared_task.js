@@ -12,23 +12,63 @@ class SharedTask extends Component {
         <Header />
         <main role="main" className="container">
           <h1 className="mt-5 font-weight-bold">DBDC5:Dialogue Breakdown Detection Challenge 5</h1>
-          <p> Following the success of <a href="https://sites.google.com/site/dialoguebreakdowndetection4/">DBDC4</a>, we are please to organize DBDC5 as part of the WOCHAT workshop held in Madrid, Spain in conjunction with <a href="https://www.iwsds.tech/">IWSDS2020</a>.</p>
-<p>&nbsp;</p>
+<p>Click <a href="https://my.chateval.org/dbdc5_data/">here</a> to download DBDC5 data.</p>
+<hr />
+<p>Following the success of <a href="https://sites.google.com/site/dialoguebreakdowndetection4/">DBDC4</a>, we are please to organize DBDC5 as part of the WOCHAT workshop held in Madrid, Spain in conjunction with <a href="https://www.iwsds.tech/">IWSDS2020</a>.</p>
 <p>There are three tracks in this edition of DBDC:</p>
-<p>l&nbsp; Dialogue breakdown detection</p>
-<p>&Oslash;&nbsp; The task of dialogue breakdown detection is to detect whether the system utterance causes dialogue breakdown (a situation in a dialogue where users cannot proceed with the conversation) in a given dialogue context. The participants of this challenge will develop a dialogue breakdown detector that outputs a dialogue breakdown label (B: breakdown, PB: possible breakdown, or NB: Not a breakdown) and a distribution of these labels. The challenge includes dialogue breakdown detection for English and Japanese data.</p>
-<p>l&nbsp; Error category classification</p>
-<p>&Oslash;&nbsp; The task of error category classification is to classify system utterances that led to dialogue breakdowns into one or more error categories that describe the causes of dialogue breakdowns. We defined 16 categories [1], where multiple categories can be annotated for an utterance. There is no English data for this track, only Japanese. Five annotators annotated each system utterance (annotated with a majority of PB/B labels) with the error categories. As evaluation metrics, we will use exact match (EM) and F1.</p>
-<p>l&nbsp; Recovery response generation</p>
-<p>&Oslash;&nbsp; In this track, participants are required to build a response generator/selector. The system should be able to provide new responses aiming at correcting or recovering from a dialogue breakdown event. This track includes 600 dialogues in English from past Dialogue Breakdown Detection Challenges.</p>
-
+<ul>
+<li>&nbsp;Dialogue breakdown detection</li>
+</ul>
+<p style="padding-left: 60px;">The task of dialogue breakdown detection is to detect whether the system utterance causes dialogue breakdown (a situation in a dialogue where users cannot proceed with the conversation) in a given dialogue context. The participants of this challenge will develop a dialogue breakdown detector that outputs a dialogue breakdown label (B: breakdown, PB: possible breakdown, or NB: Not a breakdown) and a distribution of these labels. The challenge includes dialogue breakdown detection for English and Japanese data.</p>
+<ul>
+<li>Error category classification</li>
+</ul>
+<p style="padding-left: 60px;">The task of error category classification is to classify system utterances that led to dialogue breakdowns into one or more error categories that describe the causes of dialogue breakdowns. We defined 16 categories [1], where multiple categories can be annotated for an utterance. There is no English data for this track, only Japanese. Five annotators annotated each system utterance (annotated with a majority of PB/B labels) with the error categories. As evaluation metrics, we will use exact match (EM) and F1.</p>
+<ul>
+<li>Recovery response generation</li>
+</ul>
+<p style="padding-left: 60px;">In this track, participants are required to build a response generator/selector. The system should be able to provide new responses aiming at correcting or recovering from a dialogue breakdown event. This track includes 600 dialogues in English from past Dialogue Breakdown Detection Challenges.</p>
+<hr />
+<p>How to register, download data and submit results</p>
+<p>You can register at <a href="https://my.chateval.org/accounts/login/">https://my.chateval.org/accounts/login/</a>, once registered, you will be able to download the datasets and readme documents as well as submit your results at <a href="https://chateval.org/shared_task">https://chateval.org/shared_task</a></p>
+<hr />
+<p>Information about the tracks</p>
+<p>Any updates will be posted at the official website:</p>
+<p><a href="http://workshop.colips.org/wochat/@iwsds2020/index.html">http://workshop.colips.org/wochat/@iwsds2020/index.html</a></p>
+<hr />
+<p><strong>Timeline</strong></p>
+<hr />
+<p>Contact</p>
+<p>If you have further questions regarding the data, please let us know by the following email address: <a href="mailto:dbdc5-admin@googlegroups.com">dbdc5-admin@googlegroups.com</a></p>
+<hr />
+<p>Organizers:</p>
+<ul>
+<li>Ryuichiro Higashinaka (NTT)</li>
+<li>Yuiko Tsunomori (NTT Docomo)</li>
+<li>Tetsuro Takahashi (Fujitsu Laboratories, LTD)</li>
+<li>Hiroshi Tsukahara (Denso IT Laboratories)</li>
+<li>Masahiro Araki (Kyoto Institute of Technology)</li>
+<li>Jo&atilde;o Sedoc (University of Pennsylvania)</li>
+<li>Rafael Banchs (NTU)</li>
+<li>Luis F. D'Haro (Universidad Polit&eacute;cnica de Madrid)</li>
+</ul>
+<hr />
+<p>References</p>
+<p>[1] Higashinaka R., Araki M., Tsukahara H., Mizukami M. (2019) Improving Taxonomy of Errors in Chat-Oriented Dialogue Systems. In: D'Haro L., Banchs R., Li H. (eds) 9th International Workshop on Spoken Dialogue System Technology. Lecture Notes in Electrical Engineering, vol 579. Springer, Singapore</p>
+<p>&nbsp;</p>
           <br />
           <h2 className="font-weight-bold">Shared Task Overview</h2>
           <p> Description of task </p>
 
           <br />
           <h2 className="font-weight-bold">Schedule</h2>
-          <p> Description of task </p>
+          <p>- Feb/15 development data distribution @ <a href="http://chateval.com">chateval.com</a></p>
+          <p>- Mar/31 (Tue) registration deadline</p>
+          <p>- Apr/10 test data distribution</p>
+          <p>- Apr/15 (Wed) run submission deadline</p>
+          <p>- Apr/15-4/20 (Mon) evaluation</p>
+          <p>- Apr/20 notification</p>
+          <p>- May/18-20 event (online proceedings)</p>
 
           <br />
           <h2 className="font-weight-bold">Human Evaluation Results</h2>
@@ -109,14 +149,7 @@ SharedTask.getInitialProps = async function() {
       },
       results: [
         {
-          id: 1,
-          name: "System 1",
-          score: 0.4
-        },
-        {
-          id: 1,
-          name: "System 2",
-          score: 0.6
+          
         }
       ]
     }
