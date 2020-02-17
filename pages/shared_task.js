@@ -11,8 +11,16 @@ class SharedTask extends Component {
       <div>
         <Header />
         <main role="main" className="container">
-          <h1 className="mt-5 font-weight-bold">Next Utterance Recovery</h1>
-          <p> Some words about who/what/where/when/why </p>
+          <h1 className="mt-5 font-weight-bold">DBDC5:Dialogue Breakdown Detection Challenge 5</h1>
+          <p> Following the success of <a href="https://sites.google.com/site/dialoguebreakdowndetection4/">DBDC4</a>, we are please to organize DBDC5 as part of the WOCHAT workshop held in Madrid, Spain in conjunction with <a href="https://www.iwsds.tech/">IWSDS2020</a>.</p>
+<p>&nbsp;</p>
+<p>There are three tracks in this edition of DBDC:</p>
+<p>l&nbsp; Dialogue breakdown detection</p>
+<p>&Oslash;&nbsp; The task of dialogue breakdown detection is to detect whether the system utterance causes dialogue breakdown (a situation in a dialogue where users cannot proceed with the conversation) in a given dialogue context. The participants of this challenge will develop a dialogue breakdown detector that outputs a dialogue breakdown label (B: breakdown, PB: possible breakdown, or NB: Not a breakdown) and a distribution of these labels. The challenge includes dialogue breakdown detection for English and Japanese data.</p>
+<p>l&nbsp; Error category classification</p>
+<p>&Oslash;&nbsp; The task of error category classification is to classify system utterances that led to dialogue breakdowns into one or more error categories that describe the causes of dialogue breakdowns. We defined 16 categories [1], where multiple categories can be annotated for an utterance. There is no English data for this track, only Japanese. Five annotators annotated each system utterance (annotated with a majority of PB/B labels) with the error categories. As evaluation metrics, we will use exact match (EM) and F1.</p>
+<p>l&nbsp; Recovery response generation</p>
+<p>&Oslash;&nbsp; In this track, participants are required to build a response generator/selector. The system should be able to provide new responses aiming at correcting or recovering from a dialogue breakdown event. This track includes 600 dialogues in English from past Dialogue Breakdown Detection Challenges.</p>
 
           <br />
           <h2 className="font-weight-bold">Shared Task Overview</h2>
