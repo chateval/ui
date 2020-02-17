@@ -12,7 +12,7 @@ class SharedTask extends Component {
         <Header />
         <main role="main" className="container">
           <h1 className="mt-5 font-weight-bold">DBDC5:Dialogue Breakdown Detection Challenge 5</h1>
-<p>Click <a href="https//my.chateval.org/dbdc5_data/">here</a> to download DBDC5 data.</p>
+<p>Click <a href="https://my.chateval.org/dbdc5_data/">here</a> to download DBDC5 data.</p>
 <hr />
 <p>Following the success of <a href="https://sites.google.com/site/dialoguebreakdowndetection4/">DBDC4</a>, we are please to organize DBDC5 as part of the WOCHAT workshop held in Madrid, Spain in conjunction with <a href="https://www.iwsds.tech/">IWSDS2020</a>.</p>
 <p>There are three tracks in this edition of DBDC:</p>
