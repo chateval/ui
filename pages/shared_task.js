@@ -61,13 +61,13 @@ class SharedTask extends Component {
 
           <h2 className="font-weight-bold">Schedule</h2>
           <ul>
-          <li> Feb/15 development data distribution @ <a href="http://chateval.org">chateval.org</a></p>
-          <li> Mar/31 (Tue) registration deadline</p>
-          <li> Apr/10 test data distribution</p>
-          <li> Apr/15 (Wed) run submission deadline</p>
-          <li> Apr/15-4/20 (Mon) evaluation</p>
-          <li> Apr/20 notification</p>
-          <li> May/18-20 event (online proceedings)</p>
+          <li> Feb/15 development data distribution @ <a href="http://chateval.org">chateval.org</a>
+          <li> Mar/31 (Tue) registration deadline
+          <li> Apr/10 test data distribution
+          <li> Apr/15 (Wed) run submission deadline
+          <li> Apr/15-4/20 (Mon) evaluation
+          <li> Apr/20 notification
+          <li> May/18-20 event (online proceedings)
           </ul>
 
           <br />
