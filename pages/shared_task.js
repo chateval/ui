@@ -37,8 +37,6 @@ class SharedTask extends Component {
             <p>Any updates will be posted at the official website:</p>
             <p><a href="http://workshop.colips.org/wochat/@iwsds2020/index.html">http://workshop.colips.org/wochat/@iwsds2020/index.html</a></p>
 <hr />
-<p><strong>Timeline</strong></p>
-<hr />
 <p>Contact</p>
 <p>If you have further questions regarding the data, please let us know by the following email address: <a href="mailto:dbdc5-admin@googlegroups.com">dbdc5-admin@googlegroups.com</a></p>
 <hr />
@@ -61,13 +59,13 @@ class SharedTask extends Component {
 
           <h2 className="font-weight-bold">Schedule</h2>
           <ul>
-          <li> Feb/15 development data distribution @ <a href="http://chateval.org">chateval.org</a>
-          <li> Mar/31 (Tue) registration deadline
-          <li> Apr/10 test data distribution
-          <li> Apr/15 (Wed) run submission deadline
-          <li> Apr/15-4/20 (Mon) evaluation
-          <li> Apr/20 notification
-          <li> May/18-20 event (online proceedings)
+          <li> Feb/15 development data distribution @ <a href="http://chateval.org">chateval.org</a></li>
+          <li> Mar/31 (Tue) registration deadline</li>
+          <li> Apr/10 test data distribution</li>
+          <li> Apr/15 (Wed) run submission deadline</li>
+          <li> Apr/15-4/20 (Mon) evaluation</li>
+          <li> Apr/20 notification</li>
+          <li> May/18-20 event (online proceedings)</li>
           </ul>
 
           <br />
