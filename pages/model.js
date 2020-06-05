@@ -127,7 +127,6 @@ class Model extends Component {
         value: evaluation.value
       });
     });
-    console.log(evaluations)
     this.setState({evaluations})
 
     // Update human evaluation data.
