@@ -3,8 +3,6 @@ import fetch from 'isomorphic-unfetch';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import Select from 'react-select'
-import makeAnimated from 'react-select/lib/animated';
-import AutomaticEvaluationTable from '../components/AutomaticEvaluationTable';
 
 const API_URL = process.env.API_URL;
 
@@ -26,14 +24,15 @@ class Models extends Component {
     this.setState({ evalset: selectedOption.value });
     this.setState({filtered_models: []});
 
+    // TODO: REFACTOR TO A SEPERATE DJANGO REST API CALL
     // Update the filtered model list.
     let filtered_model_list = [];
     for (const model of this.props.models) {
       for (const evalset of model.evalsets) {
         if (evalset.evalset_id == selectedOption.value) {
-          const modelRequest = await fetch('https://api.chateval.org/api/model?id=' + model.value);
+          const modelRequest = await fetch(API_URL + 'model/' + model.value);
           const modelData = await modelRequest.json();
-          filtered_model_list.push(modelData.model);
+          filtered_model_list.push(modelData);
         }
       }
     }
@@ -62,12 +61,12 @@ class Models extends Component {
                 <br />
                 <div className="card">
                   <div className="card-body">
-                    <h5 className="card-title vmargin"><strong>{model.name}</strong></h5>
+                    <h5 className="card-title"><strong>{model.name}</strong></h5>
                     <div className="card-text">
                       <p><b>Type:</b> {model.is_baseline}<br />
                       <b>Description:</b> {model.description}</p>
                     </div>
-                    <a href={"/model?id=" + model.id}>View More Details</a>
+                    <a href={"/model?id=" + model.model_id}>View Details</a>
                   </div>
                 </div>
               </div>
@@ -84,19 +83,22 @@ Models.getInitialProps = async function() {
   let models = [];
   let evalsets = [];
 
-  const modelRequest = await fetch(API_URL + 'models');
+  const modelRequest = await fetch(API_URL + 'model');
   const modelData = await modelRequest.json();
 
-  const evalsetRequest = await fetch('https://api.chateval.org/api/evaluationdatasets');
+  const evalsetRequest = await fetch(API_URL + 'evaluation-dataset');
   const evalsetData = await evalsetRequest.json();
 
-
-  modelData.models.forEach(model => {
-		models.push({ 'value': model.id, 'label': model.name, 'evalsets': model.evalsets})
+  modelData.forEach(model => {
+    models.push({ 
+      'value': model.model_id,
+      'label': model.name, 
+      'evalsets': model.evaluationdatasets
+    });
   });
 
-  evalsetData.evaluationdatasets.forEach(evalset => {
-    evalsets.push({ 'value': evalset.evalset_id, 'label': evalset.name})
+  evalsetData.forEach(evalset => {
+    evalsets.push({ 'value': evalset.evalset_id, 'label': evalset.name })
   });
 
   return { evalsets, models, API_URL }
