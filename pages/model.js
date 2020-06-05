@@ -100,7 +100,7 @@ class Model extends Component {
   }
 
   updateToNewEvalset = async(evalsetFromSelector) => {
-    const evalset = this.props.model.evalsets[evalsetFromSelector.value]
+    const evalset = this.props.model.evaluationdatasets[evalsetFromSelector.value]
 
     // Update prompts data.
     this.setState({currentEvalset: evalset})
@@ -110,19 +110,19 @@ class Model extends Component {
     this.setState({ prompts });
 
     // Update response data.
-    const requestURL = this.props.API_URL + 'responses?evalset=' + evalset.evalset_id + "&model_id=" + this.props.model.id
+    const requestURL = this.props.API_URL + 'responses?evalset=' + evalset.evalset_id + "&model_id=" + this.props.model.model_id
     const responsesRequest = await fetch(requestURL);
     const responsesData = await responsesRequest.json();
-    const responses = [{ model_id: this.props.model.id, responses: responsesData.responses.slice(0, 200), name: this.props.model.name }];
+    const responses = [{ model_id: this.props.model.model_id, responses: responsesData.responses.slice(0, 200), name: this.props.model.name }];
     this.setState({ responses });
 
     // Update automatic evaluation data.
-		const autoEvalRequest = await fetch(this.props.API_URL + 'automatic_evaluations?model_id=' + this.props.model.id + "&evaluationdataset_id=" + evalset.evalset_id);
+		const autoEvalRequest = await fetch(this.props.API_URL + 'automatic_evaluations?model_id=' + this.props.model.model_id + "&evaluationdataset_id=" + evalset.evalset_id);
 		const autoEvaluationData = await autoEvalRequest.json();
     this.setState({autoEvaluationData: autoEvaluationData})
 
     // Update human evaluation data.
-		const humanEvalRequest = await fetch(this.props.API_URL + 'human_evaluations?model_id=' + this.props.model.id + "&evaluationdataset_id=" + evalset.evalset_id);
+		const humanEvalRequest = await fetch(this.props.API_URL + 'human_evaluations?model_id=' + this.props.model.model_id + "&evaluationdataset_id=" + evalset.evalset_id);
 		var humanEvaluationData = await humanEvalRequest.json();
     if (humanEvaluationData == 'INVALID_QUERY') {
       humanEvaluationData = { evaluations: [] };
@@ -210,24 +210,24 @@ class Model extends Component {
 
 Model.getInitialProps = async function(props) {
   const { query } = props;
-  const modelRequest = await fetch(API_URL + 'model?id=' + query.id);
+  const modelRequest = await fetch(API_URL + 'model/' + query.id);
   const modelData = await modelRequest.json();
 
   // Create list of evalsets that users should be able to select from in dropdown.
   var evalsetsForSelector = []  
-  modelData.model.evalsets.forEach(evalset => {
+  modelData.evaluationdatasets.forEach(evalset => {
     evalsetsForSelector.push({ 'value': evalset.evalset_id, 'label': evalset.name})
   });
 
   // Convert the eval sets from a list to a dictionary where the key is the evalset_id
   const evalsetDict = {}
   var evalset
-  for (var i = 0; i < modelData.model.evalsets.length; i++) {
-    evalset = modelData.model.evalsets[i]
+  for (var i = 0; i < modelData.evaluationdatasets.length; i++) {
+    evalset = modelData.evaluationdatasets[i]
     evalsetDict[evalset.evalset_id] = evalset;
   }
-  modelData.model.evalsets = evalsetDict;
-  return { evalsetsForSelector, model: modelData.model, API_URL };
+  modelData.evaluationdatasets = evalsetDict;
+  return { evalsetsForSelector, model: modelData, API_URL };
 };
 
 
