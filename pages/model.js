@@ -149,10 +149,6 @@ class Model extends Component {
   render() {
     var autoEvalResults = (<p>Loading...</p>);
     if (this.state.autoEvaluationData !== undefined) {
-      const evalProps = {
-          autoEval:this.state.autoEvaluationData,
-          csvFileName:this.state.currentEvalset.name
-      }
       autoEvalResults = (<AutomaticEvaluationTable autoEval={this.state.autoEvaluationData.evaluations} csvFileName={this.state.currentEvalset.name}
 />);
     }
@@ -216,8 +212,6 @@ Model.getInitialProps = async function(props) {
   const { query } = props;
   const modelRequest = await fetch(API_URL + 'model?id=' + query.id);
   const modelData = await modelRequest.json();
-  const evaluationRequest = await fetch(API_URL + 'automatic_evaluations?model_id=' + query.id);
-  const evaluationData = await evaluationRequest.json();
 
   // Create list of evalsets that users should be able to select from in dropdown.
   var evalsetsForSelector = []  
