@@ -104,16 +104,16 @@ class Model extends Component {
 
     // Update prompts data.
     this.setState({currentEvalset: evalset})
-    const promptsRequest = await fetch(API_URL+ 'prompts?evalset=' + evalset.evalset_id);
+    const promptsRequest = await fetch(API_URL+ 'evaluation-dataset-text?evaluationdataset_id=' + evalset.evalset_id);
     const promptsData = await promptsRequest.json();
-    const prompts = promptsData.prompts.slice(0, 200);
+    const prompts = promptsData.slice(0, 200);
     this.setState({ prompts });
 
     // Update response data.
-    const requestURL = API_URL + 'responses?evalset=' + evalset.evalset_id + "&model_id=" + this.props.model.model_id
+    const requestURL = API_URL + 'model-response?evaluationdataset_id=' + evalset.evalset_id + "&model_id=" + this.props.model.model_id
     const responsesRequest = await fetch(requestURL);
     const responsesData = await responsesRequest.json();
-    const responses = [{ model_id: this.props.model.model_id, responses: responsesData.responses.slice(0, 200), name: this.props.model.name }];
+    const responses = [{ model_id: this.props.model.model_id, responses: responsesData.slice(0, 200), name: this.props.model.name }];
     this.setState({ responses });
 
     // Update automatic evaluation data.
@@ -130,7 +130,7 @@ class Model extends Component {
     this.setState({evaluations})
 
     // Update human evaluation data.
-		const humanEvalRequest = await fetch(API_URL + 'human_evaluations?model_id=' + this.props.model.model_id + "&evaluationdataset_id=" + evalset.evalset_id);
+		const humanEvalRequest = await fetch(API_URL + 'human-evaluation?model_id=' + this.props.model.model_id + "&evaluationdataset_id=" + evalset.evalset_id);
 		var humanEvaluationData = await humanEvalRequest.json();
     if (humanEvaluationData == 'INVALID_QUERY') {
       humanEvaluationData = { evaluations: [] };
@@ -157,8 +157,7 @@ class Model extends Component {
   render() {
     var autoEvalResults = (<p>Loading...</p>);
     if (this.state.evaluations !== undefined) {
-      autoEvalResults = (<AutomaticEvaluationTable autoEval={this.state.evaluations} csvFileName={this.state.currentEvalset.name}
-/>);
+      autoEvalResults = (<AutomaticEvaluationTable autoEval={this.state.evaluations} csvFileName={this.state.currentEvalset.name} />);
     }
 
     var evalsetNameAddition = "";
