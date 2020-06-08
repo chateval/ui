@@ -112,17 +112,17 @@ const Index = (props) => (
 
 Index.getInitialProps = async function() {
   let data = {};
-  const baselineRequest = await fetch(process.env.API_URL + 'baselines');
+  const baselineRequest = await fetch(process.env.API_URL + 'baseline');
   const baselineData = await baselineRequest.json();
-  data.baselines = baselineData.baselines;
+  data.baselines = baselineData;
 
-  const evalsetRequest = await fetch(process.env.API_URL + 'evaluationdatasets');
+  const evalsetRequest = await fetch(process.env.API_URL + 'evaluation-dataset');
   const evalsetData = await evalsetRequest.json();
-  data.evalsets = evalsetData.evaluationdatasets;
+  data.evalsets = evalsetData;
 
-  const metricRequest = await fetch(process.env.API_URL + 'metrics');
+  const metricRequest = await fetch(process.env.API_URL + 'metric');
   const metricData = await metricRequest.json();
-  data.metrics = metricData.metrics;
+  data.metrics = metricData;
 
   return data;
 };
