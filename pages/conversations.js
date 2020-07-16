@@ -39,7 +39,7 @@ class Conversations extends Component {
   async updateTurns() {
     const promptsRequest = await fetch(API_URL+ 'evaluation-dataset-text?evaluationdataset_id=' + this.state.evalset);
     const promptsData = await promptsRequest.json();
-    const prompts = promptsData.slice(0, 200);
+    const prompts = promptsData.prompts;
 
     let responses = [];
     for (const model of this.state.models) {
