@@ -40,7 +40,7 @@ class Conversations extends Component {
     console.log(this.state.models)
     const promptsRequest = await fetch(this.props.API_URL + 'prompts?evalset=' + this.state.evalset);
     const promptsData = await promptsRequest.json();
-    const prompts = promptsData.prompts.slice(0, 200);
+    const prompts = promptsData.prompts;
 
     let responses = [];
     for (const model of this.state.models) {
