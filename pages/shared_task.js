@@ -13,6 +13,7 @@ class SharedTask extends Component {
         <main role="main" className="container">
           <h1 className="mt-5 font-weight-bold">DBDC5:Dialogue Breakdown Detection Challenge 5</h1>
             <p>Click <a href="https://my.chateval.org/dbdc5_data/">here</a> to download DBDC5 data.</p>
+            <p>Click <a href="https://my.chateval.org/dbdc5submit/">here</a> to submit.</p>
             <hr />
             <p>Following the success of <a href="https://sites.google.com/site/dialoguebreakdowndetection4/">DBDC4</a>, we are please to organize DBDC5 as part of the WOCHAT workshop held in Madrid, Spain in conjunction with <a href="https://www.iwsds.tech/">IWSDS2020</a>.</p>
             <p>There are three tracks in this edition of DBDC:</p>
@@ -62,9 +63,9 @@ class SharedTask extends Component {
           <li> Feb/15 Development Data Distribution @ <a href="http://chateval.org">chateval.org</a></li>
           <li> Jul/15-31 Registration and Data Distribution</li>
           <li> Aug/10 Test Data Distribution</li>
-          <li> Aug/15 Run Submission Deadline</li>
-          <li> Aug/15-20 Evaluation Notification</li>
-          <li> Aig/20 notification</li>
+          <li> Aug/30 Run Submission Deadline</li>
+          <li> Sep/1-3 Evaluation Notification</li>
+          <li> Sep/3 notification</li>
           <li> Sep/21-13 event (online proceedings)</li>
           </ul>
 
