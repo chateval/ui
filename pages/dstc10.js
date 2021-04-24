@@ -65,7 +65,7 @@ class DSTC10 extends Component {
             <p><a href="https://sites.google.com/dstc.community/dstc10/">https://sites.google.com/dstc.community/dstc10/</a></p>
 <hr />
 <p>Contact</p>
-<p>If you have further questions regarding the data, please let us know by the following email address: <a href="#">placeholder@gmail.com</a></p>
+<p>If you have further questions regarding the data, please let us know by the following email address: <a href="mailto:dstc10-track-5@googlegroups.com">dstc10-track-5@googlegroups.com</a></p>
 <hr />
 <p>Organizers:</p>
 <ul>
