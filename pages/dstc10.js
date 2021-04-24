@@ -14,8 +14,8 @@ class DSTC10 extends Component {
           <h1 className="mt-5 font-weight-bold">DSTC10: Dialogue System Technology Challenge 10</h1>
           <h2 className="mt-5 font-weight-bold">Automatic Evaluation and Moderation of Open-domain Dialogue Systems</h2>
             <br />
-            <p>Click <a href="https://my.chateval.org/dstc10_data/">here</a> to download DSTC10 data.</p>
-            <p>Click <a href="https://my.chateval.org/dstc10submit/">here</a> to submit.</p>
+            <p>Click <a href="#">here</a> to download DSTC10 data.</p>
+            <p>Click <a href="#">here</a> to submit.</p>
             <hr />
             <p>There are two subtasks in this track:</p>
 
