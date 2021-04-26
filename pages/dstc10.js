@@ -17,8 +17,7 @@ class DSTC10 extends Component {
             <p>Click <a href="#">here</a> to download DSTC10 data.</p>
             <p>Click <a href="#">here</a> to submit.</p>
             <hr />
-            <p>There are two subtasks in this track:</p>
-
+          
           <h3 className="font-weight-bold">Task Overview</h3>
             <br />
             <ul>
@@ -57,48 +56,18 @@ class DSTC10 extends Component {
             <p style={{marginLeft: 60 + 'px'}} align='justify'>During the development phase, participants need to come up with systems that are capable of generating polite, specific and semantically appropriate responses in such scenarios.</p>
             <p style={{marginLeft: 60 + 'px'}} align='justify'>During the evaluation phase, a hidden test set will be provided to the participants for them to generate system responses, which will be evaluated based on the objective similarity between the generated response and the original response (e.g. sentence embedding similarity, Deep AM-FM (Zhang et al., 2021), BLEU, ROUGE, etc). For the top-3 submitted systems in the objective evaluation, a set of 100 responses will be manually evaluated for politeness, specificity, semantically appropriateness and fluency.</p> 
             <hr />
-            <p>How to register, download data and submit results</p>
-            <p>You can register at <a href="https://my.chateval.org/accounts/login/">https://my.chateval.org/accounts/login/</a>, once registered, you will be able to download the datasets and readme documents as well as submit your results at <a href="https://chateval.org/dstc10">https://chateval.org/dstc10</a></p>
-            <hr />
-            <p>Information about the tracks</p>
-            <p>Any updates will be posted at the official website:</p>
-            <p><a href="https://sites.google.com/dstc.community/dstc10/">https://sites.google.com/dstc.community/dstc10/</a></p>
-<hr />
-<p>Contact</p>
-<p>If you have further questions regarding the data, please let us know by the following email address: <a href="mailto:dstc10-track-5@googlegroups.com">dstc10-track-5@googlegroups.com</a></p>
-<hr />
-<p>Organizers:</p>
-<ul>
-  <li>Chen Zhang (National University of Singapore, Singapore)</li>
-  <li>Haizhou Li (National University of Singapore, Singapore)</li>
-  <li>Jo&atilde;o Sedoc (New York University, USA)</li>
-  <li>Luis F. D'Haro (Universidad Polit&eacute;cnica de Madrid, Spain)</li>
-  <li>Rafael Banchs (Intapp Inc., USA)</li>
-  <li>Alexander Rudnicky (Carnegie Mellon University, USA)</li>
-</ul>
-<hr />
-<p>References</p>
-<p>[1] Deriu, J., Rodrigo, A., Otegi, A., Echegoyen, G., Rosset, S., Agirre, E., & Cieliebak, M. (2020). Survey on evaluation methods for dialogue systems. Artificial Intelligence Review, 1-56.</p>
-<p>[2] Hori, C., & Hori, T. (2017). End-to-end conversation modeling track in DSTC6. arXiv preprint arXiv:1706.07440.</p>
-<p>[3] Galley, M., Brockett, C., Gao, X., Gao, J., & Dolan, B. (2019). Grounded response generation task at dstc7. In AAAI Dialog System Technology Challenges Workshop.</p>
-<p>[4] See, A., Roller, S., Kiela, D., & Weston, J. (2019, June). What makes a good conversation? How controllable attributes affect human judgments. In Proceedings of the 2019 Conference of the North American Chapter of the Association for Computational Linguistics: Human Language Technologies, Volume 1 (Long and Short Papers) (pp. 1702-1723).</p>
-<p>[5] Mehri, S., & Eskenazi, M. (2020). USR: An Unsupervised and Reference Free Evaluation Metric for Dialog Generation. arXiv preprint arXiv:2005.00456.</p>
-<p>[6] Mehri, S., & Eskenazi, M. (2020, July). Unsupervised Evaluation of Interactive Dialog with DialoGPT. In Proceedings of the 21th Annual Meeting of the Special Interest Group on Discourse and Dialogue (pp. 225-235).</p>
-<p>[7] Zhang C., D’Haro L.F., Banchs R.E., Friedrichs T., Li H. (2021) Deep AM-FM: Toolkit for Automatic Dialogue Evaluation. In Conversational Dialogue Systems for the Next Decade. Lecture Notes in Electrical Engineering, vol 704. Springer, Singapore.</p>
-<p>&nbsp;</p>
-          <br />
+
 
           <h3 className="font-weight-bold">Schedule (Coming Soon)</h3>
-
           <br />
           
           <h3 className="font-weight-bold">Automatic Evaluation Leaderboard (Coming Soon)</h3>
 
           {this.props.automatic_evaluation.map(evaluation => (
-            <div>
+            <div key={evaluation.id}>
               <h5 className="card-title"> {evaluation.evalset.name} </h5>
               <p> {evaluation.evalset.description} </p>
-              <table class="table">
+              <table className="table">
                 <thead>
                     <tr>
                       <th scope="col">System</th>
@@ -122,30 +91,62 @@ class DSTC10 extends Component {
                 </thead>
                 <tbody>
                   {evaluation.results.map(result => (
-                      <tr>
-                        <td>{result.sys}</td>
-                        <td>{result.d6r}</td>
-                        <td>{result.d6s}</td>
-                        <td>{result.d7r}</td>
-                        <td>{result.d7s}</td>
-                        <td>{result.pcr}</td>
-                        <td>{result.pcs}</td>
-                        <td>{result.upr}</td>
-                        <td>{result.ups}</td>
-                        <td>{result.utr}</td>
-                        <td>{result.uts}</td>
-                        <td>{result.ftr}</td>
-                        <td>{result.fts}</td>
-                        <td>{result.fcr}</td>
-                        <td>{result.fcs}</td>
-                        <td>{result.avgr}</td>
-                        <td>{result.avgs}</td>
+                      <tr key={result.id}>
+                        <td key="td01">{result.sys}</td>
+                        <td key="td02">{result.d6r}</td>
+                        <td key="td03">{result.d6s}</td>
+                        <td key="td04">{result.d7r}</td>
+                        <td key="td05">{result.d7s}</td>
+                        <td key="td06">{result.pcr}</td>
+                        <td key="td07">{result.pcs}</td>
+                        <td key="td08">{result.upr}</td>
+                        <td key="td09">{result.ups}</td>
+                        <td key="td10">{result.utr}</td>
+                        <td key="td11">{result.uts}</td>
+                        <td key="td12">{result.ftr}</td>
+                        <td key="td13">{result.fts}</td>
+                        <td key="td14">{result.fcr}</td>
+                        <td key="td15">{result.fcs}</td>
+                        <td key="td16">{result.avgr}</td>
+                        <td key="td17">{result.avgs}</td>
                       </tr>
                   ))}
                 </tbody>
               </table>
             </div>
           ))}
+           <hr />
+
+          <h3 className="font-weight-bold">Registration Details</h3>
+            <p>You can register at <a href="https://my.chateval.org/accounts/login/">https://my.chateval.org/accounts/login/</a>, once registered, you will be able to download the datasets and readme documents as well as submit your results at <a href="#">https://chateval.org/dstc10</a></p>
+            <hr />
+            <p>Information about the tracks</p>
+            <p>Any updates will be posted at the official website:</p>
+            <p><a href="https://sites.google.com/dstc.community/dstc10/">https://sites.google.com/dstc.community/dstc10/</a></p>
+          <hr />
+
+          <h3 className="font-weight-bold">Contact</h3>
+          <p>If you have further questions regarding the data, please let us know by the following email address: <a href="mailto:dstc10-track-5@googlegroups.com">dstc10-track-5@googlegroups.com</a></p>
+          <hr />
+          <p>Organizers:</p>
+          <ul>
+            <li>Chen Zhang (National University of Singapore, Singapore)</li>
+            <li>Haizhou Li (National University of Singapore, Singapore)</li>
+            <li>Jo&atilde;o Sedoc (New York University, USA)</li>
+            <li>Luis F. D'Haro (Universidad Polit&eacute;cnica de Madrid, Spain)</li>
+            <li>Rafael Banchs (Intapp Inc., USA)</li>
+            <li>Alexander Rudnicky (Carnegie Mellon University, USA)</li>
+          </ul>
+          <hr />
+          <p>References</p>
+          <p>[1] Deriu, J., Rodrigo, A., Otegi, A., Echegoyen, G., Rosset, S., Agirre, E., & Cieliebak, M. (2020). Survey on evaluation methods for dialogue systems. Artificial Intelligence Review, 1-56.</p>
+          <p>[2] Hori, C., & Hori, T. (2017). End-to-end conversation modeling track in DSTC6. arXiv preprint arXiv:1706.07440.</p>
+          <p>[3] Galley, M., Brockett, C., Gao, X., Gao, J., & Dolan, B. (2019). Grounded response generation task at dstc7. In AAAI Dialog System Technology Challenges Workshop.</p>
+          <p>[4] See, A., Roller, S., Kiela, D., & Weston, J. (2019, June). What makes a good conversation? How controllable attributes affect human judgments. In Proceedings of the 2019 Conference of the North American Chapter of the Association for Computational Linguistics: Human Language Technologies, Volume 1 (Long and Short Papers) (pp. 1702-1723).</p>
+          <p>[5] Mehri, S., & Eskenazi, M. (2020). USR: An Unsupervised and Reference Free Evaluation Metric for Dialog Generation. arXiv preprint arXiv:2005.00456.</p>
+          <p>[6] Mehri, S., & Eskenazi, M. (2020, July). Unsupervised Evaluation of Interactive Dialog with DialoGPT. In Proceedings of the 21th Annual Meeting of the Special Interest Group on Discourse and Dialogue (pp. 225-235).</p>
+          <p>[7] Zhang C., D’Haro L.F., Banchs R.E., Friedrichs T., Li H. (2021) Deep AM-FM: Toolkit for Automatic Dialogue Evaluation. In Conversational Dialogue Systems for the Next Decade. Lecture Notes in Electrical Engineering, vol 704. Springer, Singapore.</p>
+          <p>&nbsp;</p>
 
         </main>
         <Footer />
@@ -161,12 +162,14 @@ DSTC10.getInitialProps = async function() {
 
   const automatic_evaluation = [
       {
+        id: 'automatic_evaluation',
         evalset: { 
           name: "Open-domain Dialogue Evaluation",
           description: "The leaderboard showing names of submissions and their corresponding Pearson & Spearman Correlation for each evaluation dataset. (Explanation of abbreviations: D6 - DSTC6, D7 - DSTC7, PC - Persona-Chatlog, UP - USR-Persona, UT - USR-Topical, FT - FED-Turn, FC - FED-Conversation, AVG - Average, ρ - Pearson score, π - Spearman score)"
         },
         results: [
-          {
+         {
+            id: 'bleu_result',
             sys: 'BLEU',
             d6r: '-',
             d6s: '-',
