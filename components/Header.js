@@ -23,9 +23,15 @@ const Header = () => (
           <li className="nav-item">
             <a className="nav-link" href="/conversations">View Conversations</a>
           </li>
-          <li className="nav-item">
-            <a className="nav-link" href="/shared_task">Shared Task</a>
-          </li>
+		  <li className="nav-item dropdown">
+          	<a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          	Challenges
+        	</a>
+        	<div className="dropdown-menu" aria-labelledby="navbarDropdown">
+          		<a className="dropdown-item" href="/dbdc5">DBDC5</a>
+          		<a className="dropdown-item" href="/dstc10">DSTC10</a>
+        	</div>
+     	 </li>
           <div className="vl"></div>
           <li className="nav-item">
             <a className="nav-link" href="https://my.chateval.org/uploads">My ChatEval</a>
