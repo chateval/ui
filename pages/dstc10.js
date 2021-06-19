@@ -67,9 +67,22 @@ class DSTC10 extends Component {
             <hr />
 
 
-          <h3 className="font-weight-bold">Schedule (Coming Soon)</h3>
+          <h3 className="font-weight-bold">Schedule</h3>
           <br />
+          <ul>
+            <li>Validation data released: Jun 14, 2021</li>
+           <li>Test data released: Sep 13, 2021</li>
+            <li> Entry submission deadline: Sep 21, 2021</li>
+            <li>Final result announcement: Oct 1, 2021 - Oct 8, 2021</li>
+          </ul>
+          <hr/>
           
+          <h3 className="font-weight-bold">Baselines and Data Description</h3>
+          <br />
+          <p><a href="https://github.com/e0397123/dstc10_metric_track">Subtask 1: Automatic Open-domain Dialogue Evaluation</a></p>
+          <p><a href="https://github.com/lfdharo/DSTC10_Track5_Toxicity">Subtask 2: Moderation of Open-domain Dialogue Systems</a></p>
+          <hr/>
+
           <h3 className="font-weight-bold">Automatic Evaluation Leaderboard (Coming Soon)</h3>
 
           {this.props.automatic_evaluation.map(evaluation => (
