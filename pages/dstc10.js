@@ -35,10 +35,10 @@ class DSTC10 extends Component {
                   <li>DSTC6-Eval (D6) (Hori et al., 2017)</li>
                   <li>DSTC7-Eval (D7) (Galley et al., 2019)</li>
                   <li>Persona-Chatlog (PC) (See et al., 2019)</li>
-                  <li>PersonaChat-USR (UP) (Mehri & Eskenazi, 2020)</li>
-                  <li>TopicalChat-USR (TP) (Mehri & Eskenazi, 2020)</li>
-                  <li>FED-Turn (FT) (Mehri & Eskenazi, 2020)</li>
-                  <li>FED-Conversation (FC) (Mehri & Eskenazi, 2020)</li>
+                  <li>PersonaChat-USR (UP) (Mehri & Eskenazi, 2020a)</li>
+                  <li>TopicalChat-USR (TP) (Mehri & Eskenazi, 2020a)</li>
+                  <li>FED-Turn (FT) (Mehri & Eskenazi, 2020b)</li>
+                  <li>FED-Conversation (FC) (Mehri & Eskenazi, 2020b)</li>
                   <li>DailyDialog-Eval (GD) (Gupta et al., 2019)</li>
                   <li>DailyDialog-Eval (ZD) (Zhao et al., 2020)</li>
                   <li>PersonaChat-Eval (ZP) (Zhao et al., 2020)</li>
@@ -85,6 +85,7 @@ class DSTC10 extends Component {
 
           <h3 className="font-weight-bold">Automatic Evaluation Leaderboard (Coming Soon)</h3>
 
+          <br />    
           {this.props.automatic_evaluation.map(evaluation => (
             <div key={evaluation.id}>
               <h5 className="card-title"> {evaluation.evalset.name} </h5>
@@ -114,28 +115,63 @@ class DSTC10 extends Component {
                   {evaluation.results.map(result => (
                       <tr key={result.id}>
                         <td key="td01">{result.sys}</td>
-                        <td key="td03">{result.d6s}</td>
-                        <td key="td05">{result.d7s}</td>
-                        <td key="td07">{result.pcs}</td>
-                        <td key="td09">{result.ups}</td>
-                        <td key="td11">{result.uts}</td>
-                        <td key="td13">{result.fts}</td>
-                        <td key="td15">{result.fcs}</td>
-                        <td key="td15">{result.zds}</td>
-                        <td key="td15">{result.zps}</td>
-                        <td key="td15">{result.gds}</td>
-                        <td key="td15">{result.eds}</td>
-                        <td key="td15">{result.ecs}</td>
-                        <td key="td15">{result.ees}</td>
+                        <td key="td02">{result.d6s}</td>
+                        <td key="td03">{result.d7s}</td>
+                        <td key="td04">{result.pcs}</td>
+                        <td key="td05">{result.ups}</td>
+                        <td key="td06">{result.uts}</td>
+                        <td key="td07">{result.fts}</td>
+                        <td key="td08">{result.fcs}</td>
+                        <td key="td09">{result.zds}</td>
+                        <td key="td10">{result.zps}</td>
+                        <td key="td11">{result.gds}</td>
+                        <td key="td12">{result.eds}</td>
+                        <td key="td13">{result.ecs}</td>
+                        <td key="td14">{result.ees}</td>
                         <td key="td15">{result.hus}</td>
-                        <td key="td17">{result.avgs}</td>
+                        <td key="td16">{result.avgs}</td>
                       </tr>
                   ))}
                 </tbody>
               </table>
             </div>
           ))}
-           <hr />
+
+  <br />    
+          {this.props.dialogue_moderation.map(evaluation => (
+            <div key={evaluation.id}>
+              <h5 className="card-title"> {evaluation.evalset.name} </h5>
+              <p> {evaluation.evalset.description} </p>
+              <table className="table">
+                <thead>
+                    <tr>
+                      <th scope="col">System</th>
+                      <th scope="col">BLEU</th>
+                      <th scope="col">ROUGE-L</th>
+                      <th scope="col">Deep AM-FM</th>
+                      <th scope="col">BERT-score</th>
+                      <th scope="col">BLEURT</th>
+                      <th scope="col">AVG</th>
+                    </tr>
+                </thead>
+                <tbody>
+                  {evaluation.results.map(result => (
+                      <tr key={result.id}>
+                        <td key="td21">{result.sys}</td>
+                        <td key="td22">{result.ble}</td>
+                        <td key="td23">{result.rol}</td>
+                        <td key="td24">{result.afm}</td>
+                        <td key="td25">{result.bts}</td>
+                        <td key="td26">{result.blt}</td>
+                        <td key="td27">{result.avgs}</td>
+                      </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          ))}
+           
+      <hr />
 
           <h3 className="font-weight-bold">Registration Details</h3>
             <p>You can register at <a href="https://my.chateval.org/accounts/login/">https://my.chateval.org/accounts/login/</a>, once registered, you will be able to download the datasets and readme documents as well as submit your results at <a href="#">https://chateval.org/dstc10</a></p>
@@ -159,17 +195,19 @@ class DSTC10 extends Component {
           </ul>
           <hr />
           <p>References</p>
-          <p>[1] Deriu, J., Rodrigo, A., Otegi, A., Echegoyen, G., Rosset, S., Agirre, E., & Cieliebak, M. (2020). Survey on evaluation methods for dialogue systems. Artificial Intelligence Review, 1-56.</p>
-          <p>[2] Hori, C., & Hori, T. (2017). End-to-end conversation modeling track in DSTC6. arXiv preprint arXiv:1706.07440.</p>
-          <p>[3] Galley, M., Brockett, C., Gao, X., Gao, J., & Dolan, B. (2019). Grounded response generation task at dstc7. In AAAI Dialog System Technology Challenges Workshop.</p>
-          <p>[4] See, A., Roller, S., Kiela, D., & Weston, J. (2019, June). What makes a good conversation? How controllable attributes affect human judgments. In Proceedings of the 2019 Conference of the North American Chapter of the Association for Computational Linguistics: Human Language Technologies, Volume 1 (Long and Short Papers) (pp. 1702-1723).</p>
-          <p>[5] Mehri, S., & Eskenazi, M. (2020). USR: An Unsupervised and Reference Free Evaluation Metric for Dialog Generation. arXiv preprint arXiv:2005.00456.</p>
-          <p>[6] Mehri, S., & Eskenazi, M. (2020, July). Unsupervised Evaluation of Interactive Dialog with DialoGPT. In Proceedings of the 21th Annual Meeting of the Special Interest Group on Discourse and Dialogue (pp. 225-235).</p>
-          <p>[7] Zhang C., D’Haro L.F., Banchs R.E., Friedrichs T., Li H. (2021) Deep AM-FM: Toolkit for Automatic Dialogue Evaluation. In Conversational Dialogue Systems for the Next Decade. Lecture Notes in Electrical Engineering, vol 704. Springer, Singapore.</p>
-          <p>[8] Zhao, T., Lala, D., & Kawahara, T. (2020, July). Designing Precise and Robust Dialogue Response Evaluators. In Proceedings of the 58th Annual Meeting of the Association for Computational Linguistics (pp. 26-33).</p>
-          <p>[9] Gupta, P., Mehri, S., Zhao, T., Pavel, A., Eskenazi, M., & Bigham, J. P. (2019, September). Investigating Evaluation of Open-Domain Dialogue Systems With Human Generated Multiple References. In Proceedings of the 20th Annual SIGdial Meeting on Discourse and Dialogue (pp. 379-391).</p>
-          <p>[10] Huang, L., Ye, Z., Qin, J., Lin, L., & Liang, X. (2020, November). GRADE: Automatic Graph-Enhanced Coherence Metric for Evaluating Open-Domain Dialogue Systems. In Proceedings of the 2020 Conference on Empirical Methods in Natural Language Processing (EMNLP) (pp. 9230-9240).</p>
-          <p>[11] Merdivan, E., Singh, D., Hanke, S., Kropf, J., Holzinger, A., & Geist, M. (2020). Human annotated dialogues dataset for natural conversational agents. Applied Sciences, 10(3), 762.</p>
+          <ul>
+          <li><p>Deriu, J., Rodrigo, A., Otegi, A., Echegoyen, G., Rosset, S., Agirre, E., & Cieliebak, M. (2020). Survey on evaluation methods for dialogue systems. Artificial Intelligence Review, 1-56.</p></li>
+          <li><p>Hori, C., & Hori, T. (2017). End-to-end conversation modeling track in DSTC6. arXiv preprint arXiv:1706.07440.</p></li>
+          <li><p>Galley, M., Brockett, C., Gao, X., Gao, J., & Dolan, B. (2019). Grounded response generation task at dstc7. In AAAI Dialog System Technology Challenges Workshop.</p></li>
+          <li><p>See, A., Roller, S., Kiela, D., & Weston, J. (2019, June). What makes a good conversation? How controllable attributes affect human judgments. In Proceedings of the 2019 Conference of the North American Chapter of the Association for Computational Linguistics: Human Language Technologies, Volume 1 (Long and Short Papers) (pp. 1702-1723).</p></li>
+          <li><p>Mehri, S., & Eskenazi, M. (2020). USR: An Unsupervised and Reference Free Evaluation Metric for Dialog Generation. arXiv preprint arXiv:2005.00456.</p></li>
+          <li><p>Mehri, S., & Eskenazi, M. (2020, July). Unsupervised Evaluation of Interactive Dialog with DialoGPT. In Proceedings of the 21th Annual Meeting of the Special Interest Group on Discourse and Dialogue (pp. 225-235).</p></li>
+          <li><p>Zhang C., D’Haro L.F., Banchs R.E., Friedrichs T., Li H. (2021) Deep AM-FM: Toolkit for Automatic Dialogue Evaluation. In Conversational Dialogue Systems for the Next Decade. Lecture Notes in Electrical Engineering, vol 704. Springer, Singapore.</p></li>
+          <li><p>Zhao, T., Lala, D., & Kawahara, T. (2020, July). Designing Precise and Robust Dialogue Response Evaluators. In Proceedings of the 58th Annual Meeting of the Association for Computational Linguistics (pp. 26-33).</p></li>
+          <li><p>Gupta, P., Mehri, S., Zhao, T., Pavel, A., Eskenazi, M., & Bigham, J. P. (2019, September). Investigating Evaluation of Open-Domain Dialogue Systems With Human Generated Multiple References. In Proceedings of the 20th Annual SIGdial Meeting on Discourse and Dialogue (pp. 379-391).</p></li>
+          <li><p>Huang, L., Ye, Z., Qin, J., Lin, L., & Liang, X. (2020, November). GRADE: Automatic Graph-Enhanced Coherence Metric for Evaluating Open-Domain Dialogue Systems. In Proceedings of the 2020 Conference on Empirical Methods in Natural Language Processing (EMNLP) (pp. 9230-9240).</p></li>
+          <li><p>Merdivan, E., Singh, D., Hanke, S., Kropf, J., Holzinger, A., & Geist, M. (2020). Human annotated dialogues dataset for natural conversational agents. Applied Sciences, 10(3), 762.</p></li>
+          </ul>
           <p>&nbsp;</p>
 
         </main>
@@ -189,12 +227,12 @@ DSTC10.getInitialProps = async function() {
         id: 'automatic_evaluation',
         evalset: { 
           name: "Open-domain Dialogue Evaluation",
-          description: "The leaderboard showing names of submissions and their corresponding Pearson & Spearman Correlation for each evaluation dataset."
+          description: "The leaderboard showing names of submissions and their corresponding Spearman Correlation Coefficients for each evaluation dataset."
         },
         results: [
           {
             id: 'amfm_result',
-            sys: 'Deep AM-FM',
+            sys: 'Deep AM-FM (baseline)',
             d6s: '0.105',
             d7s: '-0.033',
             pcs: '0.082',
@@ -215,7 +253,29 @@ DSTC10.getInitialProps = async function() {
       }
   ]
 
-  return { automatic_evaluation }
+  const dialogue_moderation = [
+      {
+        id: 'dialogue_moderation',
+        evalset: { 
+          name: "Moderation of Open-domain Dialogue Systems",
+          description: "The leaderboard showing names of submissions and their corresponding automatic evaluation scores."
+        },
+        results: [
+          {
+            id: 'dialogpt_result',
+            sys: 'DialoGPT-base (baseline)',
+            ble: '',
+            rol: '',
+            afm: '',
+            bts: '',
+            blt: '',
+            avgs: ''
+          }
+        ]
+      }
+  ]
+
+  return { automatic_evaluation, dialogue_moderation }
 };
 
 export default DSTC10;
