@@ -8,6 +8,8 @@ import Select from 'react-select';
 import Chart from 'react-google-charts';
 import { CSVLink } from "react-csv";
 
+const API_URL = process.env.API_URL;
+
 // returns CSV formatted array for each dataset's evaluation metrics
 function getCSVArray(evaluations, model_name) {
   // for (const auto_eval of auto_evals) { csv.push([auto_eval.name, auto_eval.value]) };
@@ -15,40 +17,38 @@ function getCSVArray(evaluations, model_name) {
   return data;
 }
 
-const API_URL = process.env.API_URL;
-
- const options = {
-    title: 'Human evaluation',
-    chartArea: {width: '50%', height:'100%'},
-    isStacked: 'percent',
-    legend:'right',
-    annotations: {
-      alwaysOutside: false,
-      textStyle: {
-        fontSize: 12,
-        auraColor: 'none',
-        color: '#555'
-      },
-      boxStyle: {
-        stroke: '#ccc',
-        strokeWidth: 1,
-        gradient: {
-          color1: '#f3e5f5',
-          color2: '#f3e5f5',
-          x1: '0%', y1: '0%',
-          x2: '100%', y2: '100%'
-        }
+const options = {
+  title: 'Human evaluation',
+  chartArea: {width: '50%', height:'100%'},
+  isStacked: 'percent',
+  legend:'right',
+  annotations: {
+    alwaysOutside: false,
+    textStyle: {
+      fontSize: 12,
+      auraColor: 'none',
+      color: '#555'
+    },
+    boxStyle: {
+      stroke: '#ccc',
+      strokeWidth: 1,
+      gradient: {
+        color1: '#f3e5f5',
+        color2: '#f3e5f5',
+        x1: '0%', y1: '0%',
+        x2: '100%', y2: '100%'
       }
-    },
-    bar: {groupWidth: '100px'},
-    hAxis: {
-      title: 'Fraction of Votes',
-      minValue: 0,
-    },
-    vAxis: {
-      title: 'Competing Model'
     }
-  };
+  },
+  bar: {groupWidth: '100px'},
+  hAxis: {
+    title: 'Fraction of Votes',
+    minValue: 0,
+  },
+  vAxis: {
+    title: 'Competing Model'
+  }
+};
 
 
 function parseData(data, targetModel) {
@@ -100,29 +100,37 @@ class Model extends Component {
   }
 
   updateToNewEvalset = async(evalsetFromSelector) => {
-    const evalset = this.props.model.evalsets[evalsetFromSelector.value]
+    const evalset = this.props.model.evaluationdatasets[evalsetFromSelector.value]
 
     // Update prompts data.
     this.setState({currentEvalset: evalset})
-    const promptsRequest = await fetch(this.props.API_URL+ 'prompts?evalset=' + evalset.evalset_id);
+    const promptsRequest = await fetch(API_URL+ 'evaluation-dataset-text?evaluationdataset_id=' + evalset.evalset_id);
     const promptsData = await promptsRequest.json();
-    const prompts = promptsData.prompts.slice(0, 200);
+    const prompts = promptsData.slice(0, 200);
     this.setState({ prompts });
 
     // Update response data.
-    const requestURL = this.props.API_URL + 'responses?evalset=' + evalset.evalset_id + "&model_id=" + this.props.model.id
+    const requestURL = API_URL + 'model-response?evaluationdataset_id=' + evalset.evalset_id + "&model_id=" + this.props.model.model_id
     const responsesRequest = await fetch(requestURL);
     const responsesData = await responsesRequest.json();
-    const responses = [{ model_id: this.props.model.id, responses: responsesData.responses.slice(0, 200), name: this.props.model.name }];
+    const responses = [{ model_id: this.props.model.model_id, responses: responsesData.slice(0, 200), name: this.props.model.name }];
     this.setState({ responses });
 
     // Update automatic evaluation data.
-		const autoEvalRequest = await fetch(this.props.API_URL + 'automatic_evaluations?model_id=' + this.props.model.id + "&evaluationdataset_id=" + evalset.evalset_id);
-		const autoEvaluationData = await autoEvalRequest.json();
-    this.setState({autoEvaluationData: autoEvaluationData})
+		const autoEvalRequest = await fetch(API_URL + 'automatic-evaluation?model_id=' + this.props.model.model_id + "&evaluationdataset_id=" + evalset.evalset_id);
+    const autoEvaluationData = await autoEvalRequest.json();
+    let evaluations = []
+    autoEvaluationData.forEach(evaluation => {
+      evaluations.push({
+        id: evaluation.metric.metric_id,
+        name: evaluation.metric.name,
+        value: evaluation.value
+      });
+    });
+    this.setState({evaluations})
 
     // Update human evaluation data.
-		const humanEvalRequest = await fetch(this.props.API_URL + 'human_evaluations?model_id=' + this.props.model.id + "&evaluationdataset_id=" + evalset.evalset_id);
+		const humanEvalRequest = await fetch(API_URL + 'human-evaluation?model_id=' + this.props.model.model_id + "&evaluationdataset_id=" + evalset.evalset_id);
 		var humanEvaluationData = await humanEvalRequest.json();
     if (humanEvaluationData == 'INVALID_QUERY') {
       humanEvaluationData = { evaluations: [] };
@@ -148,13 +156,8 @@ class Model extends Component {
 
   render() {
     var autoEvalResults = (<p>Loading...</p>);
-    if (this.state.autoEvaluationData !== undefined) {
-      const evalProps = {
-          autoEval:this.state.autoEvaluationData,
-          csvFileName:this.state.currentEvalset.name
-      }
-      autoEvalResults = (<AutomaticEvaluationTable autoEval={this.state.autoEvaluationData.evaluations} csvFileName={this.state.currentEvalset.name}
-/>);
+    if (this.state.evaluations !== undefined) {
+      autoEvalResults = (<AutomaticEvaluationTable autoEval={this.state.evaluations} csvFileName={this.state.currentEvalset.name} />);
     }
 
     var evalsetNameAddition = "";
@@ -214,26 +217,24 @@ class Model extends Component {
 
 Model.getInitialProps = async function(props) {
   const { query } = props;
-  const modelRequest = await fetch(API_URL + 'model?id=' + query.id);
+  const modelRequest = await fetch(API_URL + 'model/' + query.id);
   const modelData = await modelRequest.json();
-  const evaluationRequest = await fetch(API_URL + 'automatic_evaluations?model_id=' + query.id);
-  const evaluationData = await evaluationRequest.json();
 
   // Create list of evalsets that users should be able to select from in dropdown.
   var evalsetsForSelector = []  
-  modelData.model.evalsets.forEach(evalset => {
+  modelData.evaluationdatasets.forEach(evalset => {
     evalsetsForSelector.push({ 'value': evalset.evalset_id, 'label': evalset.name})
   });
 
   // Convert the eval sets from a list to a dictionary where the key is the evalset_id
   const evalsetDict = {}
   var evalset
-  for (var i = 0; i < modelData.model.evalsets.length; i++) {
-    evalset = modelData.model.evalsets[i]
+  for (var i = 0; i < modelData.evaluationdatasets.length; i++) {
+    evalset = modelData.evaluationdatasets[i]
     evalsetDict[evalset.evalset_id] = evalset;
   }
-  modelData.model.evalsets = evalsetDict;
-  return { evalsetsForSelector, model: modelData.model, API_URL };
+  modelData.evaluationdatasets = evalsetDict;
+  return { evalsetsForSelector, model: modelData, API_URL };
 };
 
 
