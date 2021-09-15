@@ -15,7 +15,7 @@ class DSTC10 extends Component {
           <h2 className="mt-5 font-weight-bold">Automatic Evaluation and Moderation of Open-domain Dialogue Systems</h2>
             <br />
             <p>Click <a href="https://my.chateval.org/dstc10_data/">here</a> to download DSTC10 data.</p>
-            <p>Click <a href="#">here</a> to submit.</p>
+            <p>Click <a href="https://my.chateval.org/dstc10submit/">here</a> to submit.</p>
             <hr />
           
           <h3 className="font-weight-bold">Task Overview</h3>
