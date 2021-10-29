@@ -83,8 +83,7 @@ class DSTC10 extends Component {
           <p><a href="https://github.com/lfdharo/DSTC10_Track5_Toxicity">Subtask 2: Moderation of Open-domain Dialogue Systems</a></p>
           <hr/>
 
-          <h3 className="font-weight-bold">Automatic Evaluation Leaderboard (Coming Soon)</h3>
-
+          <h3 className="font-weight-bold">Automatic Evaluation Leaderboard</h3>
           <br />    
           {this.props.automatic_evaluation.map(evaluation => (
             <div key={evaluation.id}>
@@ -94,21 +93,22 @@ class DSTC10 extends Component {
                 <thead>
                     <tr>
                       <th scope="col">System</th>
-                      <th scope="col">D6 (&pi;)</th>
-                      <th scope="col">D7 (&pi;)</th>
-                      <th scope="col">PC (&pi;)</th>
-                      <th scope="col">UP (&pi;)</th>
-                      <th scope="col">UT (&pi;)</th>
-                      <th scope="col">FT (&pi;)</th>
-                      <th scope="col">FC (&pi;)</th>
-                      <th scope="col">ZD (&pi;)</th>
-                      <th scope="col">ZP (&pi;)</th>
-                      <th scope="col">GD (&pi;)</th>
-                      <th scope="col">ED (&pi;)</th>
-                      <th scope="col">EC (&pi;)</th>
-                      <th scope="col">EE (&pi;)</th>
-                      <th scope="col">HU (&pi;)</th>
-                      <th scope="col">AVG (&pi;)</th>
+                      <th scope="col">D6</th>
+                      <th scope="col">D7</th>
+                      <th scope="col">PC</th>
+                      <th scope="col">UP</th>
+                      <th scope="col">TP</th>
+                      <th scope="col">FT</th>
+                      <th scope="col">FC</th>
+                      <th scope="col">ZD</th>
+                      <th scope="col">ZP</th>
+                      <th scope="col">GD</th>
+                      <th scope="col">ED</th>
+                      <th scope="col">EC</th>
+                      <th scope="col">EE</th>
+                      <th scope="col">HU</th>
+                      <th scope="col">AVG</th>
+                      <th scope="col">Rank</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -130,12 +130,53 @@ class DSTC10 extends Component {
                         <td key="td14">{result.ees}</td>
                         <td key="td15">{result.hus}</td>
                         <td key="td16">{result.avgs}</td>
+                        <td key="td17">{result.rank}</td>
                       </tr>
                   ))}
                 </tbody>
               </table>
             </div>
           ))}
+
+
+          <br />    
+          {this.props.automatic_evaluation_test.map(evaluation => (
+            <div key={evaluation.id}>
+              <h5 className="card-title"> {evaluation.evalset.name} </h5>
+              <p> {evaluation.evalset.description} </p>
+              <table className="table">
+                <thead>
+                    <tr>
+                      <th scope="col">System</th>
+                      <th scope="col">JSALT</th>
+                      <th scope="col">ESL</th>
+                      <th scope="col">NCM</th>
+                      <th scope="col">DSTC10-Topical</th>
+                      <th scope="col">DSTC10-Persona</th>
+                      <th scope="col">AVG</th>
+                      <th scope="col">Rank</th>
+                    </tr>
+                </thead>
+                <tbody>
+                  {evaluation.results.map(result => (
+                      <tr key={result.id}>
+                        <td key="td30">{result.sys}</td>
+                        <td key="td31">{result.jsalt}</td>
+                        <td key="td32">{result.esl}</td>
+                        <td key="td33">{result.ncm}</td>
+                        <td key="td34">{result.dst}</td>
+                        <td key="td35">{result.dsp}</td>
+                        <td key="td36">{result.avg}</td>
+                        <td key="td37">{result.rank}</td>
+                      </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          ))}
+      <p>
+        More results for Task 1 can be found <a href="https://docs.google.com/spreadsheets/d/10yl4-tDFEroa_qZsC4Fv_NO2TWjHO31Xv847rWVhPQ8/edit?usp=sharing">here</a>
+      </p>
 
   <br />    
           {this.props.dialogue_moderation.map(evaluation => (
@@ -226,29 +267,530 @@ DSTC10.getInitialProps = async function() {
       {
         id: 'automatic_evaluation',
         evalset: { 
-          name: "Open-domain Dialogue Evaluation",
-          description: "The leaderboard showing names of submissions and their corresponding Spearman Correlation Coefficients for each evaluation dataset."
+          name: "Open-domain Dialogue Evaluation (Development)",
+          description: "The leaderboard shows names of submissions and their corresponding Spearman Correlation Coefficients for each development dataset."
         },
         results: [
           {
+            id: 'am_result',
+            sys: 'AM',
+            d6s: '0.112',
+            d7s: '0.016',
+            pcs: '0.090',
+            ups: '0.054',
+            uts: '0.070',
+            fts: '0.080',
+            fcs: '0.165',
+            zds: '0.054',
+            zps: '0.246',
+            gds: '0.150',
+            eds: '0.015',
+            ecs: '0.080',
+            ees: '0.100',
+            hus: '0.100',
+            avgs: '0.095',
+            rank: '21'
+          },
+          {
+            id: 'fm_result',
+            sys: 'FM',
+            d6s: '0.062',
+            d7s: '0.032',
+            pcs: '0.091',
+            ups: '0.151',
+            uts: '0.188',
+            fts: '0.080',
+            fcs: '0.092',
+            zds: '0.226',
+            zps: '0.446',
+            gds: '0.136',
+            eds: '0.170',
+            ecs: '0.072',
+            ees: '0.050',
+            hus: '0.097',
+            avgs: '0.135',
+            rank: '16'
+          },
+          {
             id: 'amfm_result',
-            sys: 'Deep AM-FM (baseline)',
-            d6s: '0.105',
-            d7s: '-0.033',
-            pcs: '0.082',
-            ups: '0.131',
-            uts: '0.269',
-            fts: '0.046',
-            fcs: '0.121',
-            zds: '0.198',
-            zps: '0.236',
-            gds: '-0.046',
-            eds: '0.164',
+            sys: 'AM-FM',
+            d6s: '0.100',
+            d7s: '0.027',
+            pcs: '0.081',
+            ups: '0.144',
+            uts: '0.141',
+            fts: '0.051',
+            fcs: '0.112',
+            zds: '0.223',
+            zps: '0.468',
+            gds: '0.177',
+            eds: '0.155',
             ecs: '0.094',
-            ees: '-0.027',
-            hus: '0.011',
-            avgs: '0.097'
-          }
+            ees: '0.025',
+            hus: '0.117',
+            avgs: '0.137',
+            rank: '15'
+          },
+          {
+            id: 't1s1',
+            sys: 'T1S1',
+            d6s: '0.249',
+            d7s: '0.076',
+            pcs: '0.050',
+            ups: '0.083',
+            uts: '0.046',
+            fts: '0.194',
+            fcs: '0.358',
+            zds: '0.146',
+            zps: '0.123',
+            gds: '0.040',
+            eds: '0.085',
+            ecs: '0.159',
+            ees: '0.184',
+            hus: '0.060',
+            avgs: '0.132',
+            rank: '17'
+          },
+          {
+            id: 't1s2',
+            sys: 'T1S2',
+            d6s: '0.203',
+            d7s: '0.099',
+            pcs: '0.091',
+            ups: '0.118',
+            uts: '0.043',
+            fts: '0.123',
+            fcs: '0.151',
+            zds: '0.187',
+            zps: '0.385',
+            gds: '0.158',
+            eds: '0.355',
+            ecs: '0.366',
+            ees: '0.328',
+            hus: '0.124',
+            avgs: '0.195',
+            rank: '14'
+          },
+          {
+            id: 't1s3',
+            sys: 'T1S3',
+            d6s: '0.222',
+            d7s: '0.073',
+            pcs: '0.082',
+            ups: '0.144',
+            uts: '0.025',
+            fts: '0.186',
+            fcs: '0.187',
+            zds: '0.219',
+            zps: '0.414',
+            gds: '0.183',
+            eds: '0.361',
+            ecs: '0.362',
+            ees: '0.360',
+            hus: '0.133',
+            avgs: '0.211',
+            rank: '13'
+          },
+          {
+            id: 't1s4',
+            sys: 'T1S4',
+            d6s: '0.245',
+            d7s: '0.340',
+            pcs: '0.057',
+            ups: '0.273',
+            uts: '0.218',
+            fts: '0.239',
+            fcs: '0.269',
+            zds: '0.369',
+            zps: '0.552',
+            gds: '0.568',
+            eds: '0.363',
+            ecs: '0.504',
+            ees: '0.395',
+            hus: '0.329',
+            avgs: '0.337',
+            rank: '05'
+          },
+          {
+            id: 't1s5',
+            sys: 'T1S5',
+            d6s: '0.279',
+            d7s: '0.349',
+            pcs: '0.032',
+            ups: '0.307',
+            uts: '0.196',
+            fts: '0.220',
+            fcs: '0.321',
+            zds: '0.349',
+            zps: '0.512',
+            gds: '0.504',
+            eds: '0.236',
+            ecs: '0.524',
+            ees: '0.384',
+            hus: '0.305',
+            avgs: '0.323',
+            rank: '06'
+          },
+          {
+            id: 't2s1',
+            sys: 'T2S1',
+            d6s: '0.009',
+            d7s: '0.215',
+            pcs: '0.051',
+            ups: '0.156',
+            uts: '0.277',
+            fts: '0.099',
+            fcs: '0.269',
+            zds: '0.205',
+            zps: '0.217',
+            gds: '0.021',
+            eds: '0.026',
+            ecs: '0.060',
+            ees: '0.075',
+            hus: '0.008',
+            avgs: '0.120',
+            rank: '20'
+          },
+          {
+            id: 't2s2',
+            sys: 'T2S2',
+            d6s: '0.081',
+            d7s: '0.198',
+            pcs: '0.035',
+            ups: '0.122',
+            uts: '0.296',
+            fts: '0.095',
+            fcs: '0.252',
+            zds: '0.210',
+            zps: '0.242',
+            gds: '0.028',
+            eds: '0.035',
+            ecs: '0.072',
+            ees: '0.064',
+            hus: '0.019',
+            avgs: '0.125',
+            rank: '19'
+          },
+          {
+            id: 't3s1',
+            sys: 'T3S1/T3S3',
+            d6s: '0.481',
+            d7s: '0.244',
+            pcs: '0.068',
+            ups: '0.252',
+            uts: '0.224',
+            fts: '0.147',
+            fcs: '0.042',
+            zds: '0.335',
+            zps: '0.518',
+            gds: '0.343',
+            eds: '0.074',
+            ecs: '0.332',
+            ees: '0.175',
+            hus: '0.292',
+            avgs: '0.252',
+            rank: '11'
+          },
+          {
+            id: 't3s2',
+            sys: 'T3S2/T3S5',
+            d6s: '0.502',
+            d7s: '0.260',
+            pcs: '0.062',
+            ups: '0.251',
+            uts: '0.304',
+            fts: '0.143',
+            fcs: '0.045',
+            zds: '0.317',
+            zps: '0.500',
+            gds: '0.355',
+            eds: '0.035',
+            ecs: '0.372',
+            ees: '0.182',
+            hus: '0.300',
+            avgs: '0.259',
+            rank: '09'
+          },
+          {
+            id: 't3s4',
+            sys: 'T3S4',
+            d6s: '0.480',
+            d7s: '0.258',
+            pcs: '0.070',
+            ups: '0.216',
+            uts: '0.171',
+            fts: '0.120',
+            fcs: '0.057',
+            zds: '0.331',
+            zps: '0.502',
+            gds: '0.382',
+            eds: '0.112',
+            ecs: '0.410',
+            ees: '0.226',
+            hus: '0.311',
+            avgs: '0.260',
+            rank: '08'
+          },
+          {
+            id: 't4s1',
+            sys: 'T4S1',
+            d6s: '0.004',
+            d7s: '0.007',
+            pcs: '0.033',
+            ups: '0.053',
+            uts: '0.096',
+            fts: '0.126',
+            fcs: '0.273',
+            zds: '0.056',
+            zps: '0.049',
+            gds: '0.047',
+            eds: '0.021',
+            ecs: '0.074',
+            ees: '0.059',
+            hus: '0.010',
+            avgs: '0.065',
+            rank: '23'
+          },
+          {
+            id: 't4s2',
+            sys: 'T4S2',
+            d6s: '0.068',
+            d7s: '0.017',
+            pcs: '0.082',
+            ups: '0.104',
+            uts: '0.213',
+            fts: '0.092',
+            fcs: '0.067',
+            zds: '0.113',
+            zps: '0.188',
+            gds: '0.068',
+            eds: '0.146',
+            ecs: '0.043',
+            ees: '0.056',
+            hus: '0.024',
+            avgs: '0.092',
+            rank: '22'
+          },
+          {
+            id: 't4s3',
+            sys: 'T4S3',
+            d6s: '0.043',
+            d7s: '0.004',
+            pcs: '0.017',
+            ups: '0.042',
+            uts: '0.088',
+            fts: '0.085',
+            fcs: '0.109',
+            zds: '0.044',
+            zps: '0.004',
+            gds: '0.019',
+            eds: '0.068',
+            ecs: '0.052',
+            ees: '0.100',
+            hus: '0.005',
+            avgs: '0.049',
+            rank: '24'
+          },
+          {
+            id: 't4s5',
+            sys: 'T4S5',
+            d6s: '0.043',
+            d7s: '0.121',
+            pcs: '0.037',
+            ups: '0.267',
+            uts: '0.278',
+            fts: '0.193',
+            fcs: '0.059',
+            zds: '0.199',
+            zps: '0.052',
+            gds: '0.114',
+            eds: '0.199',
+            ecs: '0.173',
+            ees: '0.047',
+            hus: '0.042',
+            avgs: '0.130',
+            rank: '18'
+          },
+          {
+            id: 't5s1',
+            sys: 'T5S1',
+            d6s: '0.179',
+            d7s: '0.325',
+            pcs: '0.088',
+            ups: '0.404',
+            uts: '0.391',
+            fts: '0.304',
+            fcs: '0.469',
+            zds: '0.480',
+            zps: '0.613',
+            gds: '0.633',
+            eds: '0.334',
+            ecs: '0.584',
+            ees: '0.306',
+            hus: '0.332',
+            avgs: '0.389',
+            rank: '04'
+          },
+          {
+            id: 't6s1',
+            sys: 'T6S1',
+            d6s: '0.184',
+            d7s: '0.342',
+            pcs: '0.129',
+            ups: '0.355',
+            uts: '0.387',
+            fts: '0.330',
+            fcs: '0.493',
+            zds: '0.530',
+            zps: '0.642',
+            gds: '0.614',
+            eds: '0.300',
+            ecs: '0.604',
+            ees: '0.246',
+            hus: '0.338',
+            avgs: '0.392',
+            rank: '03'
+          },
+          {
+            id: 't7s1',
+            sys: 'T7S1',
+            d6s: '0.616',
+            d7s: '0.313',
+            pcs: '0.275',
+            ups: '0.479',
+            uts: '0.455',
+            fts: '0.352',
+            fcs: '0.774',
+            zds: '0.545',
+            zps: '0.764',
+            gds: '0.789',
+            eds: '0.644',
+            ecs: '0.570',
+            ees: '0.501',
+            hus: '0.225',
+            avgs: '0.522',
+            rank: '01'
+          },
+          {
+            id: 't8s1',
+            sys: 'T8S1',
+            d6s: '0.183',
+            d7s: '0.341',
+            pcs: '0.129',
+            ups: '0.362',
+            uts: '0.402',
+            fts: '0.329',
+            fcs: '0.493',
+            zds: '0.528',
+            zps: '0.646',
+            gds: '0.608',
+            eds: '0.301',
+            ecs: '0.604',
+            ees: '0.247',
+            hus: '0.338',
+            avgs: '0.394',
+            rank: '02'
+          },
+          {
+            id: 't9s1',
+            sys: 'T9S1',
+            d6s: '0.185',
+            d7s: '0.332',
+            pcs: '0.063',
+            ups: '0.226',
+            uts: '0.137',
+            fts: '0.199',
+            fcs: '0.403',
+            zds: '0.287',
+            zps: '0.557',
+            gds: '0.467',
+            eds: '0.419',
+            ecs: '0.531',
+            ees: '0.365',
+            hus: '0.223',
+            avgs: '0.314',
+            rank: '07'
+          },
+        ]
+      }
+  ]
+
+  const automatic_evaluation_test = [
+      {
+        id: 'automatic_evaluation_test',
+        evalset: { 
+          name: "Open-domain Dialogue Evaluation (Test)",
+          description: "The leaderboard shows names of submissions and their corresponding Spearman Correlation Coefficients for each hidden test dataset."
+        },
+        results: [
+          {
+            id: 'am_result_test',
+            sys: 'AM',
+            jsalt: '0.011',
+            esl: '0.032',
+            ncm: '0.037',
+            dst: '0.085',
+            dsp: '0.076',
+            avg: '0.066',
+            rank: '31'
+          },
+          {
+            id: 'fm_result_test',
+            sys: 'FM',
+            jsalt: '0.046',
+            esl: '0.343',
+            ncm: '0.162',
+            dst: '0.171',
+            dsp: '0.186',
+            avg: '0.180',
+            rank: '23'
+          },
+          {
+            id: 'am_fm_result_test',
+            sys: 'AM-FM',
+            jsalt: '0.051',
+            esl: '0.323',
+            ncm: '0.165',
+            dst: '0.175',
+            dsp: '0.196',
+            avg: '0.184',
+            rank: '22'
+          },
+          {id: 't1s1', sys: 'T1S1', jsalt: '0.041', esl: '0.143', ncm: '0.025', dst: '0.056', dsp: '0.097', avg: '0.075', rank: '30'},
+          {id: 't1s2', sys: 'T1S2', jsalt: '0.057', esl: '0.042', ncm: '0.053', dst: '0.020', dsp: '0.013', avg: '0.002', rank: '38'},
+          {id: 't1s3', sys: 'T1S3', jsalt: '0.049', esl: '0.261', ncm: '0.017', dst: '0.063', dsp: '0.162', avg: '0.117', rank: '27'},
+          {id: 't1s4', sys: 'T1S4', jsalt: '0.277', esl: '0.361', ncm: '0.181', dst: '0.225', dsp: '0.263', avg: '0.252', rank: '19'},
+          {id: 't1s5', sys: 'T1S5', jsalt: '0.164', esl: '0.436', ncm: '0.271', dst: '0.232', dsp: '0.318', avg: '0.279', rank: '15'},
+          {id: 't2s1', sys: 'T2S1', jsalt: '0.031', esl: '0.131', ncm: '0.001', dst: '0.136', dsp: '0.095', avg: '0.099', rank: '29'},
+          {id: 't2s2', sys: 'T2S2', jsalt: '0.031', esl: '0.203', ncm: '0.004', dst: '0.138', dsp: '0.090', avg: '0.105', rank: '28'},
+          {id: 't3s1', sys: 'T3S1', jsalt: '0.042', esl: '0.025', ncm: '0.006', dst: '0.005', dsp: '0.020', avg: '0.003', rank: '37'},
+          {id: 't3s2', sys: 'T3S2', jsalt: '0.105', esl: '0.249', ncm: '0.190', dst: '0.133', dsp: '0.237', avg: '0.184', rank: '21'},
+          {id: 't3s3', sys: 'T3S3', jsalt: '0.099', esl: '0.264', ncm: '0.212', dst: '0.160', dsp: '0.268', avg: '0.208', rank: '20'},
+          {id: 't3s4', sys: 'T3S4', jsalt: '0.043', esl: '0.199', ncm: '0.167', dst: '0.145', dsp: '0.243', avg: '0.178', rank: '24'},
+          {id: 't4s1', sys: 'T4S1', jsalt: '0.026', esl: '0.048', ncm: '0.038', dst: '0.002', dsp: '0.006', avg: '0.007', rank: '35'},
+          {id: 't4s2', sys: 'T4S2', jsalt: '0.050', esl: '0.107', ncm: '0.038', dst: '0.085', dsp: '0.097', avg: '0.057', rank: '33'},
+          {id: 't4s3', sys: 'T4S3', jsalt: '0.023', esl: '0.071', ncm: '0.090', dst: '0.098', dsp: '0.188', avg: '0.117', rank: '26'},
+          {id: 't4s4', sys: 'T4S4', jsalt: '0.020', esl: '0.076', ncm: '0.025', dst: '0.007', dsp: '0.008', avg: '0.007', rank: '36'},
+          {id: 't4s5', sys: 'T4S5', jsalt: '0.006', esl: '0.030', ncm: '0.080', dst: '0.040', dsp: '0.121', avg: '0.063', rank: '32'},
+          {id: 't5s1', sys: 'T5S1', jsalt: '0.098', esl: '0.374', ncm: '0.271', dst: '0.253', dsp: '0.385', avg: '0.300', rank: '02'},
+          {id: 't5s2', sys: 'T5S2', jsalt: '0.117', esl: '0.414', ncm: '0.299', dst: '0.259', dsp: '0.387', avg: '0.310', rank: '01'},
+          {id: 't5s3', sys: 'T5S3', jsalt: '0.095', esl: '0.377', ncm: '0.273', dst: '0.251', dsp: '0.382', avg: '0.298', rank: '04'},
+          {id: 't5s4', sys: 'T5S4', jsalt: '0.091', esl: '0.374', ncm: '0.271', dst: '0.250', dsp: '0.381', avg: '0.296', rank: '05'},
+          {id: 't5s5', sys: 'T5S5', jsalt: '0.094', esl: '0.375', ncm: '0.272', dst: '0.249', dsp: '0.380', avg: '0.296', rank: '06'},
+          {id: 't6s1', sys: 'T6S1', jsalt: '0.127', esl: '0.319', ncm: '0.264', dst: '0.231', dsp: '0.364', avg: '0.281', rank: '14'},
+          {id: 't6s2', sys: 'T6S2', jsalt: '0.127', esl: '0.319', ncm: '0.264', dst: '0.235', dsp: '0.366', avg: '0.283', rank: '13'},
+          {id: 't6s3', sys: 'T6S3', jsalt: '0.127', esl: '0.291', ncm: '0.245', dst: '0.235', dsp: '0.366', avg: '0.279', rank: '16'},
+          {id: 't6s4', sys: 'T6S4', jsalt: '0.125', esl: '0.291', ncm: '0.245', dst: '0.226', dsp: '0.365', avg: '0.275', rank: '17'},
+          {id: 't6s5', sys: 'T6S5', jsalt: '0.127', esl: '0.321', ncm: '0.265', dst: '0.235', dsp: '0.367', avg: '0.284', rank: '12'},
+          {id: 't7s1', sys: 'T7S1', jsalt: '0.041', esl: '0.065', ncm: '0.002', dst: '0.011', dsp: '0.018', avg: '0.008', rank: '34'},
+          {id: 't8s1', sys: 'T8S1', jsalt: '0.066', esl: '0.347', ncm: '0.267', dst: '0.239', dsp: '0.372', avg: '0.284', rank: '11'},
+          {id: 't8s2', sys: 'T8S2', jsalt: '0.088', esl: '0.343', ncm: '0.258', dst: '0.251', dsp: '0.380', avg: '0.292', rank: '08'},
+          {id: 't8s3', sys: 'T8S3', jsalt: '0.065', esl: '0.360', ncm: '0.264', dst: '0.243', dsp: '0.378', avg: '0.288', rank: '10'},
+          {id: 't8s4', sys: 'T8S4', jsalt: '0.078', esl: '0.358', ncm: '0.264', dst: '0.252', dsp: '0.383', avg: '0.295', rank: '07'},
+          {id: 't8s5', sys: 'T8S5', jsalt: '0.085', esl: '0.381', ncm: '0.266', dst: '0.255', dsp: '0.385', avg: '0.299', rank: '03'},
+          {id: 't9s1', sys: 'T9S1', jsalt: '0.056', esl: '0.200', ncm: '0.109', dst: '0.140', dsp: '0.119', avg: '0.117', rank: '25'},
+          {id: 't9s2', sys: 'T9S2', jsalt: '0.262', esl: '0.476', ncm: '0.199', dst: '0.211', dsp: '0.351', avg: '0.289', rank: '09'},
+          {id: 't9s3', sys: 'T9S3', jsalt: '0.264', esl: '0.402', ncm: '0.177', dst: '0.207', dsp: '0.321', avg: '0.269', rank: '18'},
         ]
       }
   ]
@@ -275,7 +817,7 @@ DSTC10.getInitialProps = async function() {
       }
   ]
 
-  return { automatic_evaluation, dialogue_moderation }
+  return { automatic_evaluation, automatic_evaluation_test, dialogue_moderation }
 };
 
 export default DSTC10;
