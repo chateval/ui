@@ -189,10 +189,8 @@ class DSTC10 extends Component {
                       <th scope="col">System</th>
                       <th scope="col">BLEU</th>
                       <th scope="col">ROUGE-L</th>
-                      <th scope="col">Deep AM-FM</th>
                       <th scope="col">BERT-score</th>
                       <th scope="col">BLEURT</th>
-                      <th scope="col">AVG</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -201,10 +199,8 @@ class DSTC10 extends Component {
                         <td key="td21">{result.sys}</td>
                         <td key="td22">{result.ble}</td>
                         <td key="td23">{result.rol}</td>
-                        <td key="td24">{result.afm}</td>
                         <td key="td25">{result.bts}</td>
                         <td key="td26">{result.blt}</td>
-                        <td key="td27">{result.avgs}</td>
                       </tr>
                   ))}
                 </tbody>
@@ -803,16 +799,9 @@ DSTC10.getInitialProps = async function() {
           description: "The leaderboard showing names of submissions and their corresponding automatic evaluation scores."
         },
         results: [
-          {
-            id: 'dialogpt_result',
-            sys: 'DialoGPT-base (baseline)',
-            ble: '',
-            rol: '',
-            afm: '',
-            bts: '',
-            blt: '',
-            avgs: ''
-          }
+          {id: 'dialogpt_result', sys: 'DialoGPT-base (baseline)', ble: '0.008', rol: '0.072', bts: '0.832', blt: '-1.180'},
+          {id: 'blenderbot', sys: 'BlenderBot 2.0', ble: '0.009', rol: '0.097', bts: '0.836', blt: '-1.183'},
+          {id: 'gpt3', sys: 'GPT-3', ble: '0.008', rol: '0.065', bts: '0.831', blt: '-1.201'},
         ]
       }
   ]
