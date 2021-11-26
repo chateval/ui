@@ -34,7 +34,7 @@ const Index = (props) => (
       <br/> <br/>
       <h2>FAQ</h2>
       <h5 className="card-title"> How much does ChatEval cost? </h5>
-      <p className="card-text">ChatEval is currently <mark>free</mark> for academic researchers. It is actively developed by the NLP Group of the University of Pennyslvania.</p>
+      <p className="card-text">ChatEval is currently <mark>free</mark> for academic researchers. It is actively developed by the NLP researchers at the New York University.</p>
       <h5 className="card-title"> Is there an online demo video? </h5>
       <p className="card-text">You can find a video tutorial for ChatEval <a href="https://youtu.be/36rAoujxLAA">here</a>.</p>
       <h5 className="card-title"> How was ChatEval built? </h5>
