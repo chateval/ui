@@ -5,6 +5,17 @@ import Footer from '../components/Footer';
 
 const API_URL = process.env.API_URL;
 
+const STYLE = {
+  cell: {
+    'text-align': "center",
+    'vertical-align': "middle",
+    'white-space': 'pre',
+  },
+  td: {
+    'vertical-align': "middle"
+  },
+};
+
 class DSTC11 extends Component {
   render() {
     return (
@@ -12,14 +23,14 @@ class DSTC11 extends Component {
         <Header/>
         <main role="main" className="container">
           <h1 className="mt-5 font-weight-bold">DSTC11: Dialogue System Technology Challenge 11</h1>
-          <h2 className="mt-5 font-weight-bold">Robust and Multilingual Automatic Evaluation Metrics for Open-Domain Dialogue Systems</h2>
+          <h2 className="mt-5 font-weight-bold">Track 4: Robust and Multilingual Automatic Evaluation Metrics for Open-Domain Dialogue Systems</h2>
             <br/>
             {/* <p>Click <a href="https://my.chateval.org/dstc11_data/">here</a> to download DSTC11 data.</p>
             <p>Click <a href="https://my.chateval.org/dstc11submit/">here</a> to submit.</p> */}
             <hr/>
           
           <br/>
-          <h3 className="font-weight-bold">Task Overview</h3>
+          <h3 className="font-weight-bold">Track Overview</h3>
             <br/>
             <ul>
               <li><b>Track Details</b></li>
@@ -44,10 +55,10 @@ class DSTC11 extends Component {
             <hr/>
 
             <ul>
-              <li><b>Provided datasets</b></li>
+              <li><b>Provided Datasets</b></li>
             </ul>
             <p style={{marginLeft: 60 + 'px'}} align='justify'>
-              As development set, organizers will provide the following datasets (<a href="#annex-datasets">details in the dataset section</a>) identified during the DSTC10 Track 5 (Zhang et al, 2021), that sum up more than 35k turn-level human-annotations, which have been automatically translated to Spanish and Chinese, and back-translated both to English using MS Azure services:
+              As development set, organizers will provide the following datasets (<a href="#annex-baselines-data-description">details in the Data Description section</a>) identified during the DSTC10 Track 5 (Zhang et al, 2021), that sum up more than 35k turn-level human-annotations, which have been automatically translated to Spanish and Chinese, and back-translated both to English using MS Azure services:
               <br/><br/>
               <ul>
                 <li><b>DSTC6 human evaluation data</b> (Hori et al., 2017)</li>
@@ -60,7 +71,7 @@ class DSTC11 extends Component {
               </ul>
               This development data can help participants to check the multilingualism or robustness capabilities of their trained models in terms of correlations with human-annotations. Additional databases, not mentioned here, will be added when available to increase the size of the benchmarking.
               <br/><br/>
-              Additionally, after the organizers' participation in the CHANEL@JSALT2020 workshop (Rudnicky et al., 2020) at John Hopkins University, they have automatically translated back-and-forth (using the same MS Azure translation service)a total of 19 well-known human-human dialogue <a href="https://github.com/CHANEL-JSALT-2020/datasets">datasets</a>:
+              Additionally, after the organizers' participation in the CHANEL@JSALT2020 workshop (Rudnicky et al., 2020) at John Hopkins University, they have automatically translated back-and-forth (using the same MS Azure translation service) a total of 19 well-known human-human dialogue <a href="https://github.com/CHANEL-JSALT-2020/datasets">datasets</a>:
               <br/><br/>
               <ul>
                 <li><b>DBDC</b> (Higashinaka et al., 2016)</li>
@@ -85,25 +96,51 @@ class DSTC11 extends Component {
               </ul>
               The total amount of dialogues is 393k (approx. 3M turns). In addition, we will provide the same datasets translated into Chinese using the SotA Tencent MT system. These datasets will be provided to participants, together with automatic meta-data information (machine translation Quality Estimation (QE), toxicity, and sentiment analysis) for filtering and dialogue curation purposes, so the participants have a better reference of the dataset quality, being of great help for them to decide whether or not to use these translations/paraphrases in the training of their evaluation models, and optionally fine-tune multilingual pre-trained models allowing better performance on the proposed dialogue-oriented tasks.
               <br/><br/>
-              Since the quality of the back-translated sentences can play an important role in estimating the metric scores. QE metric scores will be given to the participants using our QE system and other existing models (e.g., <a href="https://github.com/Unbabel/OpenKiwi">Openkiwi</a>). This information will be given to participants so they can optionally use it for discarding dialogues or turns that do not show high quality when training their metrics. Participants will be welcome to use the data and ideas from the MT field to propose QE metrics that can, optionally, be included to provide final scores. Finally, the organizers may provide new translated dialogue datasets to allow participants to create more robust and better-trained systems.
+              Since the quality of the back-translated sentences can play an important role in estimating the metric scores. QE metric scores will be given to the participants using our QE system and other existing models (e.g., <a href="https://github.com/Unbabel/OpenKiwi">Openkiwi</a> (Kepler et al., 2019)). This information will be given to participants so they can optionally use it for discarding dialogues or turns that do not show high quality when training their metrics. Participants will be welcome to use the data and ideas from the MT field to propose QE metrics that can, optionally, be included to provide final scores. Finally, the organizers may provide new translated dialogue datasets to allow participants to create more robust and better-trained systems.
               <br/><br/>
               During the test phase, a new set of 2k turn-level manually curated multilingual corpus (Spanish and Chinese) together with their human-evaluation annotations will be provided to participants to test models for both tasks. This corpus will be manually checked to guarantee its quality and high correlation with the original dialogues. Besides, in order to check the generalization capabilities of the proposed metrics from the participant, the test data will include a new dataset of human-chatbot interactions and their annotations.
+              <br/><br/>
+              {this.props.provided_datasets_information.map(datasets_table => (
+                <div key={datasets_table.id}>
+                  <h5 className="card-title"> {datasets_table.datasets.name} </h5>
+                  <p> {datasets_table.datasets.description} </p>
+                  <table className="table" style={STYLE.cell}>
+                    <thead>
+                      <tr>
+                        <th scope="col">Datasets Name</th>
+                        <th scope="col">JSALT</th>
+                        <th scope="col">DSTC10</th>
+                        <th scope="col">CDIAL</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {datasets_table.info.map(info => (
+                        <tr key={info.id}>
+                          <td key="td1" style={STYLE.td}>{info.name}</td>
+                          <td key="td2" style={STYLE.td}>{info.jsalt}</td>
+                          <td key="td3" style={STYLE.td}>{info.dstc10}</td>
+                          <td key="td4" style={STYLE.td}>{info.cdial}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              ))}
             </p>
             <hr/>
 
             <ul>
-              <li><b>Subtask 1: Metrics for multilingual data</b></li>
+              <li><b>Task 1: Metrics for Multilingual Data</b></li>
             </ul>
             <p style={{marginLeft: 60 + 'px'}} align='justify'>
               In this task, the goal for participants is to propose effective automatic dialogue evaluation metrics that exhibit previously mentioned properties (section 2) and perform well on a multilingual setup (English, Spanish and Chinese). In concrete, participants will propose a single multilingual model obtaining high correlations with human-annotations when evaluated on multilingual dialogues (development set in section 2.1) and perform well on the hidden multilingual test set. Participants are expected to use pre-trained multilingual language models and train them to predict multidimensional quality metrics by using self-supervised techniques and optionally fine-tune their system over a subset of the development data.
               <br/><br/>
               Finally, participants will then evaluate their models over the development and test sets, and expect to show similar performance, in terms of correlations with human-annotations on the English, Spanish and Chinese utterances. (Note: only dev and test sets will have human-annotations, and only test sets will be manually translated or back-translated/paraphrased to guarantee the correlations with the original human-annotations on the English data).
-              </p>
+            </p>
             <hr/>
 
-
             <ul>
-              <li><b>Subtask 2: Robust metrics</b></li>
+              <li><b>Task 2: Robust Metrics</b></li>
             </ul>
             <p style={{marginLeft: 60 + 'px'}} align='justify'>
               In this task, the goal for participants is to propose robust metrics for automatic evaluation of just English dialogues that exhibit previously mentioned properties (section 2) while being robust when dealing with back-translated/paraphrased English sentences. The expected performance must be on par with the correlations with human-annotations obtained over the original sentences. As robustness criteria proposed, back-translated/paraphrased sentences should have the same semantic meaning as the original sentence, but different wording.
@@ -111,7 +148,7 @@ class DSTC11 extends Component {
               Additionally, participants will have the opportunity of testing robustness over alternative machine translations that the organizers will provide. Finally, the influence on the metric will be also evaluated when providing the back-translated/paraphrased current turn sentences instead of the original ones, always along with their respective back-translated/paraphrased context.
               <br/><br/>
               During the test phase, hidden and manually curated back-translated test data will be provided to participants to evaluate their proposed metrics.
-              </p>
+            </p>
             <hr/>
 
           <br/>
@@ -129,16 +166,18 @@ class DSTC11 extends Component {
             <hr/>
           
           <br/>
-          <h3 className="font-weight-bold">Baselines and Data Description</h3>
+          <h3 className="font-weight-bold" id="annex-baselines-data-description">Baselines and Data Description</h3>
             <br/>
-            <p><a href="https://github.com/Mario-RC/dstc11_robust_multilingual_metrics">Track: Subtask 1 and Subtask 2</a></p>
+            <p>For more information check the <a href="https://drive.google.com/file/d/1wHZdlz8JecDWiiJiwhP3VsKnbApdL6_e/view">Track Proposal</a>.</p>
+            <p>See the <a href="https://github.com/Mario-RC/dstc11_robust_multilingual_metrics">Track GitHub</a> for more details.</p>
             <hr/>
           
           <br/>
-          <h3 className="font-weight-bold">Registration Details</h3>
+          <h3 className="font-weight-bold" id="annex-registration-details">Registration Details</h3>
             <br/>
-            <p>You can register at <a href="https://my.chateval.org/accounts/login/">https://my.chateval.org/accounts/login/</a>, once registered, you will be able to download the datasets and readme documents as well as submit your results at <a href="#">https://chateval.org/dstc11</a></p>
-            <p>Any updates and information about the tracks will be posted on the official website at <a href="https://dstc11.dstc.community/home/">https://dstc11.dstc.community/home/</a></p>
+            <p>You can register at <a href="https://my.chateval.org/accounts/login/">https://my.chateval.org/accounts/login/</a>, once registered, you will be able to download the datasets and readme documents as well as submit your results at <a href="#">https://chateval.org/dstc11</a>.</p>
+            <p>Any updates and information about the tracks will be posted on the <a href="https://dstc11.dstc.community/">DSTC11 official website</a>, or check the <a href="https://groups.google.com/a/dstc.community/g/list">DSTC Mailing List</a>.</p>
+            {/* <p><a href="https://docs.google.com/forms/d/e/1FAIpQLScn4L2IoRpobZITbEHit9SSE3AnZcrta7d9ZIvqY5U-E1ynBA/viewform">Challenge Registration</a></p> */}
           <hr/>
 
           <br/>
@@ -158,16 +197,15 @@ class DSTC11 extends Component {
           <br/>
           <h3 className="font-weight-bold">Contact</h3>
           <br/>
-          <p>If you have further questions regarding the data, please let us know by the following email address at <a href="mailto:dstc11-robust-multilingual-automatic-evaluation@googlegroups.com">dstc11-robust-multilingual-automatic-evaluation@googlegroups.com</a></p>
+          <p>If you have further questions regarding the data, please let us know by the following email address at <a href="mailto:dstc11-robust-multilingual-automatic-evaluation@googlegroups.com">dstc11-robust-multilingual-automatic-evaluation@googlegroups.com</a>.</p>
           <hr/>
 
-          {/* <br/>
-          <h3 className="font-weight-bold" id="annex-datasets">FAQ</h3>
+          <br/>
+          <h3 className="font-weight-bold">FAQ</h3>
             <br/>
-            <ul>
-              <li><p>Question/Answering</p></li>
-            </ul>
-            <hr/> */}
+            <h5 className="card-title">How much does participate in this Track cost? </h5>
+            <p className="card-text">This Track is currently <mark>free</mark> for everyone.</p>
+            <hr/>
 
           <br/>
           <h3 className="font-weight-bold">References</h3>
@@ -205,6 +243,7 @@ class DSTC11 extends Component {
               <li>Gopalakrishnan, K., Hedayatnia, B., Chen, Q., Gottardi, A., Kwatra, S., Venkatesh, A., ... & AI, A. A. (2019, January). Topical-Chat: Towards Knowledge-Grounded Open-Domain Conversations. In INTERSPEECH (pp. 1891-1895).</li>
               <li>Dinan, E., Roller, S., Shuster, K., Fan, A., Auli, M., & Weston, J. (2018). Wizard of wikipedia: Knowledge-powered conversational agents. arXiv preprint arXiv:1811.01241.</li>
               <li>D'Haro, L. F., Shawar, B. A., & Yu, Z. (2016). REWOCHAT 2016–Shared task description report. In Proceedings of the workshop on collecting and generating resources for chatbots and conversational agents-development and evaluation (RE-WOCHAT) (p. 39).</li>
+              <li>Kepler, F., Trénous, J., Treviso, M., Vera, M., & Martins, A. F. (2019). OpenKiwi: An open source framework for quality estimation. arXiv preprint arXiv:1902.08646.</li>
             </ul>
 
           <p>&nbsp;</p>
@@ -215,5 +254,29 @@ class DSTC11 extends Component {
     )
   }
 }
+
+DSTC11.getInitialProps = async function() {
+
+  const provided_datasets_information = [
+    {
+      id: 'provided_datasets_information',
+      datasets: {
+        name: "Datasets Information and Statistics",
+        description: ""
+      },
+      info: [
+        {id: 'num_dataset', name: '# Datsets', jsalt: '19', dstc10: '7', cdial: '3'},
+        {id: 'language', name: 'Language', jsalt: 'English, Spanish/Chinese,\nand English back-translation', dstc10: 'English, Spanish/Chinese,\nand English back-translation', cdial: 'Chinese, English,\nand Chinese back-translation'},
+        {id: 'dialogues_type', name: 'Dialogues Type', jsalt: 'Human-Human Open-Domain', dstc10: 'Human-Chatbot Open-Domain', cdial: 'Human-Human Open-Domain'},
+        {id: 'num_dialogues_utterances', name: '# Dialogues/\nUtterances', jsalt: '+ 390.000 / + 3.000.000', dstc10: '+ 3.000 / + 60.000', cdial: '+ 3.470 / +130.000'},
+        {id: 'annotations', name: 'Annotations', jsalt: 'Sentiment analysis and Toxicity', dstc10: 'Turn/dialogue level human scores', cdial: '—'},
+        {id: 'task1_set', name: 'Task 1 Set', jsalt: 'Public: Train', dstc10: 'Public: Dev, Test\nHidden: Automatic Translations', cdial: 'Public: Train'},
+        {id: 'task2_set', name: 'Task 2 Set', jsalt: 'Public: Train', dstc10: 'Public: Dev, Test\nHidden: Manually back-translation/paraphrased', cdial: '—'},
+      ]
+    }
+  ]
+  
+  return { provided_datasets_information }
+};
 
 export default DSTC11;
