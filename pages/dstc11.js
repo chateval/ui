@@ -96,7 +96,7 @@ class DSTC11 extends Component {
               </ul>
               The total amount of dialogues is 393k (approx. 3M turns). In addition, we will provide the same datasets translated into Chinese using the SotA Tencent MT system. These datasets will be provided to participants, together with automatic meta-data information (machine translation Quality Estimation (QE), toxicity, and sentiment analysis) for filtering and dialogue curation purposes, so the participants have a better reference of the dataset quality, being of great help for them to decide whether or not to use these translations/paraphrases in the training of their evaluation models, and optionally fine-tune multilingual pre-trained models allowing better performance on the proposed dialogue-oriented tasks.
               <br/><br/>
-              Since the quality of the back-translated sentences can play an important role in estimating the metric scores. QE metric scores will be given to the participants using our QE system and other existing models (e.g., <a href="https://github.com/Unbabel/OpenKiwi">Openkiwi</a> (Kepler et al., 2019)). This information will be given to participants so they can optionally use it for discarding dialogues or turns that do not show high quality when training their metrics. Participants will be welcome to use the data and ideas from the MT field to propose QE metrics that can, optionally, be included to provide final scores. Finally, the organizers may provide new translated dialogue datasets to allow participants to create more robust and better-trained systems.
+              Since the quality of the back-translated sentences can play an important role in estimating the metric scores. QE metric scores will be given to the participants using our QE system and other existing models (e.g., <a href="https://github.com/Unbabel/OpenKiwi">Openkiwi</a> (Kepler et al., 2019) or <a href="https://github.com/Unbabel/COMET">COMET</a> (Rei et al., 2020)). This information will be given to participants so they can optionally use it for discarding dialogues or turns that do not show high quality when training their metrics. Participants will be welcome to use the data and ideas from the MT field to propose QE metrics that can, optionally, be included to provide final scores. Finally, the organizers may provide new translated dialogue datasets to allow participants to create more robust and better-trained systems.
               <br/><br/>
               During the test phase, a new set of 2k turn-level manually curated multilingual corpus (Spanish and Chinese) together with their human-evaluation annotations will be provided to participants to test models for both tasks. This corpus will be manually checked to guarantee its quality and high correlation with the original dialogues. Besides, in order to check the generalization capabilities of the proposed metrics from the participant, the test data will include a new dataset of human-chatbot interactions and their annotations.
               <br/><br/>
@@ -126,6 +126,8 @@ class DSTC11 extends Component {
                   </table>
                 </div>
               ))}
+              <h5>Data Format</h5>
+              All data given follows the <a href="https://github.com/CHANEL-JSALT-2020/Wiki/wiki/Unified-Dialogue-Data-Formats">Unified Dialogue Data Formats</a> which provides guidelines on how to store, maintain and handle dialogue corpora.
             </p>
             <hr/>
 
@@ -168,7 +170,7 @@ class DSTC11 extends Component {
           <br/>
           <h3 className="font-weight-bold" id="annex-baselines-data-description">Baselines and Data Description</h3>
             <br/>
-            <p>For more information check the <a href="https://drive.google.com/file/d/1wHZdlz8JecDWiiJiwhP3VsKnbApdL6_e/view">Track Proposal</a>.</p>
+            <p>For more information check the <a href="https://drive.google.com/file/d/1B177R4_DJZ-KHu4D-E9oRELVl0G9Duu0/view">Track Proposal</a>.</p>
             <p>See the <a href="https://github.com/Mario-RC/dstc11_robust_multilingual_metrics">Track GitHub</a> for more details.</p>
             <hr/>
           
@@ -268,8 +270,8 @@ DSTC11.getInitialProps = async function() {
         {id: 'num_dataset', name: '# Datsets', jsalt: '19', dstc10: '7', cdial: '3'},
         {id: 'language', name: 'Language', jsalt: 'English, Spanish/Chinese,\nand English back-translation', dstc10: 'English, Spanish/Chinese,\nand English back-translation', cdial: 'Chinese, English,\nand Chinese back-translation'},
         {id: 'dialogues_type', name: 'Dialogues Type', jsalt: 'Human-Human Open-Domain', dstc10: 'Human-Chatbot Open-Domain', cdial: 'Human-Human Open-Domain'},
-        {id: 'num_dialogues_utterances', name: '# Dialogues/\nUtterances', jsalt: '+ 390.000 / + 3.000.000', dstc10: '+ 3.000 / + 60.000', cdial: '+ 3.470 / +130.000'},
-        {id: 'annotations', name: 'Annotations', jsalt: 'Sentiment analysis and Toxicity', dstc10: 'Turn/dialogue level human scores', cdial: '—'},
+        {id: 'num_dialogues_utterances', name: '# Dialogues/\nUtterances', jsalt: '+ 390.000 / + 3.000.000', dstc10: '+ 18.000 / + 55.000', cdial: '+ 3.470 / +130.000'},
+        {id: 'annotations', name: 'Annotations', jsalt: 'Sentiment analysis and Toxicity', dstc10: 'Turn/dialogue level human scores', cdial: 'Turn level human scores'},
         {id: 'task1_set', name: 'Task 1 Set', jsalt: 'Public: Train', dstc10: 'Public: Dev, Test\nHidden: Automatic Translations', cdial: 'Public: Train'},
         {id: 'task2_set', name: 'Task 2 Set', jsalt: 'Public: Train', dstc10: 'Public: Dev, Test\nHidden: Manually back-translation/paraphrased', cdial: '—'},
       ]
