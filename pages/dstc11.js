@@ -25,8 +25,8 @@ class DSTC11 extends Component {
           <h1 className="mt-5 font-weight-bold">DSTC11: Dialogue System Technology Challenge 11</h1>
           <h2 className="mt-5 font-weight-bold">Track 4: Robust and Multilingual Automatic Evaluation Metrics for Open-Domain Dialogue Systems</h2>
             <br/>
-            {/* <p>Click <a href="https://my.chateval.org/dstc11_data/">here</a> to download DSTC11 data.</p>
-            <p>Click <a href="https://my.chateval.org/dstc11submit/">here</a> to submit.</p> */}
+            <p>Click <a href="https://my.chateval.org/dstc11_data/">here</a> to download DSTC11 data.</p>
+            <p>Click <a href="https://my.chateval.org/dstc11submit/">here</a> to submit.</p>
             <hr/>
           
           <br/>
@@ -58,7 +58,7 @@ class DSTC11 extends Component {
               <li><b>Provided Datasets</b></li>
             </ul>
             <p style={{marginLeft: 60 + 'px'}} align='justify'>
-              As development set, organizers will provide the following datasets (<a href="#annex-baselines-data-description">details in the Data Description section</a>) identified during the DSTC10 Track 5 (Zhang et al, 2021), that sum up more than 35k turn-level human-annotations, which have been automatically translated to Spanish and Chinese, and back-translated both to English using MS Azure services:
+              As development set, organizers will provide the following datasets (<a href="#annex-baselines-data-description">details in the Data Description section</a>) identified during the <a href="https://chateval.org/dstc10">DSTC10 Track 5</a> (Zhang et al, 2021), that sum up more than 35k turn-level human-annotations, which have been automatically translated to Spanish and Chinese, and back-translated both to English using MS Azure services.
               <br/><br/>
               <ul>
                 <li><b>DSTC6 human evaluation data</b> (Hori et al., 2017)</li>
@@ -71,7 +71,7 @@ class DSTC11 extends Component {
               </ul>
               This development data can help participants to check the multilingualism or robustness capabilities of their trained models in terms of correlations with human-annotations. Additional databases, not mentioned here, will be added when available to increase the size of the benchmarking.
               <br/><br/>
-              Additionally, after the organizers' participation in the CHANEL@JSALT2020 workshop (Rudnicky et al., 2020) at John Hopkins University, they have automatically translated back-and-forth (using the same MS Azure translation service) a total of 19 well-known human-human dialogue <a href="https://github.com/CHANEL-JSALT-2020/datasets">datasets</a>:
+              Additionally, after the organizers' participation in the <a href="https://github.com/CHANEL-JSALT-2020/datasets">CHANEL@JSALT2020</a> workshop (Rudnicky et al., 2020) at John Hopkins University, they have automatically translated back-and-forth (using the same MS Azure translation service) a total of 18 well-known human-human dialogue datasets. The total amount of dialogues is 393k (approx. 3M turns).
               <br/><br/>
               <ul>
                 <li><b>DBDC</b> (Higashinaka et al., 2016)</li>
@@ -82,7 +82,6 @@ class DSTC11 extends Component {
                 <li><b>EmotionLines</b> (Chen et al., 2018)</li>
                 <li><b>EmpathicDialogues</b> (Rashkin et al., 2018)</li>
                 <li><b>Holl-E</b> (Moghe et al., 2018)</li>
-                <li><b>KvPI</b> (Song et al., 2020)</li>
                 <li><b>MEENA</b> (Adiwardana et al., 2020)</li>
                 <li><b>MELD</b> (Poria et al., 2019)</li>
                 <li><b>MetalWOz</b> (Lee et al., 2019)</li>
@@ -94,9 +93,18 @@ class DSTC11 extends Component {
                 <li><b>Wizard of Wikipedia</b> (Dinan et al., 2019)</li>
                 <li><b>Wochat</b> (D'Haro et al., 2016)</li>
               </ul>
-              The total amount of dialogues is 393k (approx. 3M turns). In addition, we will provide the same datasets translated into Chinese using the SotA Tencent MT system. These datasets will be provided to participants, together with automatic meta-data information (machine translation Quality Estimation (QE), toxicity, and sentiment analysis) for filtering and dialogue curation purposes, so the participants have a better reference of the dataset quality, being of great help for them to decide whether or not to use these translations/paraphrases in the training of their evaluation models, and optionally fine-tune multilingual pre-trained models allowing better performance on the proposed dialogue-oriented tasks.
+              Moreover, the datasets provided by <a href="https://github.com/thu-coai">THU-COAI</a> group (Conversational AI groups from Tsinghua University) will be used, naming this set of data CDial. They contain open domain human-human dialogs. They are originally in Chinese and contain of 3,470 dialogs (approx. 130k turns).
               <br/><br/>
-              Since the quality of the back-translated sentences can play an important role in estimating the metric scores. QE metric scores will be given to the participants using our QE system and other existing models (e.g., <a href="https://github.com/Unbabel/OpenKiwi">Openkiwi</a> (Kepler et al., 2019) or <a href="https://github.com/Unbabel/COMET">COMET</a> (Rei et al., 2020)). This information will be given to participants so they can optionally use it for discarding dialogues or turns that do not show high quality when training their metrics. Participants will be welcome to use the data and ideas from the MT field to propose QE metrics that can, optionally, be included to provide final scores. Finally, the organizers may provide new translated dialogue datasets to allow participants to create more robust and better-trained systems.
+              <ul>
+                <li><b>ECM</b> (Zhou et al., 2018)</li>
+                <li><b>KdConv</b> (Zhou et al., 2020)</li>
+                <li><b>LCCC</b> (Wang et al., 2020)</li>
+              </ul>
+              In addition, we will provide the same datasets translated into Chinese using the SotA Tencent MT system. These datasets will be provided to participants, together with automatic meta-data information (machine translation Quality Estimation (QE), toxicity, and sentiment analysis) for filtering and dialogue curation purposes, so the participants have a better reference of the dataset quality, being of great help for them to decide whether or not to use these translations/paraphrases in the training of their evaluation models, and optionally fine-tune multilingual pre-trained models allowing better performance on the proposed dialogue-oriented tasks.
+              <br/><br/>
+              Since the quality of the back-translated sentences can play an important role in estimating the metric scores. QE metric scores will be given to the participants using our QE system and other existing models (e.g., <a href="https://github.com/Unbabel/COMET">COMET</a> (Rei et al., 2020)). This information will be given to participants so they can optionally use it for discarding dialogues or turns that do not show high quality when training their metrics. Participants will be welcome to use the data and ideas from the MT field to propose QE metrics that can, optionally, be included to provide final scores. Finally, the organizers may provide new translated dialogue datasets to allow participants to create more robust and better-trained systems.
+              <br/><br/>
+              Additionally, ~2k random H-H turns of CDial in Chinese were manually annotated by Tencent AI. Also, ~5k new H-C Chinese turns (~500 dialogues) were generated with three different SotA chatbots (Tencent's model, Microsoft's Xiaoice (Zhou et al., 2020) and Baidu's Plato (Bao et al., 2019)) and manually annotated by Tencent AI.
               <br/><br/>
               During the test phase, a new set of 2k turn-level manually curated multilingual corpus (Spanish and Chinese) together with their human-evaluation annotations will be provided to participants to test models for both tasks. This corpus will be manually checked to guarantee its quality and high correlation with the original dialogues. Besides, in order to check the generalization capabilities of the proposed metrics from the participant, the test data will include a new dataset of human-chatbot interactions and their annotations.
               <br/><br/>
@@ -108,7 +116,7 @@ class DSTC11 extends Component {
                     <thead>
                       <tr>
                         <th scope="col">Datasets Name</th>
-                        <th scope="col">JSALT</th>
+                        <th scope="col">CHANEL</th>
                         <th scope="col">DSTC10</th>
                         <th scope="col">CDIAL</th>
                       </tr>
@@ -117,7 +125,7 @@ class DSTC11 extends Component {
                       {datasets_table.info.map(info => (
                         <tr key={info.id}>
                           <td key="td1" style={STYLE.td}>{info.name}</td>
-                          <td key="td2" style={STYLE.td}>{info.jsalt}</td>
+                          <td key="td2" style={STYLE.td}>{info.chanel}</td>
                           <td key="td3" style={STYLE.td}>{info.dstc10}</td>
                           <td key="td4" style={STYLE.td}>{info.cdial}</td>
                         </tr>
@@ -127,7 +135,7 @@ class DSTC11 extends Component {
                 </div>
               ))}
               <h5>Data Format</h5>
-              All data given follows the <a href="https://github.com/CHANEL-JSALT-2020/Wiki/wiki/Unified-Dialogue-Data-Formats">Unified Dialogue Data Formats</a> which provides guidelines on how to store, maintain and handle dialogue corpora.
+              All data given follows the <a href="https://github.com/Mario-RC/dstc11_track4_robust_multilingual_metrics/blob/main/dstc11/track4-datasets-format.md">Data Formats</a> which provides guidelines on how to store, maintain and handle dialogue corpora.
             </p>
             <hr/>
 
@@ -135,7 +143,7 @@ class DSTC11 extends Component {
               <li><b>Task 1: Metrics for Multilingual Data</b></li>
             </ul>
             <p style={{marginLeft: 60 + 'px'}} align='justify'>
-              In this task, the goal for participants is to propose effective automatic dialogue evaluation metrics that exhibit previously mentioned properties (section 2) and perform well on a multilingual setup (English, Spanish and Chinese). In concrete, participants will propose a single multilingual model obtaining high correlations with human-annotations when evaluated on multilingual dialogues (development set in section 2.1) and perform well on the hidden multilingual test set. Participants are expected to use pre-trained multilingual language models and train them to predict multidimensional quality metrics by using self-supervised techniques and optionally fine-tune their system over a subset of the development data.
+              In this task, the goal for participants is to propose effective automatic dialogue evaluation metrics that exhibit previously mentioned properties (section 2) and perform well on a multilingual setup (English, Spanish and Chinese). In concrete, participants will propose a single multilingual model obtaining high correlations with human-annotations when evaluated on multilingual dialogues (development set in section 2.1) and perform well on the hidden multilingual test set. Participants are expected to use pre-trained multilingual models and train them to predict multidimensional quality metrics by using self-supervised techniques and optionally fine-tune their system over a subset of the development data.
               <br/><br/>
               Finally, participants will then evaluate their models over the development and test sets, and expect to show similar performance, in terms of correlations with human-annotations on the English, Spanish and Chinese utterances. (Note: only dev and test sets will have human-annotations, and only test sets will be manually translated or back-translated/paraphrased to guarantee the correlations with the original human-annotations on the English data).
             </p>
@@ -177,9 +185,9 @@ class DSTC11 extends Component {
           <br/>
           <h3 className="font-weight-bold" id="annex-registration-details">Registration Details</h3>
             <br/>
-            <p>You can register at <a href="https://my.chateval.org/accounts/login/">https://my.chateval.org/accounts/login/</a>, once registered, you will be able to download the datasets and readme documents as well as submit your results at <a href="#">https://chateval.org/dstc11</a>.</p>
+            <p>You can register at this <a href="https://forms.office.com/r/rWgHUW9C8q">Microsoft Form</a>, once registered, you will be able to download the datasets and readme documents as well as submit your results at <a href="#">https://chateval.org/dstc11</a>.</p>
+            <p>There must be only one team per laboratory or research group. The members of the same team must be under a single registration, that is, the team leader must register his entire team by giving their e-mail addresses in addition to his own.</p>
             <p>Any updates and information about the tracks will be posted on the <a href="https://dstc11.dstc.community/">DSTC11 official website</a>, or check the <a href="https://groups.google.com/a/dstc.community/g/list">DSTC Mailing List</a>.</p>
-            {/* <p><a href="https://docs.google.com/forms/d/e/1FAIpQLScn4L2IoRpobZITbEHit9SSE3AnZcrta7d9ZIvqY5U-E1ynBA/viewform">Challenge Registration</a></p> */}
           <hr/>
 
           <br/>
@@ -203,9 +211,21 @@ class DSTC11 extends Component {
           <hr/>
 
           <br/>
+          <h3 className="font-weight-bold">Acknowledgement</h3>
+          <br/>
+          <p>This research project is supported by the Comunidad de Madrid through the call Research Grants for Young Investigators from Universidad Politécnica de Madrid (GENIUS:APOYO-JOVENES-21-TAXTYC-32-K61X37).</p>
+          <p>This work is supported by project BEWORD (PID2021-126061OB-C43) funded by MCIN/AEI/10.13039/501100011033 and, as appropriate, by “ERDF A way of making Europe”, by the “European Union”, and by Programa Propio - Proyectos Semilla: Universidad Politécnica de Madrid (VSEMILLA22LFHE).</p>
+          <p>We gratefully acknowledge valuable efforts from Tencent AI Lab who supports Chinese translation and annotation of datasets by funding and infrastructure.</p>
+          <p>Thanks to THU-CoAI (Conversational AI groups from Tsinghua University) for providing their Chinese datasets as part of the challenge data.</p>
+          <p>This research project is supported in part by Microsoft Azure Cognitive Services.</p>
+          <p>This research project is supported by the NYU ChatEval Team led by João Sedoc.</p>
+          <p>This research project is supported in part by a grant from Amazon to Alexander Rudnicky, Carnegie Mellon University.</p>
+          <hr/>
+
+          <br/>
           <h3 className="font-weight-bold">FAQ</h3>
             <br/>
-            <h5 className="card-title">How much does participate in this Track cost? </h5>
+            <h5 className="card-title">How much does participate in this Track cost?</h5>
             <p className="card-text">This Track is currently <mark>free</mark> for everyone.</p>
             <hr/>
 
@@ -234,7 +254,6 @@ class DSTC11 extends Component {
               <li>Chen, S. Y., Hsu, C. C., Kuo, C. C., & Ku, L. W. (2018). Emotionlines: An emotion corpus of multi-party conversations. arXiv preprint arXiv:1802.08379.</li>
               <li>Rashkin, H., Smith, E. M., Li, M., & Boureau, Y. L. (2018). Towards empathetic open-domain conversation models: A new benchmark and dataset. arXiv preprint arXiv:1811.00207.</li>
               <li>Moghe, N., Arora, S., Banerjee, S., & Khapra, M. M. (2018). Towards exploiting background knowledge for building conversation systems. arXiv preprint arXiv:1809.08205.</li>
-              <li>Song, H., Wang, Y., Zhang, W. N., Zhao, Z., Liu, T., & Liu, X. (2020). Profile consistency identification for open-domain dialogue agents. arXiv preprint arXiv:2009.09680.</li>
               <li>Adiwardana, D., Luong, M. T., So, D. R., Hall, J., Fiedel, N., Thoppilan, R., ... & Le, Q. V. (2020). Towards a human-like open-domain chatbot. arXiv preprint arXiv:2001.09977.</li>
               <li>Poria, S., Hazarika, D., Majumder, N., Naik, G., Cambria, E., & Mihalcea, R. (2018). Meld: A multimodal multi-party dataset for emotion recognition in conversations. arXiv preprint arXiv:1810.02508.</li>
               <li>Lee, S., Schulz, H., Atkinson, A., Gao, J., Suleman, K., El Asri, L., ... & Li, X. (2019). Multi-domain task-completion dialog challenge. Dialog system technology challenges, 8(9).</li>
@@ -245,7 +264,12 @@ class DSTC11 extends Component {
               <li>Gopalakrishnan, K., Hedayatnia, B., Chen, Q., Gottardi, A., Kwatra, S., Venkatesh, A., ... & AI, A. A. (2019, January). Topical-Chat: Towards Knowledge-Grounded Open-Domain Conversations. In INTERSPEECH (pp. 1891-1895).</li>
               <li>Dinan, E., Roller, S., Shuster, K., Fan, A., Auli, M., & Weston, J. (2018). Wizard of wikipedia: Knowledge-powered conversational agents. arXiv preprint arXiv:1811.01241.</li>
               <li>D'Haro, L. F., Shawar, B. A., & Yu, Z. (2016). REWOCHAT 2016–Shared task description report. In Proceedings of the workshop on collecting and generating resources for chatbots and conversational agents-development and evaluation (RE-WOCHAT) (p. 39).</li>
-              <li>Kepler, F., Trénous, J., Treviso, M., Vera, M., & Martins, A. F. (2019). OpenKiwi: An open source framework for quality estimation. arXiv preprint arXiv:1902.08646.</li>
+              <li>Zhou, H., Huang, M., Zhang, T., Zhu, X., & Liu, B. (2018, April). Emotional chatting machine: Emotional conversation generation with internal and external memory. In Proceedings of the AAAI Conference on Artificial Intelligence (Vol. 32, No. 1).</li>
+              <li>Zhou, H., Zheng, C., Huang, K., Huang, M., & Zhu, X. (2020). Kdconv: A chinese multi-domain dialogue dataset towards multi-turn knowledge-driven conversation. arXiv preprint arXiv:2004.04100.</li>
+              <li>Wang, Y., Ke, P., Zheng, Y., Huang, K., Jiang, Y., Zhu, X., & Huang, M. (2020, October). A large-scale chinese short-text conversation dataset. In CCF International Conference on Natural Language Processing and Chinese Computing (pp. 91-103). Springer, Cham.</li>
+              <li>Rei, R., Stewart, C., Farinha, A. C., & Lavie, A. (2020). COMET: A neural framework for MT evaluation. arXiv preprint arXiv:2009.09025.</li>
+              <li>Zhou, L., Gao, J., Li, D., & Shum, H. Y. (2020). The design and implementation of xiaoice, an empathetic social chatbot. Computational Linguistics, 46(1), 53-93.</li>
+              <li>Bao, S., He, H., Wang, F., Wu, H., & Wang, H. (2019). Plato: Pre-trained dialogue generation model with discrete latent variable. arXiv preprint arXiv:1910.07931.</li>
             </ul>
 
           <p>&nbsp;</p>
@@ -267,13 +291,13 @@ DSTC11.getInitialProps = async function() {
         description: ""
       },
       info: [
-        {id: 'num_dataset', name: '# Datsets', jsalt: '19', dstc10: '7', cdial: '3'},
-        {id: 'language', name: 'Language', jsalt: 'English, Spanish/Chinese,\nand English back-translation', dstc10: 'English, Spanish/Chinese,\nand English back-translation', cdial: 'Chinese, English,\nand Chinese back-translation'},
-        {id: 'dialogues_type', name: 'Dialogues Type', jsalt: 'Human-Human Open-Domain', dstc10: 'Human-Chatbot Open-Domain', cdial: 'Human-Human Open-Domain'},
-        {id: 'num_dialogues_utterances', name: '# Dialogues/\nUtterances', jsalt: '+ 390.000 / + 3.000.000', dstc10: '+ 18.000 / + 55.000', cdial: '+ 3.470 / +130.000'},
-        {id: 'annotations', name: 'Annotations', jsalt: 'Sentiment analysis and Toxicity', dstc10: 'Turn/dialogue level human scores', cdial: 'Turn level human scores'},
-        {id: 'task1_set', name: 'Task 1 Set', jsalt: 'Public: Train', dstc10: 'Public: Dev, Test\nHidden: Automatic Translations', cdial: 'Public: Train'},
-        {id: 'task2_set', name: 'Task 2 Set', jsalt: 'Public: Train', dstc10: 'Public: Dev, Test\nHidden: Manually back-translation/paraphrased', cdial: '—'},
+        {id: 'num_dataset', name: '# Datsets', chanel: '18', dstc10: '7', cdial: '3'},
+        {id: 'language', name: 'Language', chanel: 'English, Spanish/Chinese,\nand English back-translation', dstc10: 'English, Spanish/Chinese,\nand English back-translation', cdial: 'Chinese, English,\nand Chinese back-translation'},
+        {id: 'dialogues_type', name: 'Dialogues Type', chanel: 'Human-Human Open-Domain', dstc10: 'Human-Chatbot Open-Domain', cdial: 'Human-Human Open-Domain'},
+        {id: 'num_dialogues_utterances', name: '# Dialogues/\nUtterances', chanel: '+ 390.000 / + 3.000.000', dstc10: '+ 18.000 / + 55.000', cdial: '+ 3.470 / +130.000'},
+        {id: 'annotations', name: 'Annotations', chanel: 'Sentiment analysis and Toxicity', dstc10: 'Turn/dialogue level human scores', cdial: 'Turn level human scores'},
+        {id: 'task1_set', name: 'Task 1 Set', chanel: 'Public: Train', dstc10: 'Public: Dev, Test\nHidden: Automatic Translations', cdial: 'Public: Train'},
+        {id: 'task2_set', name: 'Task 2 Set', chanel: 'Public: Train', dstc10: 'Public: Dev, Test\nHidden: Manually back-translation/paraphrased', cdial: '—'},
       ]
     }
   ]
