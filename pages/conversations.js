@@ -37,16 +37,16 @@ class Conversations extends Component {
   }
 
   async updateTurns() {
-    console.log(this.state.models)
-    const promptsRequest = await fetch(this.props.API_URL + 'prompts?evalset=' + this.state.evalset);
+    const promptsRequest = await fetch(API_URL+ 'evaluation-dataset-text?evaluationdataset_id=' + this.state.evalset);
     const promptsData = await promptsRequest.json();
-    const prompts = promptsData.prompts.slice(0, 200);
+    const prompts = promptsData.prompts;
 
     let responses = [];
     for (const model of this.state.models) {
-      const responsesRequest = await fetch(this.props.API_URL + 'responses?evalset=' + this.state.evalset + "&model_id=" + model.value);
+      const requestURL = API_URL + 'model-response?evaluationdataset_id=' + this.state.evalset + "&model_id=" + model.value;
+      const responsesRequest = await fetch(requestURL);
       const responsesData = await responsesRequest.json();
-      responses.push({ model_id: model.value, responses: responsesData.responses.slice(0, 200), name: model.label });
+      responses.push({ model_id: model.value, responses: responsesData.slice(0, 200), name: model.label });
     };
 
     this.setState({ prompts });
@@ -101,16 +101,16 @@ class Conversations extends Component {
 
 Conversations.getInitialProps = async function() {
   let evalsets = [], models = [];
-  const modelRequest = await fetch(API_URL + 'models');
-  const evalsetRequest = await fetch(API_URL + 'evaluationdatasets');
+  const modelRequest = await fetch(API_URL + 'model');
+  const evalsetRequest = await fetch(API_URL + 'evaluation-dataset');
   const modelData = await modelRequest.json();
   const evalsetData = await evalsetRequest.json();
  
-  modelData.models.forEach(model => {
-    models.push({ 'value': model.id, 'label': model.name, 'evalsets': model.evalsets})
+  modelData.forEach(model => {
+    models.push({ 'value': model.model_id, 'label': model.name, 'evalsets': model.evaluationdatasets})
   });
 
-  evalsetData.evaluationdatasets.forEach(evalset => {
+  evalsetData.forEach(evalset => {
     evalsets.push({ 'value': evalset.evalset_id, 'label': evalset.name})
   });
 

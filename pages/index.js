@@ -34,7 +34,7 @@ const Index = (props) => (
       <br/> <br/>
       <h2>FAQ</h2>
       <h5 className="card-title"> How much does ChatEval cost? </h5>
-      <p className="card-text">ChatEval is currently <mark>free</mark> for academic researchers. It is actively developed by the NLP researchers at the New York University.</p>
+      <p className="card-text">ChatEval is currently <mark>free</mark> for academic researchers. It is actively developed by the NLP Group of the University of Pennyslvania.</p>
       <h5 className="card-title"> Is there an online demo video? </h5>
       <p className="card-text">You can find a video tutorial for ChatEval <a href="https://youtu.be/36rAoujxLAA">here</a>.</p>
       <h5 className="card-title"> How was ChatEval built? </h5>
@@ -112,19 +112,20 @@ const Index = (props) => (
 
 Index.getInitialProps = async function() {
   let data = {};
-  const baselineRequest = await fetch(process.env.API_URL + 'baselines');
+  const baselineRequest = await fetch(process.env.API_URL + 'baseline');
   const baselineData = await baselineRequest.json();
-  data.baselines = baselineData.baselines;
+  data.baselines = baselineData;
 
-  const evalsetRequest = await fetch(process.env.API_URL + 'evaluationdatasets');
+  const evalsetRequest = await fetch(process.env.API_URL + 'evaluation-dataset');
   const evalsetData = await evalsetRequest.json();
-  data.evalsets = evalsetData.evaluationdatasets;
+  data.evalsets = evalsetData;
 
-  const metricRequest = await fetch(process.env.API_URL + 'metrics');
+  const metricRequest = await fetch(process.env.API_URL + 'metric');
   const metricData = await metricRequest.json();
-  data.metrics = metricData.metrics;
+  data.metrics = metricData;
 
   return data;
 };
 
 export default Index;
+
