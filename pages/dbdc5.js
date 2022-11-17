@@ -5,7 +5,7 @@ import Footer from '../components/Footer';
 
 const API_URL = process.env.API_URL;
 
-class SharedTask extends Component {
+class DBDC5 extends Component {
   render() {
     return (
       <div>
@@ -32,7 +32,7 @@ class SharedTask extends Component {
             <p style={{marginLeft: 60 + 'px'}}>In this track, participants are required to build a response generator/selector. The system should be able to provide new responses aiming at correcting or recovering from a dialogue breakdown event. This track includes 600 dialogues in English from past Dialogue Breakdown Detection Challenges.</p>
             <hr />
             <p>How to register, download data and submit results</p>
-            <p>You can register at <a href="https://my.chateval.org/accounts/login/">https://my.chateval.org/accounts/login/</a>, once registered, you will be able to download the datasets and readme documents as well as submit your results at <a href="https://chateval.org/shared_task">https://chateval.org/shared_task</a></p>
+            <p>You can register at <a href="https://my.chateval.org/accounts/login/">https://my.chateval.org/accounts/login/</a>, once registered, you will be able to download the datasets and readme documents as well as submit your results at <a href="https://chateval.org/dbdc5">https://chateval.org/dbdc5</a></p>
             <hr />
             <p>Information about the tracks</p>
             <p>Any updates will be posted at the official website:</p>
@@ -135,8 +135,8 @@ class SharedTask extends Component {
   }
 }
 
-SharedTask.getInitialProps = async function() {
-  // const sharedTaskRequest = await fetch(API_URL + 'shared_task');
+DBDC5.getInitialProps = async function() {
+  // const sharedTaskRequest = await fetch(API_URL + 'dbdc5');
   // const sharedTaskData = await sharedTaskRequest.json();
   // console.log(sharedTaskData)
 
@@ -171,4 +171,4 @@ SharedTask.getInitialProps = async function() {
   return { human_evaluation, automatic_evaluation }
 };
 
-export default SharedTask;
+export default DBDC5;

@@ -8,6 +8,7 @@ const Header = () => (
       <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossOrigin="anonymous"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossOrigin="anonymous"></script>
       <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossOrigin="anonymous"></script>
+
     </head>
 
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
@@ -23,9 +24,16 @@ const Header = () => (
           <li className="nav-item">
             <a className="nav-link" href="/conversations">View Conversations</a>
           </li>
-          <li className="nav-item">
-            <a className="nav-link" href="/shared_task">Shared Task</a>
-          </li>
+		  <li className="nav-item dropdown">
+          	<a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          	Challenges
+        	</a>
+        	<div className="dropdown-menu" aria-labelledby="navbarDropdown">
+          		<a className="dropdown-item" href="/dbdc5">DBDC5</a>
+          		<a className="dropdown-item" href="/dstc10">DSTC10</a>
+              <a className="dropdown-item" href="/dstc11">DSTC11</a>
+        	</div>
+     	 </li>
           <div className="vl"></div>
           <li className="nav-item">
             <a className="nav-link" href="https://my.chateval.org/uploads">My ChatEval</a>
