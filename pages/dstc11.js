@@ -25,8 +25,9 @@ class DSTC11 extends Component {
           <h1 className="mt-5 font-weight-bold">DSTC11: Dialogue System Technology Challenge 11</h1>
           <h2 className="mt-5 font-weight-bold">Track 4: Robust and Multilingual Automatic Evaluation Metrics for Open-Domain Dialogue Systems</h2>
             <br/>
+            <p>Click <a href="https://forms.office.com/r/rWgHUW9C8q">here</a> to register for DSTC11.T4.<span style={{color : 'green'}}> (now available)</span></p>
             <p>Click <a href="https://my.chateval.org/dstc11_data/">here</a> to download DSTC11 data.<span style={{color : 'red'}}> (coming soon)</span></p>
-            <p >Click <a href="https://my.chateval.org/dstc11submit/">here</a> to submit.<span style={{color : 'red'}}> (coming soon)</span></p>
+            <p >Click <a href="https://my.chateval.org/dstc11submit/">here</a> to submit your model.<span style={{color : 'red'}}> (coming soon)</span></p>
             <hr/>
           
           <br/>
@@ -185,9 +186,16 @@ class DSTC11 extends Component {
           <br/>
           <h3 className="font-weight-bold" id="annex-registration-details">Registration Details</h3>
             <br/>
-            <p>You can register at this <a href="https://forms.office.com/r/rWgHUW9C8q">Microsoft Form</a>, once registered, you will be able to download the datasets and readme documents as well as submit your results at <a href="#">https://chateval.org/dstc11</a>.</p>
+            <p>To become an official DSTC11 Track 4 participant, you must be registered at this <a href="https://forms.office.com/r/rWgHUW9C8q">Microsoft Form</a>. Once registered, you will be able to download the datasets and readme documents as well as submit your results at <a href="#">https://chateval.org/dstc11</a>.</p>
             <p>There must be only one team per laboratory or research group. The members of the same team must be under a single registration, that is, the team leader must register his entire team by giving their e-mail addresses in addition to his own.</p>
             <p>Any updates and information about the tracks will be posted on the <a href="https://dstc11.dstc.community/">DSTC11 official website</a>, or check the <a href="https://groups.google.com/a/dstc.community/g/list">DSTC Mailing List</a>.</p>
+          <hr/>
+
+          <br/>
+          <h3 className="font-weight-bold" id="annex-registration-details">Submission Details</h3>
+            <br/>
+            <p>Before submitting your model, do not forget to <a href="https://my.chateval.org/accounts/signup/">Sign Up</a> on the ChatEval website. Only the team leader must register on ChatEval, with the same name and email address entered in the Microsoft Form. Once you have signed up, you can <a href="https://my.chateval.org/accounts/login/">Log In</a> and <a href="https://my.chateval.org/dstc11submit/">Submit</a> your models.</p>
+            <p>You can make as many submissions as you want, but only the last 5 submitted will be valid to participate in the competition. That is, only the last 5 models submitted in ChatEval will be tested and will count in the competition ranking. Only the models submitted by the team leader registered in the Microsoft Form will be considered and tested during the competition.</p>
           <hr/>
 
           <br/>
