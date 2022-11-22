@@ -25,8 +25,8 @@ class DSTC11 extends Component {
           <h1 className="mt-5 font-weight-bold">DSTC11: Dialogue System Technology Challenge 11</h1>
           <h2 className="mt-5 font-weight-bold">Track 4: Robust and Multilingual Automatic Evaluation Metrics for Open-Domain Dialogue Systems</h2>
             <br/>
-            <p>Click <a href="https://my.chateval.org/dstc11_data/">here</a> to download DSTC11 data.</p>
-            <p>Click <a href="https://my.chateval.org/dstc11submit/">here</a> to submit.</p>
+            <p>Click <a href="https://my.chateval.org/dstc11_data/">here</a> to download DSTC11 data.<span style={{color : 'red'}}> (coming soon)</span></p>
+            <p >Click <a href="https://my.chateval.org/dstc11submit/">here</a> to submit.<span style={{color : 'red'}}> (coming soon)</span></p>
             <hr/>
           
           <br/>
@@ -217,6 +217,7 @@ class DSTC11 extends Component {
           <p>This work is supported by project BEWORD (PID2021-126061OB-C43) funded by MCIN/AEI/10.13039/501100011033 and, as appropriate, by “ERDF A way of making Europe”, by the “European Union”, and by Programa Propio - Proyectos Semilla: Universidad Politécnica de Madrid (VSEMILLA22LFHE).</p>
           <p>We gratefully acknowledge valuable efforts from Tencent AI Lab who supports Chinese translation and annotation of datasets by funding and infrastructure.</p>
           <p>Thanks to THU-CoAI (Conversational AI groups from Tsinghua University) for providing their Chinese datasets as part of the challenge data.</p>
+          <p>Thanks to Unbabel for providing the COMET MTQE scores annotations as part of the challenge data. This contribution was supported by national funds through *Fundação para a Ciência e a Tecnologia* (FCT) with references PRT/BD/152198/2021 and UIDB/50021/2020, and by the P2020 program MAIA led by Unbabel (LISBOA-01-0247-FEDER-045909).</p>
           <p>This research project is supported in part by Microsoft Azure Cognitive Services.</p>
           <p>This research project is supported by the NYU ChatEval Team led by João Sedoc.</p>
           <p>This research project is supported in part by a grant from Amazon to Alexander Rudnicky, Carnegie Mellon University.</p>
