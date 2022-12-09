@@ -26,8 +26,8 @@ class DSTC11 extends Component {
           <h2 className="mt-5 font-weight-bold">Track 4: Robust and Multilingual Automatic Evaluation Metrics for Open-Domain Dialogue Systems</h2>
             <br/>
             <p>Click <a href="https://forms.office.com/r/rWgHUW9C8q">here</a> to register for DSTC11.T4.<span style={{color : 'green'}}> (now available)</span></p>
-            <p>Click <a href="https://my.chateval.org/dstc11_data/">here</a> to download DSTC11 data.<span style={{color : 'red'}}> (coming soon)</span></p>
-            <p >Click <a href="https://my.chateval.org/dstc11submit/">here</a> to submit your model.<span style={{color : 'red'}}> (coming soon)</span></p>
+            <p>Click <a href="https://my.chateval.org/dstc11_data/">here</a> to download DSTC11 data.<span style={{color : 'green'}}> (now available)</span></p>
+            <p>Click <a href="https://my.chateval.org/dstc11submit/">here</a> to submit your model.<span style={{color : 'red'}}> (coming soon)</span></p>
             <hr/>
           
           <br/>
@@ -59,7 +59,7 @@ class DSTC11 extends Component {
               <li><b>Provided Datasets</b></li>
             </ul>
             <p style={{marginLeft: 60 + 'px'}} align='justify'>
-              As development set, organizers will provide the following datasets (<a href="#annex-baselines-data-description">details in the Data Description section</a>) identified during the <a href="https://chateval.org/dstc10">DSTC10 Track 5</a> (Zhang et al, 2021), that sum up more than 35k turn-level human-annotations, which have been automatically translated to Spanish and Chinese, and back-translated both to English using MS Azure services.
+              As development set, organizers will provide the following datasets (<a href="#annex-baselines-data-description">details in the Data Description section</a>) identified during the <a href="https://chateval.org/dstc10">DSTC10 Track 5</a> (Zhang et al, 2021), that sum up more than 35k turn-level human-annotations, which have been automatically translated to Spanish and Chinese, and back-translated both to English using <a href="https://azure.microsoft.com/en-us/products/cognitive-services/translator/">MS Azure</a> services.
               <br/><br/>
               <ul>
                 <li><b>DSTC6 human evaluation data</b> (Hori et al., 2017)</li>
@@ -101,14 +101,23 @@ class DSTC11 extends Component {
                 <li><b>KdConv</b> (Zhou et al., 2020)</li>
                 <li><b>LCCC</b> (Wang et al., 2020)</li>
               </ul>
-              In addition, we will provide the same datasets translated into Chinese using the SotA Tencent MT system. These datasets will be provided to participants, together with automatic meta-data information (machine translation Quality Estimation (QE), toxicity, and sentiment analysis) for filtering and dialogue curation purposes, so the participants have a better reference of the dataset quality, being of great help for them to decide whether or not to use these translations/paraphrases in the training of their evaluation models, and optionally fine-tune multilingual pre-trained models allowing better performance on the proposed dialogue-oriented tasks.
+              In addition, we will provide the same datasets translated into Chinese using the SotA <a href="https://www.tencentcloud.com/products/tmt">Tencent MT</a> Tencent MT system. These datasets will be provided to participants, together with automatic meta-data information (machine translation Quality Estimation (QE), toxicity, and sentiment analysis) for filtering and dialogue curation purposes, so the participants have a better reference of the dataset quality, being of great help for them to decide whether or not to use these translations/paraphrases in the training of their evaluation models, and optionally fine-tune multilingual pre-trained models allowing better performance on the proposed dialogue-oriented tasks.
               <br/><br/>
               Since the quality of the back-translated sentences can play an important role in estimating the metric scores. QE metric scores will be given to the participants using our QE system and other existing models (e.g., <a href="https://github.com/Unbabel/COMET">COMET</a> (Rei et al., 2020)). This information will be given to participants so they can optionally use it for discarding dialogues or turns that do not show high quality when training their metrics. Participants will be welcome to use the data and ideas from the MT field to propose QE metrics that can, optionally, be included to provide final scores. Finally, the organizers may provide new translated dialogue datasets to allow participants to create more robust and better-trained systems.
+              <br/><br/>
+              Regarding the paraphrases, all the original English sentences of each dataset will have multiple paraphrases, as well as annotations so that each participant can evaluate the quality of each paraphrase. The model used will be <a href="https://github.com/jsedoc/Parrot_Paraphraser">PARROT</a> (Damodaran P., 2021).
               <br/><br/>
               Additionally, ~2k random H-H turns of CDial in Chinese were manually annotated by Tencent AI. Also, ~5k new H-C Chinese turns (~500 dialogues) were generated with three different SotA chatbots (Tencent's model, Microsoft's Xiaoice (Zhou et al., 2020) and Baidu's Plato (Bao et al., 2019)) and manually annotated by Tencent AI.
               <br/><br/>
               During the test phase, a new set of 2k turn-level manually curated multilingual corpus (Spanish and Chinese) together with their human-evaluation annotations will be provided to participants to test models for both tasks. This corpus will be manually checked to guarantee its quality and high correlation with the original dialogues. Besides, in order to check the generalization capabilities of the proposed metrics from the participant, the test data will include a new dataset of human-chatbot interactions and their annotations.
               <br/><br/>
+            </p>
+            <hr/>
+
+            <ul>
+              <li><b>Datasets Information</b></li>
+            </ul>
+            <p style={{marginLeft: 60 + 'px'}} align='justify'>
               {this.props.provided_datasets_information.map(datasets_table => (
                 <div key={datasets_table.id}>
                   <h5 className="card-title"> {datasets_table.datasets.name} </h5>
@@ -135,8 +144,129 @@ class DSTC11 extends Component {
                   </table>
                 </div>
               ))}
-              <h5>Data Format</h5>
-              All data given follows the <a href="https://github.com/Mario-RC/dstc11_track4_robust_multilingual_metrics/blob/main/dstc11/track4-datasets-format.md">Data Formats</a> which provides guidelines on how to store, maintain and handle dialogue corpora.
+            </p>
+            <hr/>
+             
+            <ul>
+              <li><b>Datasets Statistics</b></li>
+            </ul>
+            <p style={{marginLeft: 60 + 'px'}} align='justify'>
+              {this.props.provided_datasets_chanel.map(datasets_table => (
+                <div key={datasets_table.id}>
+                  <h5 className="card-title"> {datasets_table.datasets.name} </h5>
+                  <p> {datasets_table.datasets.description} </p>
+                  <table className="table" style={STYLE.cell}>
+                    <thead>
+                      <tr>
+                        <th scope="col">CHANEL</th>
+                        <th scope="col">Spanish<br/>Translation</th>
+                        <th scope="col">Chinese<br/>Translation</th>
+                        <th scope="col">English<br/>Translation</th>
+                        <th scope="col">English<br/>Back-translation</th>
+                        <th scope="col">Paraphrases</th>
+                        <th scope="col">Sentiment<br/>Analysis</th>
+                        <th scope="col">Content<br/>Moderate</th>
+                        <th scope="col">Human<br/>Annotations</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {datasets_table.info.map(info => (
+                        <tr key={info.id}>
+                          <td key="td1" style={STYLE.td}>{info.name_dataset}</td>
+                          <td key="td2" style={STYLE.td}>{info.spanish_translation}</td>
+                          <td key="td3" style={STYLE.td}>{info.chinese_translation}</td>
+                          <td key="td4" style={STYLE.td}>{info.english_translation}</td>
+                          <td key="td5" style={STYLE.td}>{info.english_Back_translation}</td>
+                          <td key="td6" style={STYLE.td}>{info.paraphrases}</td>
+                          <td key="td7" style={STYLE.td}>{info.sentiment_analysis}</td>
+                          <td key="td8" style={STYLE.td}>{info.content_moderate}</td>
+                          <td key="td9" style={STYLE.td}>{info.human_annotations}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              ))}
+              {this.props.provided_datasets_dstc10.map(datasets_table => (
+                <div key={datasets_table.id}>
+                  <h5 className="card-title"> {datasets_table.datasets.name} </h5>
+                  <p> {datasets_table.datasets.description} </p>
+                  <table className="table" style={STYLE.cell}>
+                    <thead>
+                      <tr>
+                        <th scope="col">DSTC10</th>
+                        <th scope="col">Spanish<br/>Translation</th>
+                        <th scope="col">Chinese<br/>Translation</th>
+                        <th scope="col">English<br/>Translation</th>
+                        <th scope="col">English<br/>Back-translation</th>
+                        <th scope="col">Paraphrases</th>
+                        <th scope="col">Sentiment<br/>Analysis</th>
+                        <th scope="col">Content<br/>Moderate</th>
+                        <th scope="col">Human<br/>Annotations</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {datasets_table.info.map(info => (
+                        <tr key={info.id}>
+                          <td key="td1" style={STYLE.td}>{info.name_dataset}</td>
+                          <td key="td2" style={STYLE.td}>{info.spanish_translation}</td>
+                          <td key="td3" style={STYLE.td}>{info.chinese_translation}</td>
+                          <td key="td4" style={STYLE.td}>{info.english_translation}</td>
+                          <td key="td5" style={STYLE.td}>{info.english_Back_translation}</td>
+                          <td key="td6" style={STYLE.td}>{info.paraphrases}</td>
+                          <td key="td7" style={STYLE.td}>{info.sentiment_analysis}</td>
+                          <td key="td8" style={STYLE.td}>{info.content_moderate}</td>
+                          <td key="td9" style={STYLE.td}>{info.human_annotations}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              ))}
+              {this.props.provided_datasets_cdial.map(datasets_table => (
+                <div key={datasets_table.id}>
+                  <h5 className="card-title"> {datasets_table.datasets.name} </h5>
+                  <p> {datasets_table.datasets.description} </p>
+                  <table className="table" style={STYLE.cell}>
+                    <thead>
+                      <tr>
+                        <th scope="col">CDIAL</th>
+                        <th scope="col">Spanish<br/>Translation</th>
+                        <th scope="col">Chinese<br/>Translation</th>
+                        <th scope="col">English<br/>Translation</th>
+                        <th scope="col">English<br/>Back-translation</th>
+                        <th scope="col">Paraphrases</th>
+                        <th scope="col">Sentiment<br/>Analysis</th>
+                        <th scope="col">Content<br/>Moderate</th>
+                        <th scope="col">Human<br/>Annotations</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {datasets_table.info.map(info => (
+                        <tr key={info.id}>
+                          <td key="td1" style={STYLE.td}>{info.name_dataset}</td>
+                          <td key="td2" style={STYLE.td}>{info.spanish_translation}</td>
+                          <td key="td3" style={STYLE.td}>{info.chinese_translation}</td>
+                          <td key="td4" style={STYLE.td}>{info.english_translation}</td>
+                          <td key="td5" style={STYLE.td}>{info.english_Back_translation}</td>
+                          <td key="td6" style={STYLE.td}>{info.paraphrases}</td>
+                          <td key="td7" style={STYLE.td}>{info.sentiment_analysis}</td>
+                          <td key="td8" style={STYLE.td}>{info.content_moderate}</td>
+                          <td key="td9" style={STYLE.td}>{info.human_annotations}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              ))}
+            </p>
+            <hr/>
+
+            <ul>
+              <li><b>Data Format</b></li>
+            </ul>
+            <p style={{marginLeft: 60 + 'px'}} align='justify'>
+                All data given follows the <a href="https://github.com/Mario-RC/dstc11_track4_robust_multilingual_metrics/blob/main/dstc11/track4-datasets-format.md">Data Formats</a> which provides guidelines on how to store, maintain and handle dialogue corpora.
             </p>
             <hr/>
 
@@ -226,7 +356,7 @@ class DSTC11 extends Component {
           <p>We gratefully acknowledge valuable efforts from Tencent AI Lab who supports Chinese translation and annotation of datasets by funding and infrastructure.</p>
           <p>Thanks to THU-CoAI (Conversational AI groups from Tsinghua University) for providing their Chinese datasets as part of the challenge data.</p>
           <p>Thanks to Unbabel for providing the COMET MTQE scores annotations as part of the challenge data. This contribution was supported by national funds through *Fundação para a Ciência e a Tecnologia* (FCT) with references PRT/BD/152198/2021 and UIDB/50021/2020, and by the P2020 program MAIA led by Unbabel (LISBOA-01-0247-FEDER-045909).</p>
-          <p>This research project is supported in part by Microsoft Azure Cognitive Services.</p>
+          <p>We also want to give thanks to MS Azure services (especially to Irving Kwong) for their sponsorship to continue processing new datasets that could be interesting for the dialogue community.</p>
           <p>This research project is supported by the NYU ChatEval Team led by João Sedoc.</p>
           <p>This research project is supported in part by a grant from Amazon to Alexander Rudnicky, Carnegie Mellon University.</p>
           <hr/>
@@ -277,6 +407,7 @@ class DSTC11 extends Component {
               <li>Zhou, H., Zheng, C., Huang, K., Huang, M., & Zhu, X. (2020). Kdconv: A chinese multi-domain dialogue dataset towards multi-turn knowledge-driven conversation. arXiv preprint arXiv:2004.04100.</li>
               <li>Wang, Y., Ke, P., Zheng, Y., Huang, K., Jiang, Y., Zhu, X., & Huang, M. (2020, October). A large-scale chinese short-text conversation dataset. In CCF International Conference on Natural Language Processing and Chinese Computing (pp. 91-103). Springer, Cham.</li>
               <li>Rei, R., Stewart, C., Farinha, A. C., & Lavie, A. (2020). COMET: A neural framework for MT evaluation. arXiv preprint arXiv:2009.09025.</li>
+              <li>Damodaran, P. (2021). Parrot: Paraphrase generation for NLU.</li>
               <li>Zhou, L., Gao, J., Li, D., & Shum, H. Y. (2020). The design and implementation of xiaoice, an empathetic social chatbot. Computational Linguistics, 46(1), 53-93.</li>
               <li>Bao, S., He, H., Wang, F., Wu, H., & Wang, H. (2019). Plato: Pre-trained dialogue generation model with discrete latent variable. arXiv preprint arXiv:1910.07931.</li>
             </ul>
@@ -296,7 +427,7 @@ DSTC11.getInitialProps = async function() {
     {
       id: 'provided_datasets_information',
       datasets: {
-        name: "Datasets Information and Statistics",
+        name: "",
         description: ""
       },
       info: [
@@ -310,8 +441,325 @@ DSTC11.getInitialProps = async function() {
       ]
     }
   ]
+
+  const provided_datasets_chanel = [
+    {
+      id: 'provided_datasets_chanel',
+      datasets: {
+        name: "",
+        description: "CHANEL dataset is Task 1 and Task 2 oriented. The source language is English."
+      },
+      info: [
+        {id: 'dbdc_dataset',
+        name_dataset: 'DBDC',
+        spanish_translation: '✔',
+        chinese_translation: '',
+        english_translation: '',
+        english_Back_translation: '✔',
+        paraphrases: '✔',
+        sentiment_analysis: '✔',
+        content_moderate: '✔',
+        human_annotations: ''},
+        {id: 'cmu_dog_dataset',
+        name_dataset: 'CMU_DoG',
+        spanish_translation: '✔',
+        chinese_translation: '',
+        english_translation: '',
+        english_Back_translation: '✔',
+        paraphrases: '✔',
+        sentiment_analysis: '✔',
+        content_moderate: '✔',
+        human_annotations: ''},
+        {id: 'cornell_movie_dialogs_dataset',
+        name_dataset: 'Cornell Movie-Dialogs',
+        spanish_translation: '✔',
+        chinese_translation: '',
+        english_translation: '',
+        english_Back_translation: '✔',
+        paraphrases: '✔',
+        sentiment_analysis: '✔',
+        content_moderate: '✔',
+        human_annotations: ''},
+        {id: 'dailydialog_dataset',
+        name_dataset: 'DailyDialog',
+        spanish_translation: '✔',
+        chinese_translation: '✔',
+        english_translation: '',
+        english_Back_translation: '✔',
+        paraphrases: '✔',
+        sentiment_analysis: '✔',
+        content_moderate: '✔',
+        human_annotations: ''},
+        {id: 'decode_dataset',
+        name_dataset: 'DECODE',
+        spanish_translation: '✔',
+        chinese_translation: '',
+        english_translation: '',
+        english_Back_translation: '✔',
+        paraphrases: '✔',
+        sentiment_analysis: '✔',
+        content_moderate: '✔',
+        human_annotations: ''},
+        {id: 'emotionlines_dataset',
+        name_dataset: 'EmotionLines',
+        spanish_translation: '✔',
+        chinese_translation: '',
+        english_translation: '',
+        english_Back_translation: '✔',
+        paraphrases: '✔',
+        sentiment_analysis: '✔',
+        content_moderate: '✔',
+        human_annotations: ''},
+        {id: 'empathicdialogues_dataset',
+        name_dataset: 'EmpathicDialogues',
+        spanish_translation: '✔',
+        chinese_translation: '✔',
+        english_translation: '',
+        english_Back_translation: '✔',
+        paraphrases: '✔',
+        sentiment_analysis: '✔',
+        content_moderate: '✔',
+        human_annotations: ''},
+        {id: 'holl_e_dataset',
+        name_dataset: 'Holl-E',
+        spanish_translation: '✔',
+        chinese_translation: '',
+        english_translation: '',
+        english_Back_translation: '✔',
+        paraphrases: '✔',
+        sentiment_analysis: '✔',
+        content_moderate: '✔',
+        human_annotations: ''},
+        {id: 'meena_dataset',
+        name_dataset: 'MEENA',
+        spanish_translation: '✔',
+        chinese_translation: '',
+        english_translation: '',
+        english_Back_translation: '✔',
+        paraphrases: '✔',
+        sentiment_analysis: '✔',
+        content_moderate: '✔',
+        human_annotations: ''},
+        {id: 'meld_dataset',
+        name_dataset: 'MELD',
+        spanish_translation: '✔',
+        chinese_translation: '',
+        english_translation: '',
+        english_Back_translation: '✔',
+        paraphrases: '✔',
+        sentiment_analysis: '✔',
+        content_moderate: '✔',
+        human_annotations: ''},
+        {id: 'metalwoz_dataset',
+        name_dataset: 'MetalWOz',
+        spanish_translation: '✔',
+        chinese_translation: '',
+        english_translation: '',
+        english_Back_translation: '✔',
+        paraphrases: '✔',
+        sentiment_analysis: '✔',
+        content_moderate: '✔',
+        human_annotations: ''},
+        {id: 'movie_dic_dataset',
+        name_dataset: 'Movie-DiC',
+        spanish_translation: '✔',
+        chinese_translation: '',
+        english_translation: '',
+        english_Back_translation: '✔',
+        paraphrases: '✔',
+        sentiment_analysis: '✔',
+        content_moderate: '✔',
+        human_annotations: ''},
+        {id: 'personachat_dataset',
+        name_dataset: 'PersonaChat',
+        spanish_translation: '✔',
+        chinese_translation: '✔',
+        english_translation: '',
+        english_Back_translation: '✔',
+        paraphrases: '✔',
+        sentiment_analysis: '✔',
+        content_moderate: '✔',
+        human_annotations: ''},
+        {id: 'sentimentliar_dataset',
+        name_dataset: 'SentimentLIAR',
+        spanish_translation: '✔',
+        chinese_translation: '',
+        english_translation: '',
+        english_Back_translation: '✔',
+        paraphrases: '✔',
+        sentiment_analysis: '✔',
+        content_moderate: '✔',
+        human_annotations: ''},
+        {id: 'switchboard_coherence_dataset',
+        name_dataset: 'Switchboard Coherence',
+        spanish_translation: '✔',
+        chinese_translation: '',
+        english_translation: '',
+        english_Back_translation: '✔',
+        paraphrases: '✔',
+        sentiment_analysis: '✔',
+        content_moderate: '✔',
+        human_annotations: ''},
+        {id: 'topical_chat_dataset',
+        name_dataset: 'Topical-Chat',
+        spanish_translation: '✔',
+        chinese_translation: '✔',
+        english_translation: '',
+        english_Back_translation: '✔',
+        paraphrases: '✔',
+        sentiment_analysis: '✔',
+        content_moderate: '✔',
+        human_annotations: ''},
+        {id: 'wizard_of_wikipedia_dataset',
+        name_dataset: 'Wizard of Wikipedia',
+        spanish_translation: '✔',
+        chinese_translation: '✔',
+        english_translation: '',
+        english_Back_translation: '✔',
+        paraphrases: '✔',
+        sentiment_analysis: '✔',
+        content_moderate: '✔',
+        human_annotations: ''},
+        {id: 'wochat_dataset',
+        name_dataset: 'WOCHAT',
+        spanish_translation: '✔',
+        chinese_translation: '',
+        english_translation: '',
+        english_Back_translation: '✔',
+        paraphrases: '✔',
+        sentiment_analysis: '✔',
+        content_moderate: '✔',
+        human_annotations: ''},
+      ]
+    }
+  ]
   
-  return { provided_datasets_information }
+  const provided_datasets_dstc10 = [
+    {
+      id: 'provided_datasets_dstc10',
+      datasets: {
+        name: "",
+        description: "DSTC10 dataset is Task 1 and Task 2 oriented. The source language is English."
+      },
+      info: [
+        {id: 'dstc6_dataset',
+        name_dataset: 'DSTC6',
+        spanish_translation: '✔',
+        chinese_translation: '✔',
+        english_translation: '',
+        english_Back_translation: '✔',
+        paraphrases: '✔',
+        sentiment_analysis: '✔',
+        content_moderate: '✔',
+        human_annotations: '✔'},
+        {id: 'dstc7_dataset',
+        name_dataset: 'DSTC7',
+        spanish_translation: '✔',
+        chinese_translation: '✔',
+        english_translation: '',
+        english_Back_translation: '✔',
+        paraphrases: '✔',
+        sentiment_analysis: '✔',
+        content_moderate: '✔',
+        human_annotations: '✔'},
+        {id: 'persona_chatlog_dataset',
+        name_dataset: 'Persona-Chatlog',
+        spanish_translation: '✔',
+        chinese_translation: '✔',
+        english_translation: '',
+        english_Back_translation: '✔',
+        paraphrases: '✔',
+        sentiment_analysis: '✔',
+        content_moderate: '✔',
+        human_annotations: '✔'},
+        {id: 'chateval_dataset',
+        name_dataset: 'ChatEval',
+        spanish_translation: '✔',
+        chinese_translation: '✔',
+        english_translation: '',
+        english_Back_translation: '✔',
+        paraphrases: '✔',
+        sentiment_analysis: '✔',
+        content_moderate: '✔',
+        human_annotations: '✔'},
+        {id: 'usr_dataset',
+        name_dataset: 'USR',
+        spanish_translation: '✔',
+        chinese_translation: '✔',
+        english_translation: '',
+        english_Back_translation: '✔',
+        paraphrases: '✔',
+        sentiment_analysis: '✔',
+        content_moderate: '✔',
+        human_annotations: '✔'},
+        {id: 'fed_dataset',
+        name_dataset: 'FED',
+        spanish_translation: '✔',
+        chinese_translation: '✔',
+        english_translation: '',
+        english_Back_translation: '✔',
+        paraphrases: '✔',
+        sentiment_analysis: '✔',
+        content_moderate: '✔',
+        human_annotations: '✔'},
+        {id: 'dstc10_dataset',
+        name_dataset: 'DSTC10',
+        spanish_translation: '✔',
+        chinese_translation: '✔',
+        english_translation: '',
+        english_Back_translation: '✔',
+        paraphrases: '✔',
+        sentiment_analysis: '✔',
+        content_moderate: '✔',
+        human_annotations: '✔'},
+      ]
+    }
+  ]
+
+  const provided_datasets_cdial = [
+    {
+      id: 'provided_datasets_cdial',
+      datasets: {
+        name: "",
+        description: "CDIAL dataset is Task 1 oriented. The source language is Chinese."
+      },
+      info: [
+        {id: 'ecm_dataset',
+        name_dataset: 'ECM',
+        spanish_translation: '',
+        chinese_translation: '',
+        english_translation: '✔',
+        english_Back_translation: '',
+        paraphrases: '',
+        sentiment_analysis: '',
+        content_moderate: '',
+        human_annotations: '✔'},
+        {id: 'kdconv_dataset',
+        name_dataset: 'KDCONV',
+        spanish_translation: '',
+        chinese_translation: '',
+        english_translation: '✔',
+        english_Back_translation: '',
+        paraphrases: '',
+        sentiment_analysis: '',
+        content_moderate: '',
+        human_annotations: '✔'},
+        {id: 'lccc_dataset',
+        name_dataset: 'LCCC',
+        spanish_translation: '',
+        chinese_translation: '',
+        english_translation: '✔',
+        english_Back_translation: '',
+        paraphrases: '',
+        sentiment_analysis: '',
+        content_moderate: '',
+        human_annotations: '✔'},
+      ]
+    }
+  ]
+
+  return { provided_datasets_information, provided_datasets_chanel, provided_datasets_dstc10, provided_datasets_cdial }
+
 };
 
 export default DSTC11;
