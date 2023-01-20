@@ -26,8 +26,9 @@ class DSTC11 extends Component {
           <h2 className="mt-5 font-weight-bold">Track 4: Robust and Multilingual Automatic Evaluation Metrics for Open-Domain Dialogue Systems</h2>
             <br/>
             <p>Click <a href="https://forms.office.com/r/rWgHUW9C8q">here</a> to register for DSTC11.T4.<span style={{color : 'green'}}> (now available)</span></p>
-            <p>Click <a href="https://my.chateval.org/dstc11_data/">here</a> to download DSTC11 data.<span style={{color : 'green'}}> (now available)</span></p>
-            <p>Click <a href="https://my.chateval.org/dstc11submit/">here</a> to submit your model.<span style={{color : 'red'}}> (coming soon)</span></p>
+            <p>Click <a href="https://my.chateval.org/dstc11_data/">here</a> to download DSTC11.T4 data.<span style={{color : 'green'}}> (now available)</span></p>
+            <p>Click <a href="https://my.chateval.org/dstc11submit/">here</a> to submit your model.<span style={{color : 'green'}}> (now available)</span></p>
+            <p>Click <a href="https://github.com/karthik19967829/DSTC11-Benchmark">here</a> to use the baseline model.<span style={{color : 'green'}}> (now available)</span></p>
             <hr/>
           
           <br/>
@@ -52,23 +53,60 @@ class DSTC11 extends Component {
               Participants can propose their own metric or optionally improve two baseline evaluation metrics: MDD-Eval (Zhang et al, 2021) or deep AM-FM (Zhang et al, 2020). A leaderboard in the ChatEval platform will be provided allowing participants to check their progress.
               <br/><br/>
               For each evaluation task, Spearman correlation will be computed to compare the proposed evaluation metrics against human judgments. A final average score will be calculated to rank the submitted evaluation metrics.
+              <br/><br/>
+              For more information check the <a href="https://drive.google.com/file/d/1B177R4_DJZ-KHu4D-E9oRELVl0G9Duu0/view">Track Proposal</a>.
+              <br/><br/>
+              See the <a href="https://github.com/Mario-RC/dstc11_robust_multilingual_metrics">Track GitHub</a> for more details.
             </p>
             <hr/>
 
             <ul>
-              <li><b>Provided Datasets</b></li>
+              <li><b>Task 1: Metrics for Multilingual Data</b></li>
             </ul>
             <p style={{marginLeft: 60 + 'px'}} align='justify'>
-              As development set, organizers will provide the following datasets (<a href="#annex-baselines-data-description">details in the Data Description section</a>) identified during the <a href="https://chateval.org/dstc10">DSTC10 Track 5</a> (Zhang et al, 2021), that sum up more than 35k turn-level human-annotations, which have been automatically translated to Spanish and Chinese, and back-translated both to English using <a href="https://azure.microsoft.com/en-us/products/cognitive-services/translator/">MS Azure</a> services.
+              In this task, the goal for participants is to propose effective automatic dialogue evaluation metrics that exhibit previously mentioned properties (section 2) and perform well on a multilingual setup (English, Spanish and Chinese). In concrete, participants will propose a single multilingual model obtaining high correlations with human-annotations when evaluated on multilingual dialogues (development set in section 2.1) and perform well on the hidden multilingual test set. Participants are expected to use pre-trained multilingual models and train them to predict multidimensional quality metrics by using self-supervised techniques and optionally fine-tune their system over a subset of the development data.
+              <br/><br/>
+              Finally, participants will then evaluate their models over the development and test sets, and expect to show similar performance, in terms of correlations with human-annotations on the English, Spanish and Chinese utterances. (Note: only dev and test sets will have human-annotations, and only test sets will be manually translated or back-translated/paraphrased to guarantee the correlations with the original human-annotations on the English data).
+            </p>
+            <hr/>
+
+            <ul>
+              <li><b>Task 2: Robust Metrics</b></li>
+            </ul>
+            <p style={{marginLeft: 60 + 'px'}} align='justify'>
+              In this task, the goal for participants is to propose robust metrics for automatic evaluation of just English dialogues that exhibit previously mentioned properties (section 2) while being robust when dealing with back-translated/paraphrased English sentences. The expected performance must be on par with the correlations with human-annotations obtained over the original sentences. As robustness criteria proposed, back-translated/paraphrased sentences should have the same semantic meaning as the original sentence, but different wording.
+              <br/><br/>
+              Additionally, participants will have the opportunity of testing robustness over alternative machine translations that the organizers will provide. Finally, the influence on the metric will be also evaluated when providing the back-translated/paraphrased current turn sentences instead of the original ones, always along with their respective back-translated/paraphrased context.
+              <br/><br/>
+              During the test phase, hidden and manually curated back-translated test data will be provided to participants to evaluate their proposed metrics.
+            </p>
+            <hr/>
+
+            <ul>
+              <li id="provided-datasets"><b>Provided Datasets</b></li>
+            </ul>
+            <p style={{marginLeft: 60 + 'px'}} align='justify'>
+              As development set, organizers will provide the following datasets (details in the GitHub section "<a href="https://github.com/Mario-RC/dstc11_track4_robust_multilingual_metrics/blob/main/dstc11/track4-provided-datasets.md#annex-existing-datasets-for-benchmarking">Annex: Existing Datasets for Benchmarking</a>") identified during the <a href="https://chateval.org/dstc10">DSTC10 Track 5</a> (Zhang et al, 2021), that sum up more than 35k turn-level human-annotations, which have been automatically translated to Spanish and Chinese, and back-translated both to English using <a href="https://azure.microsoft.com/en-us/products/cognitive-services/translator/">MS Azure</a> services.
               <br/><br/>
               <ul>
-                <li><b>DSTC6 human evaluation data</b> (Hori et al., 2017)</li>
-                <li><b>DSTC7 human evaluation data</b> (Galley et al., 2019)</li>
-                <li><b>Persona-Chatlog dataset</b> (See et al., 2019)</li>
-                <li><b>ChatEval dataset</b> (Sedoc et al., 2019)</li>
-                <li><b>USR dataset</b> (Mehri & Eskenazi, 2020)</li>
-                <li><b>FED dataset</b> (Mehri & Eskenazi, 2020)</li>
-                <li><b>DSTC10 dataset</b> (Zhang et al., 2021)</li>
+                <li><b>CONVAI2-GRADE (CG)</b> (Huang et al., 2020)</li>
+                <li><b>DAILYDIALOG-GRADE (DH)</b> (Huang et al., 2020)</li>
+                <li><b>DAILYDIALOG-GUPTA (DG)</b> (Gupta et al., 2019)</li>
+                <li><b>DAILYDIALOG-ZHAO (DZ)</b> (Zhao et al., 2020)</li>
+                <li><b>DSTC7 (D7)</b> (Galley et al., 2019)</li>
+                <li><b>EMPATHETIC-GRADE (EG)</b> (Huang et al., 2020)</li>
+                <li><b>FED-DIAL (FD)</b> (Mehri & Eskenazi, 2020a)</li>
+                <li><b>FED-TURN (FT)</b> (Mehri & Eskenazi, 2020a)</li>
+                <li><b>HUMOD (HM)</b> (Merdivan et al., 2020)</li>
+                <li><b>PERSONA-SEE (PS)</b> (See et al., 2019)</li>
+                <li><b>PERSONA-USR (PU)</b> (Mehri & Eskenazi, 2020b)</li>
+                <li><b>PERSONA-ZHAO (PZ)</b> (Zhao et al., 2020)</li>
+                <li><b>TOPICAL-USR (TU)</b> (Mehri & Eskenazi, 2020b)</li>
+                {/*
+                <li><b>JSALT (JS)</b> (Rudnicky et al., 2020)</li>
+                <li><b>CHATEVAL (CS)</b> (Sedoc et al., 2019)</li>
+                <li><b>DSTC10 (D10)</b> (Zhang et al., 2021)</li>
+                */}
               </ul>
               This development data can help participants to check the multilingualism or robustness capabilities of their trained models in terms of correlations with human-annotations. Additional databases, not mentioned here, will be added when available to increase the size of the benchmarking.
               <br/><br/>
@@ -271,24 +309,119 @@ class DSTC11 extends Component {
             <hr/>
 
             <ul>
-              <li><b>Task 1: Metrics for Multilingual Data</b></li>
+              <li><b>Baseline Model</b></li>
             </ul>
             <p style={{marginLeft: 60 + 'px'}} align='justify'>
-              In this task, the goal for participants is to propose effective automatic dialogue evaluation metrics that exhibit previously mentioned properties (section 2) and perform well on a multilingual setup (English, Spanish and Chinese). In concrete, participants will propose a single multilingual model obtaining high correlations with human-annotations when evaluated on multilingual dialogues (development set in section 2.1) and perform well on the hidden multilingual test set. Participants are expected to use pre-trained multilingual models and train them to predict multidimensional quality metrics by using self-supervised techniques and optionally fine-tune their system over a subset of the development data.
+              The purpose of this project is to identify a baseline classifier for DSTC-11. The default choice is Deep AM-FM (Zhang et al, 2020) (used for DSTC-10 and previously).
               <br/><br/>
-              Finally, participants will then evaluate their models over the development and test sets, and expect to show similar performance, in terms of correlations with human-annotations on the English, Spanish and Chinese utterances. (Note: only dev and test sets will have human-annotations, and only test sets will be manually translated or back-translated/paraphrased to guarantee the correlations with the original human-annotations on the English data).
+              This project will investigate more recent approaches, based on fine-tuned large language models. Zhang et al note that their approach may be limited due to domain specificity. On the other hand LLMs are trained from large corpora that in priciple are less domain-dependent. This is an empirical question.
+              <br/><br/>
+              All information related to the baseline model, such as code and data, can be found in this <a href="https://github.com/karthik19967829/DSTC11-Benchmark">GitHub</a> repository.
             </p>
             <hr/>
 
             <ul>
-              <li><b>Task 2: Robust Metrics</b></li>
+              <li><b>Automatic Evaluation Leaderboard</b></li>
             </ul>
             <p style={{marginLeft: 60 + 'px'}} align='justify'>
-              In this task, the goal for participants is to propose robust metrics for automatic evaluation of just English dialogues that exhibit previously mentioned properties (section 2) while being robust when dealing with back-translated/paraphrased English sentences. The expected performance must be on par with the correlations with human-annotations obtained over the original sentences. As robustness criteria proposed, back-translated/paraphrased sentences should have the same semantic meaning as the original sentence, but different wording.
+              The leaderboard shows names of submissions and their corresponding Spearman Correlation Coefficients for each development dataset. The name of each column corresponds to an <a href="https://chateval.org/dstc11#provided-datasets">abbreviation</a> of the development datasets respectively.
               <br/><br/>
-              Additionally, participants will have the opportunity of testing robustness over alternative machine translations that the organizers will provide. Finally, the influence on the metric will be also evaluated when providing the back-translated/paraphrased current turn sentences instead of the original ones, always along with their respective back-translated/paraphrased context.
-              <br/><br/>
-              During the test phase, hidden and manually curated back-translated test data will be provided to participants to evaluate their proposed metrics.
+              {this.props.multilingual_dev.map(evaluation => (
+                <div key={evaluation.id}>
+                  <h5 className="card-title"> {evaluation.evaldev.name} </h5>
+                  <p> {evaluation.evaldev.description} </p>
+                  <table className="table" style={STYLE.cell}>
+                    <thead>
+                        <tr>
+                          <th scope="col">System</th>
+                          <th scope="col">CG</th>
+                          <th scope="col">DH</th>
+                          <th scope="col">DG</th>
+                          <th scope="col">DZ</th>
+                          <th scope="col">D7</th>
+                          <th scope="col">EG</th>
+                          <th scope="col">FD</th>
+                          <th scope="col">FT</th>
+                          <th scope="col">HM</th>
+                          <th scope="col">PS</th>
+                          <th scope="col">PU</th>
+                          <th scope="col">PZ</th>
+                          <th scope="col">TU</th>
+                          <th scope="col">AVG</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                      {evaluation.results.map(result => (
+                          <tr key={result.id}>
+                            <td key="td01" style={STYLE.td}>{result.sys}</td>
+                            <td key="td02" style={STYLE.td}>{result.cg}</td>
+                            <td key="td03" style={STYLE.td}>{result.dh}</td>
+                            <td key="td04" style={STYLE.td}>{result.dg}</td>
+                            <td key="td05" style={STYLE.td}>{result.dz}</td>
+                            <td key="td06" style={STYLE.td}>{result.d7}</td>
+                            <td key="td07" style={STYLE.td}>{result.eg}</td>
+                            <td key="td08" style={STYLE.td}>{result.fd}</td>
+                            <td key="td09" style={STYLE.td}>{result.ft}</td>
+                            <td key="td10" style={STYLE.td}>{result.hm}</td>
+                            <td key="td11" style={STYLE.td}>{result.ps}</td>
+                            <td key="td12" style={STYLE.td}>{result.pu}</td>
+                            <td key="td13" style={STYLE.td}>{result.pz}</td>
+                            <td key="td14" style={STYLE.td}>{result.tu}</td>
+                            <td key="td15" style={STYLE.td}>{result.avgs}</td>
+                          </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              ))}
+              {this.props.robust_dev.map(evaluation => (
+                <div key={evaluation.id}>
+                  <h5 className="card-title"> {evaluation.evaldev.name} </h5>
+                  <p> {evaluation.evaldev.description} </p>
+                  <table className="table" style={STYLE.cell}>
+                    <thead>
+                        <tr>
+                          <th scope="col">System</th>
+                          <th scope="col">CG</th>
+                          <th scope="col">DH</th>
+                          <th scope="col">DG</th>
+                          <th scope="col">DZ</th>
+                          <th scope="col">D7</th>
+                          <th scope="col">EG</th>
+                          <th scope="col">FD</th>
+                          <th scope="col">FT</th>
+                          <th scope="col">HM</th>
+                          <th scope="col">PS</th>
+                          <th scope="col">PU</th>
+                          <th scope="col">PZ</th>
+                          <th scope="col">TU</th>
+                          <th scope="col">AVG</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                      {evaluation.results.map(result => (
+                          <tr key={result.id}>
+                            <td key="td01" style={STYLE.td}>{result.sys}</td>
+                            <td key="td02" style={STYLE.td}>{result.cg}</td>
+                            <td key="td03" style={STYLE.td}>{result.dh}</td>
+                            <td key="td04" style={STYLE.td}>{result.dg}</td>
+                            <td key="td05" style={STYLE.td}>{result.dz}</td>
+                            <td key="td06" style={STYLE.td}>{result.d7}</td>
+                            <td key="td07" style={STYLE.td}>{result.eg}</td>
+                            <td key="td08" style={STYLE.td}>{result.fd}</td>
+                            <td key="td09" style={STYLE.td}>{result.ft}</td>
+                            <td key="td10" style={STYLE.td}>{result.hm}</td>
+                            <td key="td11" style={STYLE.td}>{result.ps}</td>
+                            <td key="td12" style={STYLE.td}>{result.pu}</td>
+                            <td key="td13" style={STYLE.td}>{result.pz}</td>
+                            <td key="td14" style={STYLE.td}>{result.tu}</td>
+                            <td key="td15" style={STYLE.td}>{result.avgs}</td>
+                          </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              ))}
             </p>
             <hr/>
 
@@ -307,14 +440,7 @@ class DSTC11 extends Component {
             <hr/>
           
           <br/>
-          <h3 className="font-weight-bold" id="annex-baselines-data-description">Baselines and Data Description</h3>
-            <br/>
-            <p>For more information check the <a href="https://drive.google.com/file/d/1B177R4_DJZ-KHu4D-E9oRELVl0G9Duu0/view">Track Proposal</a>.</p>
-            <p>See the <a href="https://github.com/Mario-RC/dstc11_robust_multilingual_metrics">Track GitHub</a> for more details.</p>
-            <hr/>
-          
-          <br/>
-          <h3 className="font-weight-bold" id="annex-registration-details">Registration Details</h3>
+          <h3 className="font-weight-bold">Registration Details</h3>
             <br/>
             <p>To become an official DSTC11 Track 4 participant, you must be registered at this <a href="https://forms.office.com/r/rWgHUW9C8q">Microsoft Form</a>. Once registered, you will be able to download the datasets and readme documents as well as submit your results at <a href="#">https://chateval.org/dstc11</a>.</p>
             <p>There must be only one team per laboratory or research group. The members of the same team must be under a single registration, that is, the team leader must register his entire team by giving their e-mail addresses in addition to his own.</p>
@@ -322,7 +448,7 @@ class DSTC11 extends Component {
           <hr/>
 
           <br/>
-          <h3 className="font-weight-bold" id="annex-registration-details">Submission Details</h3>
+          <h3 className="font-weight-bold">Submission Details</h3>
             <br/>
             <p>Before submitting your model, do not forget to <a href="https://my.chateval.org/accounts/signup/">Sign Up</a> on the ChatEval website. Only the team leader must register on ChatEval, with the same name and email address entered in the Microsoft Form. Once you have signed up, you can <a href="https://my.chateval.org/accounts/login/">Log In</a> and <a href="https://my.chateval.org/dstc11submit/">Submit</a> your models.</p>
             <p>You can make as many submissions as you want, but only the last 5 submitted will be valid to participate in the competition. That is, only the last 5 models submitted in ChatEval will be tested and will count in the competition ranking. Only the models submitted by the team leader registered in the Microsoft Form will be considered and tested during the competition.</p>
@@ -359,6 +485,9 @@ class DSTC11 extends Component {
           <p>We also want to give thanks to MS Azure services (especially to Irving Kwong) for their sponsorship to continue processing new datasets that could be interesting for the dialogue community.</p>
           <p>This research project is supported by the NYU ChatEval Team led by João Sedoc.</p>
           <p>This research project is supported in part by a grant from Amazon to Alexander Rudnicky, Carnegie Mellon University.</p>
+          <p>Thanks to Karthik Ganesan, Sarik Ghazarian, James Hagerty, Zhang Chen and Alex Rudnicky for developing the baseline model as part of the challenge tasks.</p>
+          <p>This work is supported by the European Commission through Project ASTOUND (101071191 — HORIZON-EIC-2021-PATHFINDERCHALLENGES-01). <img src="./static/img/Logo_EC.png" alt="Logo_EC" style={{width: 375 + 'px', height : 75 + 'px'}}/>
+          </p>
           <hr/>
 
           <br/>
@@ -376,15 +505,19 @@ class DSTC11 extends Component {
               <li>Zhang, C., D'Haro, L. F., Friedrichs, T., & Li, H. (2021). MDD-Eval: Self-Training on Augmented Data for Multi-Domain Dialogue Evaluation. arXiv preprint arXiv:2112.07194.</li>
               <li>Zhang, C., D'Haro, L. F., Banchs, R. E., Friedrichs, T., & Li, H. (2020). Deep AM-FM: Toolkit for Automatic Dialogue Evaluation. In Conversational Dialogue Systems for the Next Decade (pp. 53-69). Springer, Singapore.</li>
               <li>Zhang, C., Sadoc, J., D'Haro, L. F., Banchs, R., & Rudnicky, A. (2021). Automatic Evaluation and Moderation of Open-domain Dialogue Systems. arXiv preprint arXiv:2111.02110.</li>
-              <li>Hori, C., & Hori, T. (2017). End-to-end conversation modeling track in DSTC6. arXiv preprint arXiv:1706.07440.</li>
+              {/* <li>Hori, C., & Hori, T. (2017). End-to-end conversation modeling track in DSTC6. arXiv preprint arXiv:1706.07440.</li> */}
+              <li>Huang, L., Ye, Z., Qin, J., Lin, L., & Liang, X. (2020, November). GRADE: Automatic Graph-Enhanced Coherence Metric for Evaluating Open-Domain Dialogue Systems. In Proceedings of the 2020 Conference on Empirical Methods in Natural Language Processing (EMNLP) (pp. 9230-9240).</li>
+              <li>Gupta, P., Mehri, S., Zhao, T., Pavel, A., Eskenazi, M., & Bigham, J. P. (2019, September). Investigating Evaluation of Open-Domain Dialogue Systems With Human Generated Multiple References. In Proceedings of the 20th Annual SIGdial Meeting on Discourse and Dialogue (pp. 379-391).</li>
+              <li>Zhao, T., Lala, D., & Kawahara, T. (2020, July). Designing Precise and Robust Dialogue Response Evaluators. In Proceedings of the 58th Annual Meeting of the Association for Computational Linguistics (pp. 26-33).</li>
               <li>Galley, M., Brockett, C., Gao, X., Gao, J., & Dolan, B. (2019). Grounded response generation task at dstc7. In AAAI Dialog System Technology Challenges Workshop.</li>
-              <li>See, A., Roller, S., Kiela, D., & Weston, J. (2019). What makes a good conversation? how controllable attributes affect human judgments. arXiv preprint arXiv:1902.08654.</li>
-              <li>Sedoc, J., Ippolito, D., Kirubarajan, A., Thirani, J., Ungar, L., & Callison-Burch, C. (2019, June). Chateval: A tool for chatbot evaluation. In Proceedings of the 2019 conference of the North American chapter of the association for computational linguistics (demonstrations) (pp. 60-65).</li>
-              <li>Vinyals, O., & Le, Q. (2015). A neural conversational model. arXiv preprint arXiv:1506.05869.</li>
-              <li>Lee, S., Lim, H., & Sedoc, J. (2020). An evaluation protocol for generative conversational systems. arXiv preprint arXiv:2010.12741.</li>
+              <li>Mehri, S., & Eskenazi, M. (2020, July). Unsupervised Evaluation of Interactive Dialog with DialoGPT. In Proceedings of the 21th Annual Meeting of the Special Interest Group on Discourse and Dialogue (pp. 225-235).</li>
+              <li>Merdivan, E., Singh, D., Hanke, S., Kropf, J., Holzinger, A., & Geist, M. (2020). Human annotated dialogues dataset for natural conversational agents. Applied Sciences, 10(3), 762.</li>
+              <li>See, A., Roller, S., Kiela, D., & Weston, J. (2019, June). What makes a good conversation? How controllable attributes affect human judgments. In Proceedings of the 2019 Conference of the North American Chapter of the Association for Computational Linguistics: Human Language Technologies, Volume 1 (Long and Short Papers) (pp. 1702-1723).</li>
               <li>Mehri, S., & Eskenazi, M. (2020). USR: An Unsupervised and Reference Free Evaluation Metric for Dialog Generation. arXiv preprint arXiv:2005.00456.</li>
-              <li>Mehri, S., & Eskenazi, M. (2020, July). Unsupervised Evaluation of Interactive Dialog with DialoGPT. In Proc. of the 21th Annual Meeting of the Special Interest Group on Discourse and Dialogue (pp. 225-235).</li>
               <li>Rudnicky, A., Banchs, R., D'Haro, L. F., Sedoc, J., Chen, Z., Rodríguez-Cantelar, M., Koh, A., & others. (2020). CHANEL-Metrics: Chat/Dialogue Modeling and Evaluation report. In 2020 Seventh Frederick Jelinek Memorial Summer Workshop.</li>
+              {/* <li>Sedoc, J., Ippolito, D., Kirubarajan, A., Thirani, J., Ungar, L., & Callison-Burch, C. (2019, June). Chateval: A tool for chatbot evaluation. In Proceedings of the 2019 conference of the North American chapter of the association for computational linguistics (demonstrations) (pp. 60-65).</li>
+              <li>Vinyals, O., & Le, Q. (2015). A neural conversational model. arXiv preprint arXiv:1506.05869.</li>
+              <li>Lee, S., Lim, H., & Sedoc, J. (2020). An evaluation protocol for generative conversational systems. arXiv preprint arXiv:2010.12741.</li> */}
               <li>Higashinaka, R., Funakoshi, K., Kobayashi, Y., & Inaba, M. (2016, May). The dialogue breakdown detection challenge: Task description, datasets, and evaluation metrics. In Proceedings of the Tenth International Conference on Language Resources and Evaluation (LREC'16) (pp. 3146-3150).</li>
               <li>Zhou, K., Prabhumoye, S., & Black, A. W. (2018). A dataset for document grounded conversations. arXiv preprint arXiv:1809.07358.</li>
               <li>Danescu-Niculescu-Mizil, C., & Lee, L. (2011). Chameleons in imagined conversations: A new approach to understanding coordination of linguistic style in dialogs. arXiv preprint arXiv:1106.3077.</li>
@@ -758,7 +891,85 @@ DSTC11.getInitialProps = async function() {
     }
   ]
 
-  return { provided_datasets_information, provided_datasets_chanel, provided_datasets_dstc10, provided_datasets_cdial }
+  const multilingual_dev= [
+    {
+      id: 'multilingual_dev',
+      evaldev: { 
+        name: "Task 1: Metrics for Multilingual Data (development)",
+        description: ""
+      },
+      results: [
+        {
+          id: 'es_result',
+          sys: 'AM-FM ES',
+          cg: '0.3094',
+          dh: '0.1053',
+          dg: '0.2146',
+          dz: '0.1170',
+          d7: '0.2317',
+          eg: '0.2001',
+          fd: '0.1172',
+          ft: '-0.0120',
+          hm: '0.1019',
+          ps: '0.0236',
+          pu: '0.0634',
+          pz: '0.4118',
+          tu: '0.1086',
+          avgs: '0.1551'
+        },
+        {
+          id: 'zh_result',
+          sys: 'AM-FM ZH',
+          cg: '0.2989',
+          dh: '0.0873',
+          dg: '0.2382',
+          dz: '0.1391',
+          d7: '0.2206',
+          eg: '0.2115',
+          fd: '0.0819',
+          ft: '-0.0254',
+          hm: '0.0990',
+          ps: '0.0198',
+          pu: '0.0849',
+          pz: '0.3821',
+          tu: '0.0849',
+          avgs: '0.1518'
+        },
+      ]
+    }
+  ]
+
+  const robust_dev= [
+    {
+      id: 'robust_dev',
+      evaldev: { 
+        name: "Task 2: Robust Metrics (development)",
+        description: ""
+      },
+      results: [
+        {
+          id: 'ro_result',
+          sys: 'AM-FM',
+          cg: '0.2842',
+          dh: '0.0512',
+          dg: '0.2879',
+          dz: '0.1356',
+          d7: '0.0374',
+          eg: '0.2452',
+          fd: '0.1243',
+          ft: '-0.0039',
+          hm: '0.1080',
+          ps: '0.0192',
+          pu: '0.0730',
+          pz: '0.4241',
+          tu: '0.0872',
+          avgs: '0.1447'
+        },
+      ]
+    }
+  ]
+
+  return { provided_datasets_information, provided_datasets_chanel, provided_datasets_dstc10, provided_datasets_cdial, multilingual_dev, robust_dev }
 
 };
 
