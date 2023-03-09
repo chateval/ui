@@ -145,9 +145,9 @@ class DSTC11 extends Component {
               <br/><br/>
               Regarding the paraphrases, all the original English sentences of each dataset will have multiple paraphrases, as well as annotations so that each participant can evaluate the quality of each paraphrase. The model used will be <a href="https://github.com/jsedoc/Parrot_Paraphraser">PARROT</a> (Damodaran P., 2021).
               <br/><br/>
-              Additionally, ~3k random H-H turns (~1k dialogues) of CDial in Chinese were manually annotated by Tencent AI. Also, ~5k new H-C Chinese turns (~500 dialogues) were generated with three different SotA chatbots (Tencent's model, Microsoft's Xiaoice (Zhou et al., 2020) and Baidu's Plato (Bao et al., 2019)). Both turn-level and dialog-level annotations were manually annotated by Tencent AI.
+              Additionally, ~3k random H-H turns (~1k dialogues) of CDial in Chinese were manually annotated by Tencent AI. Also, ~5k new H-C Chinese turns (~500 dialogues) were generated with three different SotA chatbots (Tencent's model, Microsoft's Xiaoice (Zhou et al., 2020) and Baidu's Plato (Bao et al., 2019)). Both turn-level and dialogue-level annotations were manually annotated by Tencent AI.
               <br/><br/>
-              During the test phase, a new set of 2k turn-level (~700 dialog-level) manually curated multilingual corpus (Spanish and Chinese) along with their turn-level and dialog-level human evaluation annotations will be provided to participants to test models for both tasks. This corpus will be manually checked to guarantee its quality and high correlation with the original dialogues.
+              During the test phase, a new set of 2k turn-level (~700 dialogue-level) manually curated multilingual corpus (Spanish and Chinese) along with their turn-level and dialogue-level human evaluation annotations will be provided to participants to test models for both tasks. This corpus will be manually checked to guarantee its quality and high correlation with the original dialogues.
               <br/><br/>
               Furthermore, in order to check the generalization capabilities of the proposed metrics from the participant, the test data will include a new dataset of human-chatbot interactions with ~2k turns (~60 dialogues) and the following dimensions (annotations) to evaluate:
               <br/><br/>
@@ -519,8 +519,17 @@ class DSTC11 extends Component {
           <h3 className="font-weight-bold">Submission Details</h3>
             <br/>
             <p>Before submitting your model, do not forget to <a href="https://my.chateval.org/accounts/signup/">Sign Up</a> on the ChatEval website. Only the team leader must register on ChatEval, with the same name and email address entered in the Microsoft Form. Once you have signed up, you can <a href="https://my.chateval.org/accounts/login/">Log In</a> and <a href="https://my.chateval.org/dstc11submit/">Submit</a> your models.</p>
-            <p>You can create and submit a single model for both tasks, or a different model for each task.</p>
-            <p>You can make as many submissions as you want, but only the last 5 submitted will be valid to participate in the competition. That is, only the last 5 models submitted in ChatEval will be tested and will count in the competition ranking. Only the models submitted by the team leader registered in the Microsoft Form will be considered and tested during the competition. More precisely, if you create a single model for both tasks, only the last 5 models will be taken into account. In case of making one model for each task, the last 5 models submitted for each task will be taken into account. Please specify clearly in the model name for which task the model is intended, or if it is intended for both tasks.</p>
+            <p>There are four different evaluations for the models presented, namely:</p>
+            <ul>
+              <li>Task 1 - Turn-Level</li>
+              <li>Task 1 - Dialogue-Level</li>
+              <li>Task 2 - Turn-Level</li>
+              <li>Task 2 - Dialogue-Level</li>
+            </ul>
+          <p>Each task has annotations at turn-level and dialogue-level, so the models will be evaluated separately at turn-level and dialogue-level independently for each task, they will not be taken into account together at any level. That is, for Task 1 the models at turn-level and at dialogue-level will be evaluated separately, likewise, for Task 2 the models at turn-level and at dialogue-level will be evaluated separately.</p>
+          <p>If you want, you can participate in one, several or all of the evaluations. Whether you only want to participate in one, several or all of the evaluations, the scores obtained will be independent, unrelated to the other scores, and will not be combined for the final score. There will be a table with the scores obtained for each of the 4 different evaluations.</p>
+          <p>You can make as many submissions as you want for each evaluation, but only the last 5 models submitted in ChatEval will be tested and will count in the ranking to participate in the competition. Moreover, only the models submitted by the team leader registered in the Microsoft form will be taken into account and tested during the competition.</p>
+          <p>More precisely, in case of creating a model for each evaluation, the last 5 models submitted for each evaluation will be taken into account. If a single model is submitted for multiple or all evaluations, only the last 5 models submitted for those evaluations will be taken into account. Please specify clearly in the model name which evaluation it is intended for, or if it is intended for multiple evaluations.</p>
           <hr/>
 
           <br/>
