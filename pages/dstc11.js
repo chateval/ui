@@ -526,7 +526,6 @@ class DSTC11 extends Component {
               <li><b>Training/Validation data release</b>: Dec 14, 2022</li>
               <li><b>Test data release</b>: Mar 29, 2023</li>
               <li><b>Entry submission deadline</b>: Apr 3, 2023</li>
-              <li><b>Submission of final results</b>: Apr 6, 2023</li>
               <li><b>Final result announcement</b>: Apr 14, 2023</li>
               <li><b>Paper submission</b>: From April to May in 2023</li>
               <li><b>Workshop</b>: July, August or September in 2023</li>
