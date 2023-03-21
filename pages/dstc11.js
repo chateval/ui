@@ -149,12 +149,7 @@ class DSTC11 extends Component {
               <br/><br/>
               During the test phase, a new set of 2k turn-level (~700 dialogue-level) manually curated multilingual corpus (Spanish and Chinese) along with their turn-level and dialogue-level human evaluation annotations will be provided to participants to test models for both tasks. This corpus will be manually checked to guarantee its quality and high correlation with the original dialogues.
               <br/><br/>
-              Furthermore, in order to check the generalization capabilities of the proposed metrics from the participant, the test data will include a new dataset of human-chatbot interactions with ~2k turns (~60 dialogues) and the following dimensions (annotations) to evaluate:
-              <br/><br/>
-              <ul>
-                <li>Turn-level: Relevant, Appropriateness and Content Richness.</li>
-                <li>Dialogue-level: Overall, Coherence and Likeability/Engageness.</li>
-              </ul>
+              Furthermore, in order to check the generalization capabilities of the proposed metrics from the participant, the test data will include a new dataset of human-chatbot interactions with ~2k turns (~60 dialogues).
             </p>
             <hr/>
 
@@ -375,6 +370,37 @@ class DSTC11 extends Component {
             <hr/>
 
             <ul>
+              <li id="provided-datasets"><b>Dimensions Evaluation</b></li>
+            </ul>
+            <p style={{marginLeft: 60 + 'px'}} align='justify'>
+              Considering the annotations available in the development data, the test data will have the following dimensions (annotations) to evaluate in both Task 1 (English, Chinese and Spanish) and Task 2:
+              <br/><br/>
+              <ul>
+                <li><b>Turn-level</b>: Appropriateness, Content Richness, Grammatical Correctness and Relevance.</li>
+                <li><b>Dialogue-level</b>: Coherence, Engageness/Likeability, Informativeness and Overall.</li>
+              </ul>
+              The annotations will be evaluated and indicated individually, discriminating by dataset and language. In addition, a global score will be estimated by grouping all dimensions. This global value will be calculated separately at turn-level and dialogue-level for each task.
+              <br/><br/>
+              A brief description of each dimension (Mehri et al., 2022) is shown below.
+              <br/><br/>
+              Turn-level:
+              <ul>
+                <li><b>Appropriateness</b> - The response is appropriate given the preceding dialogue.</li>
+                <li><b>Content Richness</b> - The response is informative, with long sentences including multiple entities and conceptual or emotional words.</li>
+                <li><b>Grammatical Correctness</b> - Responses are free of grammatical and semantic errors.</li>
+                <li><b>Relevance</b> - Responses are on-topic with the immediate dialog history.</li>
+              </ul>
+              Dialogue-level:
+              <ul>
+                <li><b>Coherence</b> - Throughout the dialog, is the system maintaining a good conversation flow.</li>
+                <li><b>Engageness/Likeability</b> - Throughout the dialogue, the system displays a likeable personality.</li>
+                <li><b>Informativeness</b> - Throughout the dialog, the system provides unique and non-generic information.</li>
+                <li><b>Overall</b> - The overall quality of and satisfaction with the dialog.</li>
+              </ul>
+            </p>
+            <hr/>
+
+            <ul>
               <li><b>Automatic Evaluation Leaderboard</b></li>
             </ul>
             <p style={{marginLeft: 60 + 'px'}} align='justify'>
@@ -497,12 +523,12 @@ class DSTC11 extends Component {
           <h3 className="font-weight-bold">Schedule</h3>
             <br/>
             <ul>
-              <li><b>Training/Validation data release</b>: From November to December in 2022</li>
-              <li><b>Test data release</b>: Middle of March in 2023</li>
-              <li><b>Entry submission deadline</b>: Middle of March in 2023</li>
-              <li><b>Submission of final results</b>: End of March in 2023</li>
-              <li><b>Final result announcement</b>: Early of April in 2023</li>
-              <li><b>Paper submission</b>: From March to May in 2023</li>
+              <li><b>Training/Validation data release</b>: Dec 14, 2022</li>
+              <li><b>Test data release</b>: Mar 29, 2023</li>
+              <li><b>Entry submission deadline</b>: Apr 3, 2023</li>
+              <li><b>Submission of final results</b>: Apr 6, 2023</li>
+              <li><b>Final result announcement</b>: Apr 14, 2023</li>
+              <li><b>Paper submission</b>: From April to May in 2023</li>
               <li><b>Workshop</b>: July, August or September in 2023</li>
             </ul>
             <hr/>
@@ -513,60 +539,67 @@ class DSTC11 extends Component {
             <p>To become an official DSTC11 Track 4 participant, you must be registered at this <a href="https://forms.office.com/r/rWgHUW9C8q">Microsoft Form</a>. Once registered, you will be able to download the datasets and readme documents as well as submit your results at <a href="#">https://chateval.org/dstc11</a>.</p>
             <p>There must be only one team per laboratory or research group. The members of the same team must be under a single registration, that is, the team leader must register his entire team by giving their e-mail addresses in addition to his own.</p>
             <p>Any updates and information about the tracks will be posted on the <a href="https://dstc11.dstc.community/">DSTC11 official website</a>, or check the <a href="https://groups.google.com/a/dstc.community/g/list">DSTC Mailing List</a>.</p>
-          <hr/>
+            <hr/>
 
           <br/>
           <h3 className="font-weight-bold">Submission Details</h3>
             <br/>
-            <p>Before submitting your model, do not forget to <a href="https://my.chateval.org/accounts/signup/">Sign Up</a> on the ChatEval website. Only the team leader must register on ChatEval, with the same name and email address entered in the Microsoft Form. Once you have signed up, you can <a href="https://my.chateval.org/accounts/login/">Log In</a> and <a href="https://my.chateval.org/dstc11submit/">Submit</a> your models.</p>
-            <p>There are four different evaluations for the models presented, namely:</p>
+            <p>Before submitting your results, do not forget to <a href="https://my.chateval.org/accounts/signup/">Sign Up</a> on the ChatEval website. Only the team leader must register on ChatEval, with the same name and email address entered in the Microsoft Form. Once you have signed up, you can <a href="https://my.chateval.org/accounts/login/">Log In</a> and <a href="https://my.chateval.org/dstc11submit/">Submit</a> your evaluations.</p>
+            <p>There are four different evaluations to test the models, namely:</p>
             <ul>
               <li>Task 1 - Turn-Level</li>
               <li>Task 1 - Dialogue-Level</li>
               <li>Task 2 - Turn-Level</li>
               <li>Task 2 - Dialogue-Level</li>
             </ul>
-          <p>Each task has annotations at turn-level and dialogue-level, so the models will be evaluated separately at turn-level and dialogue-level independently for each task, they will not be taken into account together at any level. That is, for Task 1 the models at turn-level and at dialogue-level will be evaluated separately, likewise, for Task 2 the models at turn-level and at dialogue-level will be evaluated separately.</p>
-          <p>If you want, you can participate in one, several or all of the evaluations. Whether you only want to participate in one, several or all of the evaluations, the scores obtained will be independent, unrelated to the other scores, and will not be combined for the final score. There will be a table with the scores obtained for each of the 4 different evaluations.</p>
-          <p>You can make as many submissions as you want for each evaluation, but only the last 5 models submitted in ChatEval will be tested and will count in the ranking to participate in the competition. Moreover, only the models submitted by the team leader registered in the Microsoft form will be taken into account and tested during the competition.</p>
-          <p>More precisely, in case of creating a model for each evaluation, the last 5 models submitted for each evaluation will be taken into account. If a single model is submitted for multiple or all evaluations, only the last 5 models submitted for those evaluations will be taken into account. Please specify clearly in the model name which evaluation it is intended for, or if it is intended for multiple evaluations.</p>
-          <hr/>
+            <p>Each task has annotations at turn-level and dialogue-level, so the models will be evaluated separately at turn-level and dialogue-level independently for each task, they will not be taken into account together at any level. That is, for Task 1 the models at turn-level and at dialogue-level will be evaluated separately, likewise, for Task 2 the models at turn-level and at dialogue-level will be evaluated separately.</p>
+            <p>If you want, you can participate in as many evaluations as you want. Whether you only want to participate in one, several or all of the evaluations, the scores obtained will be independent, unrelated to the other scores, and will not be combined for the final score. There will be a table with the scores obtained for each of the 4 different evaluations.</p>
+            <p>You can submit as many score files as you want for each evaluation, but only the last 5 files submitted for each type of evaluation in ChatEval will be valid and will count in the ranking to participate in the competition. Moreover, only the evaluations submitted by the team leader registered in the Microsoft form will be considered and count towards the competition.</p>
+            <p>In order to submit test data evaluations, they must be named appropriately. Below is the correct way to name the test files that should be sent correctly annotated:</p>
+            <ul>
+              <li>&#60;team_name&#62;_task1_turn_v&#60;x&#62;.csv</li>
+              <li>&#60;team_name&#62;_task1_dial_v&#60;x&#62;.csv</li>
+              <li>&#60;team_name&#62;_task2_turn_v&#60;x&#62;.csv</li>
+              <li>&#60;team_name&#62;_task2_dial_v&#60;x&#62;.csv</li>
+            </ul>
+            <p>Please specify clearly in the submission name which evaluation it is intended for, the team name in &#60;team_name&#62; and the submission version &#60;x&#62; to identify the submission.</p>
+            <hr/>
 
           <br/>
           <h3 className="font-weight-bold">Organizers</h3>
-          <br/>
-          <ul>
-            <li>Mario Rodr&iacute;guez-Cantelar (Universidad Polit&eacute;cnica de Madrid, Spain)</li>
-            <li>Chen Zhang (National University of Singapore, Singapore)</li>
-            <li>Chengguang Tang (Tencent AI Lab, China)</li>
-            <li>Ke Shi (Tencent AI Lab, China)</li>
-            <li>Jo&atilde;o Sedoc (New York University, USA)</li>
-            <li>Luis F. D'Haro (Universidad Polit&eacute;cnica de Madrid, Spain)</li>
-            <li>Alexander Rudnicky (Carnegie Mellon University, USA)</li>
-          </ul>
-          <hr/>
+            <br/>
+            <ul>
+              <li>Mario Rodr&iacute;guez-Cantelar (Universidad Polit&eacute;cnica de Madrid, Spain)</li>
+              <li>Chen Zhang (National University of Singapore, Singapore)</li>
+              <li>Chengguang Tang (Tencent AI Lab, China)</li>
+              <li>Ke Shi (Tencent AI Lab, China)</li>
+              <li>Jo&atilde;o Sedoc (New York University, USA)</li>
+              <li>Luis F. D'Haro (Universidad Polit&eacute;cnica de Madrid, Spain)</li>
+              <li>Alexander Rudnicky (Carnegie Mellon University, USA)</li>
+            </ul>
+            <hr/>
 
           <br/>
           <h3 className="font-weight-bold">Contact</h3>
-          <br/>
-          <p>If you have further questions regarding the data, please let us know by the following email address at <a href="mailto:dstc11-robust-multilingual-automatic-evaluation@googlegroups.com">dstc11-robust-multilingual-automatic-evaluation@googlegroups.com</a>.</p>
-          <hr/>
+            <br/>
+            <p>If you have further questions regarding the data, please let us know by the following email address at <a href="mailto:dstc11-robust-multilingual-automatic-evaluation@googlegroups.com">dstc11-robust-multilingual-automatic-evaluation@googlegroups.com</a>.</p>
+            <hr/>
 
           <br/>
           <h3 className="font-weight-bold">Acknowledgement</h3>
-          <br/>
-          <p>This research project is supported by the Comunidad de Madrid through the call Research Grants for Young Investigators from Universidad Politécnica de Madrid (GENIUS:APOYO-JOVENES-21-TAXTYC-32-K61X37).</p>
-          <p>This work is supported by project BEWORD (PID2021-126061OB-C43) funded by MCIN/AEI/10.13039/501100011033 and, as appropriate, by “ERDF A way of making Europe”, by the “European Union”, and by Programa Propio - Proyectos Semilla: Universidad Politécnica de Madrid (VSEMILLA22LFHE).</p>
-          <p>We gratefully acknowledge valuable efforts from Tencent AI Lab who supports Chinese translation and annotation of datasets by funding and infrastructure.</p>
-          <p>Thanks to THU-CoAI (Conversational AI groups from Tsinghua University) for providing their Chinese datasets as part of the challenge data.</p>
-          <p>Thanks to Unbabel for providing the COMET MTQE scores annotations as part of the challenge data. This contribution was supported by national funds through *Fundação para a Ciência e a Tecnologia* (FCT) with references PRT/BD/152198/2021 and UIDB/50021/2020, and by the P2020 program MAIA led by Unbabel (LISBOA-01-0247-FEDER-045909).</p>
-          <p>We also want to give thanks to MS Azure services (especially to Irving Kwong) for their sponsorship to continue processing new datasets that could be interesting for the dialogue community.</p>
-          <p>This research project is supported by the NYU ChatEval Team led by João Sedoc.</p>
-          <p>This research project is supported in part by a grant from Amazon to Alexander Rudnicky, Carnegie Mellon University.</p>
-          <p>Thanks to Karthik Ganesan, Sarik Ghazarian, James Hagerty, Zhang Chen and Alex Rudnicky for developing the baseline model as part of the challenge tasks.</p>
-          <p>This work is supported by the European Commission through Project ASTOUND (101071191 — HORIZON-EIC-2021-PATHFINDERCHALLENGES-01). <img src="./static/img/Logo_EC.png" alt="Logo_EC" style={{width: 375 + 'px', height : 75 + 'px'}}/>
-          </p>
-          <hr/>
+            <br/>
+            <p>This research project is supported by the Comunidad de Madrid through the call Research Grants for Young Investigators from Universidad Politécnica de Madrid (GENIUS:APOYO-JOVENES-21-TAXTYC-32-K61X37).</p>
+            <p>This work is supported by project BEWORD (PID2021-126061OB-C43) funded by MCIN/AEI/10.13039/501100011033 and, as appropriate, by “ERDF A way of making Europe”, by the “European Union”, and by Programa Propio - Proyectos Semilla: Universidad Politécnica de Madrid (VSEMILLA22LFHE).</p>
+            <p>We gratefully acknowledge valuable efforts from Tencent AI Lab who supports Chinese translation and annotation of datasets by funding and infrastructure.</p>
+            <p>Thanks to THU-CoAI (Conversational AI groups from Tsinghua University) for providing their Chinese datasets as part of the challenge data.</p>
+            <p>Thanks to Unbabel for providing the COMET MTQE scores annotations as part of the challenge data. This contribution was supported by national funds through *Fundação para a Ciência e a Tecnologia* (FCT) with references PRT/BD/152198/2021 and UIDB/50021/2020, and by the P2020 program MAIA led by Unbabel (LISBOA-01-0247-FEDER-045909).</p>
+            <p>We also want to give thanks to MS Azure services (especially to Irving Kwong) for their sponsorship to continue processing new datasets that could be interesting for the dialogue community.</p>
+            <p>This research project is supported by the NYU ChatEval Team led by João Sedoc.</p>
+            <p>This research project is supported in part by a grant from Amazon to Alexander Rudnicky, Carnegie Mellon University.</p>
+            <p>Thanks to Karthik Ganesan, Sarik Ghazarian, James Hagerty, Zhang Chen and Alex Rudnicky for developing the baseline model as part of the challenge tasks.</p>
+            <p>This work is supported by the European Commission through Project ASTOUND (101071191 — HORIZON-EIC-2021-PATHFINDERCHALLENGES-01). <img src="./static/img/Logo_EC.png" alt="Logo_EC" style={{width: 375 + 'px', height : 75 + 'px'}}/>
+            </p>
+            <hr/>
 
           <br/>
           <h3 className="font-weight-bold">FAQ</h3>
@@ -621,6 +654,7 @@ class DSTC11 extends Component {
               <li>Damodaran, P. (2021). Parrot: Paraphrase generation for NLU.</li>
               <li>Zhou, L., Gao, J., Li, D., & Shum, H. Y. (2020). The design and implementation of xiaoice, an empathetic social chatbot. Computational Linguistics, 46(1), 53-93.</li>
               <li>Bao, S., He, H., Wang, F., Wu, H., & Wang, H. (2019). Plato: Pre-trained dialogue generation model with discrete latent variable. arXiv preprint arXiv:1910.07931.</li>
+              <li>Mehri, S., Choi, J., D'Haro, L. F., Deriu, J., Eskenazi, M., Gasic, M., ... & Zhang, C. (2022). Report from the nsf future directions workshop on automatic evaluation of dialog: Research directions and challenges. arXiv preprint arXiv:2203.10012.</li>
             </ul>
 
           <p>&nbsp;</p>
