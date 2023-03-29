@@ -516,7 +516,7 @@ class DSTC11 extends Component {
                   </table>
                 </div>
               ))}
-              <br/><br/>
+              {/* <br/><br/>
               {this.props.multilingual_dev.map(evaluation => (
                 <div key={evaluation.id}>
                   <h5 className="card-title"> {evaluation.evaldev.name} </h5>
@@ -564,7 +564,7 @@ class DSTC11 extends Component {
                     </tbody>
                   </table>
                 </div>
-              ))}
+              ))} */}
               {this.props.robust_dev.map(evaluation => (
                 <div key={evaluation.id}>
                   <h5 className="card-title"> {evaluation.evaldev.name} </h5>
