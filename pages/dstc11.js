@@ -27,7 +27,7 @@ class DSTC11 extends Component {
             <br/>
             <p>Click <a href="https://forms.office.com/r/rWgHUW9C8q">here</a> to register for DSTC11.T4.<span style={{color : 'green'}}> (now available)</span></p>
             <p>Click <a href="https://my.chateval.org/dstc11_data/">here</a> to download DSTC11.T4 data.<span style={{color : 'green'}}> (now available)</span></p>
-            <p>Click <a href="https://my.chateval.org/dstc11submit/">here</a> to submit your model.<span style={{color : 'green'}}> (now available)</span></p>
+            <p>Click <a href="https://my.chateval.org/dstc11submit/">here</a> to submit your results.<span style={{color : 'green'}}> (now available)</span></p>
             <p>Click <a href="https://github.com/karthik19967829/DSTC11-Benchmark">here</a> to use the baseline model.<span style={{color : 'green'}}> (now available)</span></p>
             <hr/>
           
@@ -516,6 +516,103 @@ class DSTC11 extends Component {
                   </table>
                 </div>
               ))}
+              {/* <br/><br/>
+              {this.props.multilingual_dev.map(evaluation => (
+                <div key={evaluation.id}>
+                  <h5 className="card-title"> {evaluation.evaldev.name} </h5>
+                  <p> {evaluation.evaldev.description} </p>
+                  <table className="table" style={STYLE.cell}>
+                    <thead>
+                        <tr>
+                          <th scope="col">System</th>
+                          <th scope="col">CG</th>
+                          <th scope="col">DH</th>
+                          <th scope="col">DG</th>
+                          <th scope="col">DZ</th>
+                          <th scope="col">D7</th>
+                          <th scope="col">EG</th>
+                          <th scope="col">FD</th>
+                          <th scope="col">FT</th>
+                          <th scope="col">HM</th>
+                          <th scope="col">PS</th>
+                          <th scope="col">PU</th>
+                          <th scope="col">PZ</th>
+                          <th scope="col">TU</th>
+                          <th scope="col">AVG</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                      {evaluation.results.map(result => (
+                          <tr key={result.id}>
+                            <td key="td01" style={STYLE.td}>{result.sys}</td>
+                            <td key="td02" style={STYLE.td}>{result.cg}</td>
+                            <td key="td03" style={STYLE.td}>{result.dh}</td>
+                            <td key="td04" style={STYLE.td}>{result.dg}</td>
+                            <td key="td05" style={STYLE.td}>{result.dz}</td>
+                            <td key="td06" style={STYLE.td}>{result.d7}</td>
+                            <td key="td07" style={STYLE.td}>{result.eg}</td>
+                            <td key="td08" style={STYLE.td}>{result.fd}</td>
+                            <td key="td09" style={STYLE.td}>{result.ft}</td>
+                            <td key="td10" style={STYLE.td}>{result.hm}</td>
+                            <td key="td11" style={STYLE.td}>{result.ps}</td>
+                            <td key="td12" style={STYLE.td}>{result.pu}</td>
+                            <td key="td13" style={STYLE.td}>{result.pz}</td>
+                            <td key="td14" style={STYLE.td}>{result.tu}</td>
+                            <td key="td15" style={STYLE.td}>{result.avgs}</td>
+                          </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              ))} */}
+              {this.props.robust_dev.map(evaluation => (
+                <div key={evaluation.id}>
+                  <h5 className="card-title"> {evaluation.evaldev.name} </h5>
+                  <p> {evaluation.evaldev.description} </p>
+                  <table className="table" style={STYLE.cell}>
+                    <thead>
+                        <tr>
+                          <th scope="col">System</th>
+                          <th scope="col">CG</th>
+                          <th scope="col">DH</th>
+                          <th scope="col">DG</th>
+                          <th scope="col">DZ</th>
+                          <th scope="col">D7</th>
+                          <th scope="col">EG</th>
+                          <th scope="col">FD</th>
+                          <th scope="col">FT</th>
+                          <th scope="col">HM</th>
+                          <th scope="col">PS</th>
+                          <th scope="col">PU</th>
+                          <th scope="col">PZ</th>
+                          <th scope="col">TU</th>
+                          <th scope="col">AVG</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                      {evaluation.results.map(result => (
+                          <tr key={result.id}>
+                            <td key="td01" style={STYLE.td}>{result.sys}</td>
+                            <td key="td02" style={STYLE.td}>{result.cg}</td>
+                            <td key="td03" style={STYLE.td}>{result.dh}</td>
+                            <td key="td04" style={STYLE.td}>{result.dg}</td>
+                            <td key="td05" style={STYLE.td}>{result.dz}</td>
+                            <td key="td06" style={STYLE.td}>{result.d7}</td>
+                            <td key="td07" style={STYLE.td}>{result.eg}</td>
+                            <td key="td08" style={STYLE.td}>{result.fd}</td>
+                            <td key="td09" style={STYLE.td}>{result.ft}</td>
+                            <td key="td10" style={STYLE.td}>{result.hm}</td>
+                            <td key="td11" style={STYLE.td}>{result.ps}</td>
+                            <td key="td12" style={STYLE.td}>{result.pu}</td>
+                            <td key="td13" style={STYLE.td}>{result.pz}</td>
+                            <td key="td14" style={STYLE.td}>{result.tu}</td>
+                            <td key="td15" style={STYLE.td}>{result.avgs}</td>
+                          </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              ))}
             </p>
             <hr/>
 
@@ -525,7 +622,7 @@ class DSTC11 extends Component {
             <ul>
               <li><b>Training/Validation data release</b>: Dec 14, 2022</li>
               <li><b>Test data release</b>: Mar 29, 2023</li>
-              <li><b>Entry submission deadline</b>: Apr 3, 2023</li>
+              <li><b>Entry submission deadline</b>: Apr 3, 2023 (23.59 Anywhere on Earth (AoE), UTC-12)</li>
               <li><b>Final result announcement</b>: Apr 14, 2023</li>
               <li><b>Paper submission</b>: From April to May in 2023</li>
               <li><b>Workshop</b>: July, August or September in 2023</li>
