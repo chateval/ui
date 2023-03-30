@@ -565,7 +565,7 @@ class DSTC11 extends Component {
                   </table>
                 </div>
               ))} */}
-              {this.props.robust_dev.map(evaluation => (
+              {/* {this.props.robust_dev.map(evaluation => (
                 <div key={evaluation.id}>
                   <h5 className="card-title"> {evaluation.evaldev.name} </h5>
                   <p> {evaluation.evaldev.description} </p>
@@ -612,7 +612,7 @@ class DSTC11 extends Component {
                     </tbody>
                   </table>
                 </div>
-              ))}
+              ))} */}
             </p>
             <hr/>
 
@@ -622,7 +622,7 @@ class DSTC11 extends Component {
             <ul>
               <li><b>Training/Validation data release</b>: Dec 14, 2022</li>
               <li><b>Test data release</b>: Mar 29, 2023</li>
-              <li><b>Entry submission deadline</b>: Apr 3, 2023 (23.59 Anywhere on Earth (AoE), UTC-12)</li>
+              <li><b>Entry submission deadline</b>: Apr 3, 2023 (23:59 Anywhere on Earth (AoE), UTC-12)</li>
               <li><b>Final result announcement</b>: Apr 14, 2023</li>
               <li><b>Paper submission</b>: From April to May in 2023</li>
               <li><b>Workshop</b>: July, August or September in 2023</li>
@@ -1456,24 +1456,6 @@ DSTC11.getInitialProps = async function() {
         description: ""
       },
       results: [
-        {
-          id: 'en_result',
-          sys: 'AM-FM EN',
-          cg: '0.3373',
-          dh: '0.0916',
-          dg: '0.2811',
-          dz: '0.1433',
-          d7: '0.2469',
-          eg: '0.2548',
-          fd: '0.1269',
-          ft: '0.0264',
-          hm: '0.1258',
-          ps: '0.0262',
-          pu: '0.0823',
-          pz: '0.4489',
-          tu: '0.1149',
-          avgs: '0.1774'
-        },
         {
           id: 'ro_result',
           sys: 'AM-FM PAR',
