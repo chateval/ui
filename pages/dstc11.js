@@ -61,20 +61,20 @@ class DSTC11 extends Component {
             <hr/>
 
             <ul>
-              <li><b>Task 1: Metrics for Multilingual Data</b></li>
+              <li><b>Task 1: Multilingual Automatic Evaluation Metrics</b></li>
             </ul>
             <p style={{marginLeft: 60 + 'px'}} align='justify'>
-              In this task, the goal for participants is to propose effective automatic dialogue evaluation metrics that exhibit previously mentioned properties (section 2) and perform well on a multilingual setup (English, Spanish and Chinese). In concrete, participants will propose a single multilingual model obtaining high correlations with human-annotations when evaluated on multilingual dialogues (development set in section 2.1) and perform well on the hidden multilingual test set. Participants are expected to use pre-trained multilingual models and train them to predict multidimensional quality metrics by using self-supervised techniques and optionally fine-tune their system over a subset of the development data.
+              In this task, the goal for participants is to propose effective automatic dialogue evaluation metrics that exhibit previously mentioned properties (Track Details section) and perform well on a multilingual setup (English, Spanish and Chinese). In concrete, participants will propose a single multilingual model obtaining high correlations with human-annotations when evaluated on multilingual dialogues (development set in Provided Datasets section) and perform well on the hidden multilingual test set. Participants are expected to use pre-trained multilingual models and train them to predict multidimensional quality metrics by using self-supervised techniques and optionally fine-tune their system over a subset of the development data.
               <br/><br/>
               Finally, participants will then evaluate their models over the development and test sets, and expect to show similar performance, in terms of correlations with human-annotations on the English, Spanish and Chinese utterances. (Note: only dev and test sets will have human-annotations, and only test sets will be manually translated or back-translated/paraphrased to guarantee the correlations with the original human-annotations on the English data).
             </p>
             <hr/>
 
             <ul>
-              <li><b>Task 2: Robust Metrics</b></li>
+              <li><b>Task 2: Robust Automatic Evaluation Metrics</b></li>
             </ul>
             <p style={{marginLeft: 60 + 'px'}} align='justify'>
-              In this task, the goal for participants is to propose robust metrics for automatic evaluation of just English dialogues that exhibit previously mentioned properties (section 2) while being robust when dealing with back-translated/paraphrased English sentences. The expected performance must be on par with the correlations with human-annotations obtained over the original sentences. As robustness criteria proposed, back-translated/paraphrased sentences should have the same semantic meaning as the original sentence, but different wording.
+              In this task, the goal for participants is to propose robust metrics for automatic evaluation of just English dialogues that exhibit previously mentioned properties (Track Details section) while being robust when dealing with back-translated/paraphrased English sentences. The expected performance must be on par with the correlations with human-annotations obtained over the original sentences. As robustness criteria proposed, back-translated/paraphrased sentences should have the same semantic meaning as the original sentence, but different wording.
               <br/><br/>
               Additionally, participants will have the opportunity of testing robustness over alternative machine translations that the organizers will provide. Finally, the influence on the metric will be also evaluated when providing the back-translated/paraphrased current turn sentences instead of the original ones, always along with their respective back-translated/paraphrased context.
               <br/><br/>
@@ -124,11 +124,9 @@ class DSTC11 extends Component {
                 <li><b>PERSONA-USR (PU)</b> (Mehri & Eskenazi, 2020b)</li>
                 <li><b>PERSONA-ZHAO (PZ)</b> (Zhao et al., 2020)</li>
                 <li><b>TOPICAL-USR (TU)</b> (Mehri & Eskenazi, 2020b)</li>
-                {/*
                 <li><b>JSALT (JS)</b> (Rudnicky et al., 2020)</li>
                 <li><b>CHATEVAL (CS)</b> (Sedoc et al., 2019)</li>
                 <li><b>DSTC10 (D10)</b> (Zhang et al., 2021)</li>
-                */}
               </ul>
               This development data can help participants to check the multilingualism or robustness capabilities of their trained models in terms of correlations with human-annotations. Additional databases, not mentioned here, will be added when available to increase the size of the benchmarking.
               <br/><br/>
@@ -139,7 +137,7 @@ class DSTC11 extends Component {
                 <li><b>KdConv</b> (Zhou et al., 2020)</li>
                 <li><b>LCCC</b> (Wang et al., 2020)</li>
               </ul>
-              In addition, we will provide the same datasets translated into Chinese using the SotA <a href="https://www.tencentcloud.com/products/tmt">Tencent MT</a> Tencent MT system. These datasets will be provided to participants, together with automatic meta-data information (machine translation Quality Estimation (QE), toxicity, and sentiment analysis) for filtering and dialogue curation purposes, so the participants have a better reference of the dataset quality, being of great help for them to decide whether or not to use these translations/paraphrases in the training of their evaluation models, and optionally fine-tune multilingual pre-trained models allowing better performance on the proposed dialogue-oriented tasks.
+              In addition, we will provide the same datasets translated into Chinese using the SotA <a href="https://www.tencentcloud.com/products/tmt">Tencent MT</a> system. These datasets will be provided to participants, together with automatic meta-data information (machine translation Quality Estimation (QE), toxicity, and sentiment analysis) for filtering and dialogue curation purposes, so the participants have a better reference of the dataset quality, being of great help for them to decide whether or not to use these translations/paraphrases in the training of their evaluation models, and optionally fine-tune multilingual pre-trained models allowing better performance on the proposed dialogue-oriented tasks.
               <br/><br/>
               Since the quality of the back-translated sentences can play an important role in estimating the metric scores. QE metric scores will be given to the participants using our QE system and other existing models (e.g., <a href="https://github.com/Unbabel/COMET">COMET</a> (Rei et al., 2020)). This information will be given to participants so they can optionally use it for discarding dialogues or turns that do not show high quality when training their metrics. Participants will be welcome to use the data and ideas from the MT field to propose QE metrics that can, optionally, be included to provide final scores. Finally, the organizers may provide new translated dialogue datasets to allow participants to create more robust and better-trained systems.
               <br/><br/>
@@ -353,7 +351,7 @@ class DSTC11 extends Component {
               <li><b>Data Format</b></li>
             </ul>
             <p style={{marginLeft: 60 + 'px'}} align='justify'>
-                All data given follows the <a href="https://github.com/Mario-RC/dstc11_track4_robust_multilingual_metrics/blob/main/dstc11/track4-datasets-format.md">Data Formats</a> which provides guidelines on how to store, maintain and handle dialogue corpora.
+              All data given follows the <a href="https://github.com/Mario-RC/dstc11_track4_robust_multilingual_metrics/blob/main/dstc11/track4-datasets-format.md">Data Formats</a> which provides guidelines on how to store, maintain and handle dialogue corpora.
             </p>
             <hr/>
 
@@ -370,7 +368,7 @@ class DSTC11 extends Component {
             <hr/>
 
             <ul>
-              <li id="provided-datasets"><b>Dimensions Evaluation</b></li>
+              <li id="dimension-evaluation"><b>Dimensions Evaluation</b></li>
             </ul>
             <p style={{marginLeft: 60 + 'px'}} align='justify'>
               Considering the annotations available in the development data, the test data will have the following dimensions (annotations) to evaluate in both Task 1 (English, Chinese and Spanish) and Task 2:
@@ -388,15 +386,29 @@ class DSTC11 extends Component {
                 <li><b>Appropriateness</b> - The response is appropriate given the preceding dialogue.</li>
                 <li><b>Content Richness</b> - The response is informative, with long sentences including multiple entities and conceptual or emotional words.</li>
                 <li><b>Grammatical Correctness</b> - Responses are free of grammatical and semantic errors.</li>
-                <li><b>Relevance</b> - Responses are on-topic with the immediate dialog history.</li>
+                <li><b>Relevance</b> - Responses are on-topic with the immediate dialogue history.</li>
               </ul>
               Dialogue-level:
               <ul>
-                <li><b>Coherence</b> - Throughout the dialog, is the system maintaining a good conversation flow.</li>
+                <li><b>Coherence</b> - Throughout the dialogue, is the system maintaining a good conversation flow.</li>
                 <li><b>Engageness/Likeability</b> - Throughout the dialogue, the system displays a likeable personality.</li>
-                <li><b>Informativeness</b> - Throughout the dialog, the system provides unique and non-generic information.</li>
-                <li><b>Overall</b> - The overall quality of and satisfaction with the dialog.</li>
+                <li><b>Informativeness</b> - Throughout the dialogue, the system provides unique and non-generic information.</li>
+                <li><b>Overall</b> - The overall quality of and satisfaction with the dialogue.</li>
               </ul>
+            </p>
+            <hr/>
+
+            <ul>
+              <li><b>How will we rank all submitted metrics in the test leaderboard?</b></li>
+            </ul>
+            <p style={{marginLeft: 60 + 'px'}} align='justify'>
+              Each participant's submission will be evaluated separately. For each submission, Spearmen's correlations at dimension-level will be calculated separately for each task. Then, the Spearman correlation scores obtained will be averaged. Finally, the Spearman correlation scores will be ranked.
+              <br/><br/>
+              To calculate the Spearman correlation, in the hidden test data, it will be done between the annotations provided by the participant and the hidden human judgment annotations. In addition to high correlation with human judgments, we also encourage explainability of the metrics.
+              <br/><br/>
+              Without influencing the ranking, results obtained using Pearson's correlation will also be published. Moreover, Spearman and Pearson correlations at language and dataset level will be published.
+              <br/><br/>
+              Hidden test data will be published after the presentation of the results. Additionally, a script will be shared to allow participants to evaluate their own models at different granularity-levels.
             </p>
             <hr/>
 
@@ -404,18 +416,6 @@ class DSTC11 extends Component {
               <li><b>Automatic Evaluation Leaderboard</b></li>
             </ul>
             <p style={{marginLeft: 60 + 'px'}} align='justify'>
-              {/* <b>How will we rank all the submitted metrics in the leaderboard?</b>
-              <br/><br/>
-              During development phase
-              <br/><br/>
-              We will first average the Spearman correlation scores of the submitted metric within the dataset.
-              Next, all the dataset-wise average Spearman correlation scores will be averaged across all the 14 datasets.
-              The submitted metrics will be ranked based on the final single Spearman correlation score.
-              During the final evaluation phase
-              <br/><br/>
-              We will adopt a weighted average approach to determine the final ranking of the submitted metrics based on their performance on the validation set as well as the hidden test set which will be released after the development phase. A high weightage will be given to the metrics' performance on the hidden test set.
-              Note that it is not necessary to have a single metric score for all the annotated dialogue qualities. Besides high correlation with human judgements, we also encourage explainability of the metrics.
-              <br/><br/> */}
               The leaderboard shows names of submissions and their corresponding Spearman Correlation Coefficients for each development dataset. The name of each column corresponds to an <a href="https://chateval.org/dstc11#provided-datasets">abbreviation</a> of the development datasets respectively.
               <br/><br/>
               All the results obtained by the baseline model are very similar, proving that the metric is multilingually adequate, as well as robust when working with paraphrases or backtranslations.
@@ -426,43 +426,43 @@ class DSTC11 extends Component {
                   <p> {evaluation.evaldev.description} </p>
                   <table className="table" style={STYLE.cell}>
                     <thead>
-                        <tr>
-                          <th scope="col">System</th>
-                          <th scope="col">CG</th>
-                          <th scope="col">DH</th>
-                          <th scope="col">DG</th>
-                          <th scope="col">DZ</th>
-                          <th scope="col">D7</th>
-                          <th scope="col">EG</th>
-                          <th scope="col">FD</th>
-                          <th scope="col">FT</th>
-                          <th scope="col">HM</th>
-                          <th scope="col">PS</th>
-                          <th scope="col">PU</th>
-                          <th scope="col">PZ</th>
-                          <th scope="col">TU</th>
-                          <th scope="col">AVG</th>
-                        </tr>
+                      <tr>
+                        <th scope="col">System</th>
+                        <th scope="col">CG</th>
+                        <th scope="col">DH</th>
+                        <th scope="col">DG</th>
+                        <th scope="col">DZ</th>
+                        <th scope="col">D7</th>
+                        <th scope="col">EG</th>
+                        <th scope="col">FD</th>
+                        <th scope="col">FT</th>
+                        <th scope="col">HM</th>
+                        <th scope="col">PS</th>
+                        <th scope="col">PU</th>
+                        <th scope="col">PZ</th>
+                        <th scope="col">TU</th>
+                        <th scope="col">AVG</th>
+                      </tr>
                     </thead>
                     <tbody>
                       {evaluation.results.map(result => (
-                          <tr key={result.id}>
-                            <td key="td01" style={STYLE.td}>{result.sys}</td>
-                            <td key="td02" style={STYLE.td}>{result.cg}</td>
-                            <td key="td03" style={STYLE.td}>{result.dh}</td>
-                            <td key="td04" style={STYLE.td}>{result.dg}</td>
-                            <td key="td05" style={STYLE.td}>{result.dz}</td>
-                            <td key="td06" style={STYLE.td}>{result.d7}</td>
-                            <td key="td07" style={STYLE.td}>{result.eg}</td>
-                            <td key="td08" style={STYLE.td}>{result.fd}</td>
-                            <td key="td09" style={STYLE.td}>{result.ft}</td>
-                            <td key="td10" style={STYLE.td}>{result.hm}</td>
-                            <td key="td11" style={STYLE.td}>{result.ps}</td>
-                            <td key="td12" style={STYLE.td}>{result.pu}</td>
-                            <td key="td13" style={STYLE.td}>{result.pz}</td>
-                            <td key="td14" style={STYLE.td}>{result.tu}</td>
-                            <td key="td15" style={STYLE.td}>{result.avgs}</td>
-                          </tr>
+                        <tr key={result.id}>
+                          <td key="td01" style={STYLE.td}>{result.sys}</td>
+                          <td key="td02" style={STYLE.td}>{result.cg}</td>
+                          <td key="td03" style={STYLE.td}>{result.dh}</td>
+                          <td key="td04" style={STYLE.td}>{result.dg}</td>
+                          <td key="td05" style={STYLE.td}>{result.dz}</td>
+                          <td key="td06" style={STYLE.td}>{result.d7}</td>
+                          <td key="td07" style={STYLE.td}>{result.eg}</td>
+                          <td key="td08" style={STYLE.td}>{result.fd}</td>
+                          <td key="td09" style={STYLE.td}>{result.ft}</td>
+                          <td key="td10" style={STYLE.td}>{result.hm}</td>
+                          <td key="td11" style={STYLE.td}>{result.ps}</td>
+                          <td key="td12" style={STYLE.td}>{result.pu}</td>
+                          <td key="td13" style={STYLE.td}>{result.pz}</td>
+                          <td key="td14" style={STYLE.td}>{result.tu}</td>
+                          <td key="td15" style={STYLE.td}>{result.avg}</td>
+                        </tr>
                       ))}
                     </tbody>
                   </table>
@@ -474,159 +474,170 @@ class DSTC11 extends Component {
                   <p> {evaluation.evaldev.description} </p>
                   <table className="table" style={STYLE.cell}>
                     <thead>
-                        <tr>
-                          <th scope="col">System</th>
-                          <th scope="col">CG</th>
-                          <th scope="col">DH</th>
-                          <th scope="col">DG</th>
-                          <th scope="col">DZ</th>
-                          <th scope="col">D7</th>
-                          <th scope="col">EG</th>
-                          <th scope="col">FD</th>
-                          <th scope="col">FT</th>
-                          <th scope="col">HM</th>
-                          <th scope="col">PS</th>
-                          <th scope="col">PU</th>
-                          <th scope="col">PZ</th>
-                          <th scope="col">TU</th>
-                          <th scope="col">AVG</th>
-                        </tr>
+                      <tr>
+                        <th scope="col">System</th>
+                        <th scope="col">CG</th>
+                        <th scope="col">DH</th>
+                        <th scope="col">DG</th>
+                        <th scope="col">DZ</th>
+                        <th scope="col">D7</th>
+                        <th scope="col">EG</th>
+                        <th scope="col">FD</th>
+                        <th scope="col">FT</th>
+                        <th scope="col">HM</th>
+                        <th scope="col">PS</th>
+                        <th scope="col">PU</th>
+                        <th scope="col">PZ</th>
+                        <th scope="col">TU</th>
+                        <th scope="col">AVG</th>
+                      </tr>
                     </thead>
                     <tbody>
                       {evaluation.results.map(result => (
-                          <tr key={result.id}>
-                            <td key="td01" style={STYLE.td}>{result.sys}</td>
-                            <td key="td02" style={STYLE.td}>{result.cg}</td>
-                            <td key="td03" style={STYLE.td}>{result.dh}</td>
-                            <td key="td04" style={STYLE.td}>{result.dg}</td>
-                            <td key="td05" style={STYLE.td}>{result.dz}</td>
-                            <td key="td06" style={STYLE.td}>{result.d7}</td>
-                            <td key="td07" style={STYLE.td}>{result.eg}</td>
-                            <td key="td08" style={STYLE.td}>{result.fd}</td>
-                            <td key="td09" style={STYLE.td}>{result.ft}</td>
-                            <td key="td10" style={STYLE.td}>{result.hm}</td>
-                            <td key="td11" style={STYLE.td}>{result.ps}</td>
-                            <td key="td12" style={STYLE.td}>{result.pu}</td>
-                            <td key="td13" style={STYLE.td}>{result.pz}</td>
-                            <td key="td14" style={STYLE.td}>{result.tu}</td>
-                            <td key="td15" style={STYLE.td}>{result.avgs}</td>
-                          </tr>
+                        <tr key={result.id}>
+                          <td key="td01" style={STYLE.td}>{result.sys}</td>
+                          <td key="td02" style={STYLE.td}>{result.cg}</td>
+                          <td key="td03" style={STYLE.td}>{result.dh}</td>
+                          <td key="td04" style={STYLE.td}>{result.dg}</td>
+                          <td key="td05" style={STYLE.td}>{result.dz}</td>
+                          <td key="td06" style={STYLE.td}>{result.d7}</td>
+                          <td key="td07" style={STYLE.td}>{result.eg}</td>
+                          <td key="td08" style={STYLE.td}>{result.fd}</td>
+                          <td key="td09" style={STYLE.td}>{result.ft}</td>
+                          <td key="td10" style={STYLE.td}>{result.hm}</td>
+                          <td key="td11" style={STYLE.td}>{result.ps}</td>
+                          <td key="td12" style={STYLE.td}>{result.pu}</td>
+                          <td key="td13" style={STYLE.td}>{result.pz}</td>
+                          <td key="td14" style={STYLE.td}>{result.tu}</td>
+                          <td key="td15" style={STYLE.td}>{result.avg}</td>
+                        </tr>
                       ))}
                     </tbody>
                   </table>
                 </div>
               ))}
-              {/* <br/><br/>
-              {this.props.multilingual_dev.map(evaluation => (
+              <br/><br/>
+              All the results shown in the test tables are the averages of the 4 dimensions evaluated, in each type of task.
+              <br/><br/>
+              {this.props.multilingual_test_turn.map(evaluation => (
                 <div key={evaluation.id}>
-                  <h5 className="card-title"> {evaluation.evaldev.name} </h5>
-                  <p> {evaluation.evaldev.description} </p>
+                  <h5 className="card-title"> {evaluation.evaltest.name} </h5>
+                  <p> {evaluation.evaltest.description} </p>
                   <table className="table" style={STYLE.cell}>
                     <thead>
-                        <tr>
-                          <th scope="col">System</th>
-                          <th scope="col">CG</th>
-                          <th scope="col">DH</th>
-                          <th scope="col">DG</th>
-                          <th scope="col">DZ</th>
-                          <th scope="col">D7</th>
-                          <th scope="col">EG</th>
-                          <th scope="col">FD</th>
-                          <th scope="col">FT</th>
-                          <th scope="col">HM</th>
-                          <th scope="col">PS</th>
-                          <th scope="col">PU</th>
-                          <th scope="col">PZ</th>
-                          <th scope="col">TU</th>
-                          <th scope="col">AVG</th>
-                        </tr>
+                      <tr>
+                        <th scope="col">Team</th>
+                        <th scope="col">EN</th>
+                        <th scope="col">ZH</th>
+                        <th scope="col">ES</th>
+                        <th scope="col">Multilingual AVG</th>
+                        <th scope="col">Submission Rank</th>
+                        <th scope="col">Team Rank</th>
+                      </tr>
                     </thead>
                     <tbody>
                       {evaluation.results.map(result => (
-                          <tr key={result.id}>
-                            <td key="td01" style={STYLE.td}>{result.sys}</td>
-                            <td key="td02" style={STYLE.td}>{result.cg}</td>
-                            <td key="td03" style={STYLE.td}>{result.dh}</td>
-                            <td key="td04" style={STYLE.td}>{result.dg}</td>
-                            <td key="td05" style={STYLE.td}>{result.dz}</td>
-                            <td key="td06" style={STYLE.td}>{result.d7}</td>
-                            <td key="td07" style={STYLE.td}>{result.eg}</td>
-                            <td key="td08" style={STYLE.td}>{result.fd}</td>
-                            <td key="td09" style={STYLE.td}>{result.ft}</td>
-                            <td key="td10" style={STYLE.td}>{result.hm}</td>
-                            <td key="td11" style={STYLE.td}>{result.ps}</td>
-                            <td key="td12" style={STYLE.td}>{result.pu}</td>
-                            <td key="td13" style={STYLE.td}>{result.pz}</td>
-                            <td key="td14" style={STYLE.td}>{result.tu}</td>
-                            <td key="td15" style={STYLE.td}>{result.avgs}</td>
-                          </tr>
+                        <tr key={result.id}>
+                          <td key="td01" style={STYLE.td}>{result.sys}</td>
+                          <td key="td02" style={STYLE.td}>{result.en}</td>
+                          <td key="td03" style={STYLE.td}>{result.zh}</td>
+                          <td key="td04" style={STYLE.td}>{result.es}</td>
+                          <td key="td05" style={STYLE.td}>{result.lan_avg}</td>
+                          <td key="td06" style={STYLE.td}>{result.rank_sub}</td>
+                          <td key="td07" style={STYLE.td}>{result.rank_team}</td>
+                        </tr>
                       ))}
                     </tbody>
                   </table>
                 </div>
-              ))} */}
-              {/* {this.props.robust_dev.map(evaluation => (
+              ))}
+              {this.props.multilingual_test_dial.map(evaluation => (
                 <div key={evaluation.id}>
-                  <h5 className="card-title"> {evaluation.evaldev.name} </h5>
-                  <p> {evaluation.evaldev.description} </p>
+                  <h5 className="card-title"> {evaluation.evaltest.name} </h5>
+                  <p> {evaluation.evaltest.description} </p>
                   <table className="table" style={STYLE.cell}>
                     <thead>
-                        <tr>
-                          <th scope="col">System</th>
-                          <th scope="col">CG</th>
-                          <th scope="col">DH</th>
-                          <th scope="col">DG</th>
-                          <th scope="col">DZ</th>
-                          <th scope="col">D7</th>
-                          <th scope="col">EG</th>
-                          <th scope="col">FD</th>
-                          <th scope="col">FT</th>
-                          <th scope="col">HM</th>
-                          <th scope="col">PS</th>
-                          <th scope="col">PU</th>
-                          <th scope="col">PZ</th>
-                          <th scope="col">TU</th>
-                          <th scope="col">AVG</th>
-                        </tr>
+                      <tr>
+                        <th scope="col">Team</th>
+                        <th scope="col">EN</th>
+                        <th scope="col">ZH</th>
+                        <th scope="col">ES</th>
+                        <th scope="col">Multilingual AVG</th>
+                        <th scope="col">Submission Rank</th>
+                        <th scope="col">Team Rank</th>
+                      </tr>
                     </thead>
                     <tbody>
                       {evaluation.results.map(result => (
-                          <tr key={result.id}>
-                            <td key="td01" style={STYLE.td}>{result.sys}</td>
-                            <td key="td02" style={STYLE.td}>{result.cg}</td>
-                            <td key="td03" style={STYLE.td}>{result.dh}</td>
-                            <td key="td04" style={STYLE.td}>{result.dg}</td>
-                            <td key="td05" style={STYLE.td}>{result.dz}</td>
-                            <td key="td06" style={STYLE.td}>{result.d7}</td>
-                            <td key="td07" style={STYLE.td}>{result.eg}</td>
-                            <td key="td08" style={STYLE.td}>{result.fd}</td>
-                            <td key="td09" style={STYLE.td}>{result.ft}</td>
-                            <td key="td10" style={STYLE.td}>{result.hm}</td>
-                            <td key="td11" style={STYLE.td}>{result.ps}</td>
-                            <td key="td12" style={STYLE.td}>{result.pu}</td>
-                            <td key="td13" style={STYLE.td}>{result.pz}</td>
-                            <td key="td14" style={STYLE.td}>{result.tu}</td>
-                            <td key="td15" style={STYLE.td}>{result.avgs}</td>
-                          </tr>
+                        <tr key={result.id}>
+                          <td key="td01" style={STYLE.td}>{result.sys}</td>
+                          <td key="td02" style={STYLE.td}>{result.en}</td>
+                          <td key="td03" style={STYLE.td}>{result.zh}</td>
+                          <td key="td04" style={STYLE.td}>{result.es}</td>
+                          <td key="td05" style={STYLE.td}>{result.lan_avg}</td>
+                          <td key="td06" style={STYLE.td}>{result.rank_sub}</td>
+                          <td key="td07" style={STYLE.td}>{result.rank_team}</td>
+                        </tr>
                       ))}
                     </tbody>
                   </table>
                 </div>
-              ))} */}
+              ))}
+              <br/><br/>
+              {this.props.robust_test_turn.map(evaluation => (
+                <div key={evaluation.id}>
+                  <h5 className="card-title"> {evaluation.evaltest.name} </h5>
+                  <p> {evaluation.evaltest.description} </p>
+                  <table className="table" style={STYLE.cell}>
+                    <thead>
+                      <tr>
+                        <th scope="col">Team</th>
+                        <th scope="col">Robust AVG</th>
+                        <th scope="col">Submission Rank</th>
+                        <th scope="col">Team Rank</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {evaluation.results.map(result => (
+                        <tr key={result.id}>
+                          <td key="td01" style={STYLE.td}>{result.sys}</td>
+                          <td key="td02" style={STYLE.td}>{result.ro_avg}</td>
+                          <td key="td03" style={STYLE.td}>{result.rank_sub}</td>
+                          <td key="td04" style={STYLE.td}>{result.rank_team}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              ))}
+              {this.props.robust_test_dial.map(evaluation => (
+                <div key={evaluation.id}>
+                  <h5 className="card-title"> {evaluation.evaltest.name} </h5>
+                  <p> {evaluation.evaltest.description} </p>
+                  <table className="table" style={STYLE.cell}>
+                    <thead>
+                      <tr>
+                        <th scope="col">Team</th>
+                        <th scope="col">Robust AVG</th>
+                        <th scope="col">Submission Rank</th>
+                        <th scope="col">Team Rank</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {evaluation.results.map(result => (
+                        <tr key={result.id}>
+                          <td key="td01" style={STYLE.td}>{result.sys}</td>
+                          <td key="td02" style={STYLE.td}>{result.ro_avg}</td>
+                          <td key="td03" style={STYLE.td}>{result.rank_sub}</td>
+                          <td key="td04" style={STYLE.td}>{result.rank_team}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              ))}
+              More results for Task 1 and Task 2 can be found <a href="https://docs.google.com/spreadsheets/d/1Uj3ofxBXh_vzrHb8WAtvWi4Z__VJpXQ7qCS4d5g5PMg/edit?usp=sharing">here</a>.
             </p>
-            <hr/>
-
-          <br/>
-          <h3 className="font-weight-bold">Schedule</h3>
-            <br/>
-            <ul>
-              <li><b>Training/Validation data release</b>: Dec 14, 2022</li>
-              <li><b>Test data release</b>: Mar 29, 2023</li>
-              <li><b>Entry submission deadline</b>: Apr 3, 2023 (23:59 Anywhere on Earth (AoE), UTC-12)</li>
-              <li><b>Final result announcement</b>: Apr 14, 2023</li>
-              <li><b>Paper submission</b>: From April to May in 2023</li>
-              <li><b>Workshop</b>: July, August or September in 2023</li>
-            </ul>
             <hr/>
           
           <br/>
@@ -662,6 +673,19 @@ class DSTC11 extends Component {
             <hr/>
 
           <br/>
+          <h3 className="font-weight-bold">Schedule</h3>
+            <br/>
+            <ul>
+              <li><b>Training/Validation data release</b>: Dec 14, 2022</li>
+              <li><b>Test data release</b>: Mar 29, 2023</li>
+              <li><b>Entry submission deadline</b>: Apr 3, 2023 (23:59 Anywhere on Earth (AoE), UTC-12)</li>
+              <li><b>Final result announcement</b>: Apr 14, 2023</li>
+              <li><b>Paper submission</b>: June 2nd, 2023</li>
+              <li><b>Workshop</b>: September 11 or 12, at SIGDIAL x INLG 2023 in Prague, Czech Republic</li>
+            </ul>
+            <hr/>
+            
+          <br/>
           <h3 className="font-weight-bold">Organizers</h3>
             <br/>
             <ul>
@@ -669,6 +693,7 @@ class DSTC11 extends Component {
               <li>Chen Zhang (National University of Singapore, Singapore)</li>
               <li>Chengguang Tang (Tencent AI Lab, China)</li>
               <li>Ke Shi (Tencent AI Lab, China)</li>
+              <li>Sarik Ghazarian (University of Southern California, USA)</li>
               <li>Jo&atilde;o Sedoc (New York University, USA)</li>
               <li>Luis F. D'Haro (Universidad Polit&eacute;cnica de Madrid, Spain)</li>
               <li>Alexander Rudnicky (Carnegie Mellon University, USA)</li>
@@ -722,9 +747,9 @@ class DSTC11 extends Component {
               <li>See, A., Roller, S., Kiela, D., & Weston, J. (2019, June). What makes a good conversation? How controllable attributes affect human judgments. In Proceedings of the 2019 Conference of the North American Chapter of the Association for Computational Linguistics: Human Language Technologies, Volume 1 (Long and Short Papers) (pp. 1702-1723).</li>
               <li>Mehri, S., & Eskenazi, M. (2020). USR: An Unsupervised and Reference Free Evaluation Metric for Dialog Generation. arXiv preprint arXiv:2005.00456.</li>
               <li>Rudnicky, A., Banchs, R., D'Haro, L. F., Sedoc, J., Chen, Z., Rodríguez-Cantelar, M., Koh, A., & others. (2020). CHANEL-Metrics: Chat/Dialogue Modeling and Evaluation report. In 2020 Seventh Frederick Jelinek Memorial Summer Workshop.</li>
-              {/* <li>Sedoc, J., Ippolito, D., Kirubarajan, A., Thirani, J., Ungar, L., & Callison-Burch, C. (2019, June). Chateval: A tool for chatbot evaluation. In Proceedings of the 2019 conference of the North American chapter of the association for computational linguistics (demonstrations) (pp. 60-65).</li>
+              <li>Sedoc, J., Ippolito, D., Kirubarajan, A., Thirani, J., Ungar, L., & Callison-Burch, C. (2019, June). Chateval: A tool for chatbot evaluation. In Proceedings of the 2019 conference of the North American chapter of the association for computational linguistics (demonstrations) (pp. 60-65).</li>
               <li>Vinyals, O., & Le, Q. (2015). A neural conversational model. arXiv preprint arXiv:1506.05869.</li>
-              <li>Lee, S., Lim, H., & Sedoc, J. (2020). An evaluation protocol for generative conversational systems. arXiv preprint arXiv:2010.12741.</li> */}
+              <li>Lee, S., Lim, H., & Sedoc, J. (2020). An evaluation protocol for generative conversational systems. arXiv preprint arXiv:2010.12741.</li>
               <li>Higashinaka, R., Funakoshi, K., Kobayashi, Y., & Inaba, M. (2016, May). The dialogue breakdown detection challenge: Task description, datasets, and evaluation metrics. In Proceedings of the Tenth International Conference on Language Resources and Evaluation (LREC'16) (pp. 3146-3150).</li>
               <li>Zhou, K., Prabhumoye, S., & Black, A. W. (2018). A dataset for document grounded conversations. arXiv preprint arXiv:1809.07358.</li>
               <li>Danescu-Niculescu-Mizil, C., & Lee, L. (2011). Chameleons in imagined conversations: A new approach to understanding coordination of linguistic style in dialogs. arXiv preprint arXiv:1106.3077.</li>
@@ -1382,11 +1407,11 @@ DSTC11.getInitialProps = async function() {
     }
   ]
 
-  const multilingual_dev= [
+  const multilingual_dev = [
     {
       id: 'multilingual_dev',
       evaldev: { 
-        name: "Task 1: Metrics for Multilingual Data (development)",
+        name: "Task 1:  Multilingual Metrics (development)",
         description: ""
       },
       results: [
@@ -1406,7 +1431,7 @@ DSTC11.getInitialProps = async function() {
           pu: '0.0823',
           pz: '0.4489',
           tu: '0.1149',
-          avgs: '0.1774'
+          avg: '0.1774'
         },
         {
           id: 'es_result',
@@ -1424,7 +1449,7 @@ DSTC11.getInitialProps = async function() {
           pu: '0.0634',
           pz: '0.4118',
           tu: '0.1086',
-          avgs: '0.1551'
+          avg: '0.1551'
         },
         {
           id: 'zh_result',
@@ -1442,13 +1467,13 @@ DSTC11.getInitialProps = async function() {
           pu: '0.0849',
           pz: '0.3821',
           tu: '0.0849',
-          avgs: '0.1518'
+          avg: '0.1518'
         },
       ]
     }
   ]
 
-  const robust_dev= [
+  const robust_dev = [
     {
       id: 'robust_dev',
       evaldev: { 
@@ -1457,7 +1482,7 @@ DSTC11.getInitialProps = async function() {
       },
       results: [
         {
-          id: 'ro_result',
+          id: 'pa_result',
           sys: 'AM-FM PAR',
           cg: '0.2842',
           dh: '0.0512',
@@ -1472,13 +1497,402 @@ DSTC11.getInitialProps = async function() {
           pu: '0.0730',
           pz: '0.4241',
           tu: '0.0872',
-          avgs: '0.1447'
+          avg: '0.1447'
         },
       ]
     }
   ]
 
-  return { provided_datasets_summary, provided_datasets_chanel_informtaion, provided_datasets_dstc10_informtation, provided_datasets_cdial_information, provided_datasets_chanel_statistics, multilingual_dev, robust_dev }
+  const multilingual_test_turn = [
+    {
+      id: 'multilingual_test_turn',
+      evaltest: { 
+        name: "Task 1:  Multilingual Metrics Turn-Level (test)",
+        description: ""
+      },
+      results: [
+        {
+          id: 'baseline_t1t_result',
+          sys: 'baseline_t1t',
+          en: '0.2940',
+          zh: '0.0753',
+          es: '0.1826',
+          lan_avg: '0.1840',
+          rank_sub: '11',
+          rank_team: '4'
+        },
+        {
+          id: 'team2_t1t_s1_result',
+          sys: 'team2_t1t_s1',
+          en: '0.1469',
+          zh: '0.1054',
+          es: '0.0808',
+          lan_avg: '0.1110',
+          rank_sub: '12',
+          rank_team: '5'
+        },
+        {
+          id: 'team4_t1t_s1_result',
+          sys: 'team4_t1t_s1',
+          en: '0.4818',
+          zh: '0.3936',
+          es: '0.5890',
+          lan_avg: '0.4881',
+          rank_sub: '1',
+          rank_team: '1'
+        },
+        {
+          id: 'team4_t1t_s2_result',
+          sys: 'team4_t1t_s2',
+          en: '0.2625',
+          zh: '0.3096',
+          es: '0.5056',
+          lan_avg: '0.3592',
+          rank_sub: '6',
+          rank_team: ''
+        },
+        {
+          id: 'team4_t1t_s3_result',
+          sys: 'team4_t1t_s3',
+          en: '0.4795',
+          zh: '0.3656',
+          es: '0.5409',
+          lan_avg: '0.4620',
+          rank_sub: '2',
+          rank_team: ''
+        },
+        {
+          id: 'team4_t1t_s4_result',
+          sys: 'team4_t1t_s4',
+          en: '0.4586',
+          zh: '0.3618',
+          es: '0.5412',
+          lan_avg: '0.4539',
+          rank_sub: '3',
+          rank_team: ''
+        },
+        {
+          id: 'team5_t1t_s1_result',
+          sys: 'team5_t1t_s1',
+          en: '0.3702',
+          zh: '0.0701',
+          es: '0.1983',
+          lan_avg: '0.2129',
+          rank_sub: '9',
+          rank_team: '3'
+        },
+        {
+          id: 'team5_t1t_s2_result',
+          sys: 'team5_t1t_s2',
+          en: '0.2690',
+          zh: '0.1375',
+          es: '0.2281',
+          lan_avg: '0.2116',
+          rank_sub: '10',
+          rank_team: ''
+        },
+        {
+          id: 'team7_t1t_s1_result',
+          sys: 'team7_t1t_s1',
+          en: '0.1275',
+          zh: '0.2557',
+          es: '0.4753',
+          lan_avg: '0.2862',
+          rank_sub: '7',
+          rank_team: ''
+        },
+        {
+          id: 'team7_t1t_s2_result',
+          sys: 'team7_t1t_s2',
+          en: '0.2314',
+          zh: '0.3163',
+          es: '0.5478',
+          lan_avg: '0.3652',
+          rank_sub: '5',
+          rank_team: ''
+        },
+        {
+          id: 'team7_t1t_s3_result',
+          sys: 'team7_t1t_s3',
+          en: '0.1083',
+          zh: '0.2480',
+          es: '0.4799',
+          lan_avg: '0.2787',
+          rank_sub: '8',
+          rank_team: ''
+        },
+        {
+          id: 'team7_t1t_s4_result',
+          sys: 'team7_t1t_s4',
+          en: '0.2214',
+          zh: '0.3112',
+          es: '0.5644',
+          lan_avg: '0.3657',
+          rank_sub: '4',
+          rank_team: '2'
+        }
+      ]
+    }
+  ]
+
+  const multilingual_test_dial = [
+    {
+      id: 'multilingual_test_dial',
+      evaltest: { 
+        name: "Task 1:  Multilingual Metrics Dialogue-Level (test)",
+        description: ""
+      },
+      results: [
+        {
+          id: 'baseline_t1d_result',
+          sys: 'baseline_t1d',
+          en: '0.2414',
+          zh: '0.4648',
+          es: '0.8080',
+          lan_avg: '0.5047',
+          rank_sub: '4',
+          rank_team: '2'
+        },
+        {
+          id: 'team4_t1d_s1_result',
+          sys: 'team4_t1d_s1',
+          en: '0.5342',
+          zh: '0.7133',
+          es: '0.8080',
+          lan_avg: '0.6852',
+          rank_sub: '1',
+          rank_team: '1'
+        },
+        {
+          id: 'team4_t1d_s2_result',
+          sys: 'team4_t1d_s2',
+          en: '0.3295',
+          zh: '0.7030',
+          es: '0.2500',
+          lan_avg: '0.4275',
+          rank_sub: '5',
+          rank_team: ''
+        },
+        {
+          id: 'team4_t1d_s3_result',
+          sys: 'team4_t1d_s3',
+          en: '0.5251',
+          zh: '0.6701',
+          es: '0.8080',
+          lan_avg: '0.6677',
+          rank_sub: '2',
+          rank_team: ''
+        },
+        {
+          id: 'team4_t1d_s4_result',
+          sys: 'team4_t1d_s4',
+          en: '0.5039',
+          zh: '0.5859',
+          es: '0.5915',
+          lan_avg: '0.5604',
+          rank_sub: '3',
+          rank_team: ''
+        },
+        {
+          id: 'team5_t1d_s1_result',
+          sys: 'team5_t1d_s1',
+          en: '0.1865',
+          zh: '0.1356',
+          es: '0.6830',
+          lan_avg: '0.3350',
+          rank_sub: '6',
+          rank_team: '3'
+        } 
+      ]
+    }
+  ]
+  
+  const robust_test_turn = [
+    {
+      id: 'robust_test_turn',
+      evaltest: { 
+        name: "Task 2: Robust Metrics Turn-Level (test)",
+        description: ""
+      },
+      results: [
+        {
+          id: 'baseline_t2t',
+          sys: 'baseline_t2t',
+          ro_avg: '0.3387',
+          rank_sub: '7',
+          rank_team: '4'
+        },
+        {
+          id: 'team1_t2t_s1',
+          sys: 'team1_t2t_s1',
+          ro_avg: '0.1537',
+          rank_sub: '11',
+          rank_team: '6'
+        },
+        {
+          id: 'team3_t2t_s1',
+          sys: 'team3_t2t_s1',
+          ro_avg: '0.1306',
+          rank_sub: '13',
+          rank_team: ''
+        },
+        {
+          id: 'team3_t2t_s2',
+          sys: 'team3_t2t_s2',
+          ro_avg: '0.1277',
+          rank_sub: '14',
+          rank_team: ''
+        },
+        {
+          id: 'team3_t2t_s3',
+          sys: 'team3_t2t_s3',
+          ro_avg: '0.1469',
+          rank_sub: '12',
+          rank_team: ''
+        },
+        {
+          id: 'team3_t2t_s4',
+          sys: 'team3_t2t_s4',
+          ro_avg: '0.2697',
+          rank_sub: '9',
+          rank_team: '5'
+        },
+        {
+          id: 'team4_t2t_s1',
+          sys: 'team4_t2t_s1',
+          ro_avg: '0.4890',
+          rank_sub: '1',
+          rank_team: '1'
+        },
+        {
+          id: 'team4_t2t_s2',
+          sys: 'team4_t2t_s2',
+          ro_avg: '0.3320',
+          rank_sub: '8',
+          rank_team: ''
+        },
+        {
+          id: 'team4_t2t_s3',
+          sys: 'team4_t2t_s3',
+          ro_avg: '0.4756',
+          rank_sub: '2',
+          rank_team: ''
+        },
+        {
+          id: 'team4_t2t_s4',
+          sys: 'team4_t2t_s4',
+          ro_avg: '0.4427',
+          rank_sub: '3',
+          rank_team: ''
+        },
+        {
+          id: 'team6_t2t_s1',
+          sys: 'team6_t2t_s1',
+          ro_avg: '0.4190',
+          rank_sub: '4',
+          rank_team: '2'
+        },
+        {
+          id: 'team6_t2t_s2',
+          sys: 'team6_t2t_s2',
+          ro_avg: '0.1742',
+          rank_sub: '10',
+          rank_team: ''
+        },
+        {
+          id: 'team6_t2t_s3',
+          sys: 'team6_t2t_s3',
+          ro_avg: '0.0807',
+          rank_sub: '15',
+          rank_team: ''
+        },
+        {
+          id: 'team7_t2t_s1',
+          sys: 'team7_t2t_s1',
+          ro_avg: '0.3833',
+          rank_sub: '5',
+          rank_team: '3'
+        },
+        {
+          id: 'team7_t2t_s2',
+          sys: 'team7_t2t_s2',
+          ro_avg: '0.3643',
+          rank_sub: '6',
+          rank_team: ''
+        }
+      ]
+    }
+  ]
+
+  const robust_test_dial = [
+    {
+      id: 'robust_test_dial',
+      evaltest: { 
+        name: "Task 2: Robust Metrics Dialogue-Level (test)",
+        description: ""
+      },
+      results: [
+        {
+          id: 'baseline_t2d_result',
+          sys: 'baseline_t2d',
+          ro_avg: '0.4800',
+          rank_sub: '1',
+          rank_team: '1'
+        },
+        {
+          id: 'team1_t2d_s1_result',
+          sys: 'team1_t2d_s1',
+          ro_avg: '0.1111',
+          rank_sub: '8',
+          rank_team: '4'
+        },
+        {
+          id: 'team3_t2d_s1_result',
+          sys: 'team3_t2d_s1',
+          ro_avg: '0.2196',
+          rank_sub: '6',
+          rank_team: '3'
+        },
+        {
+          id: 'team3_t2d_s2_result',
+          sys: 'team3_t2d_s2',
+          ro_avg: '0.1453',
+          rank_sub: '7',
+          rank_team: ''
+        },
+        {
+          id: 'team4_t2d_s1_result',
+          sys: 'team4_t2d_s1',
+          ro_avg: '0.3031',
+          rank_sub: '2',
+          rank_team: '2'
+        },
+        {
+          id: 'team4_t2d_s2_result',
+          sys: 'team4_t2d_s2',
+          ro_avg: '0.2335',
+          rank_sub: '5',
+          rank_team: ''
+        },
+        {
+          id: 'team4_t2d_s3_result',
+          sys: 'team4_t2d_s3',
+          ro_avg: '0.2979',
+          rank_sub: '3',
+          rank_team: ''
+        },
+        {
+          id: 'team4_t2d_s4_result',
+          sys: 'team4_t2d_s4',
+          ro_avg: '0.2492',
+          rank_sub: '4',
+          rank_team: ''
+        }
+      ]
+    }
+  ]
+
+  return { provided_datasets_summary, provided_datasets_chanel_informtaion, provided_datasets_dstc10_informtation, provided_datasets_cdial_information, provided_datasets_chanel_statistics, multilingual_dev, robust_dev, multilingual_test_turn, multilingual_test_dial, robust_test_turn, robust_test_dial }
 
 };
 
