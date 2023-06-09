@@ -25,10 +25,10 @@ class DSTC11 extends Component {
           <h1 className="mt-5 font-weight-bold">DSTC11: Dialogue System Technology Challenge 11</h1>
           <h2 className="mt-5 font-weight-bold">Track 4: Robust and Multilingual Automatic Evaluation Metrics for Open-Domain Dialogue Systems</h2>
             <br/>
-            <p>Click <a href="https://forms.office.com/r/rWgHUW9C8q">here</a> to register for DSTC11.T4.<span style={{color : 'green'}}> (now available)</span></p>
-            <p>Click <a href="https://my.chateval.org/dstc11_data/">here</a> to download DSTC11.T4 data.<span style={{color : 'green'}}> (now available)</span></p>
-            <p>Click <a href="https://my.chateval.org/dstc11submit/">here</a> to submit your results.<span style={{color : 'green'}}> (now available)</span></p>
-            <p>Click <a href="https://github.com/karthik19967829/DSTC11-Benchmark">here</a> to use the baseline model.<span style={{color : 'green'}}> (now available)</span></p>
+            <p>Click <a href="https://forms.office.com/r/rWgHUW9C8q">here</a> to register for DSTC11.T4.<span style={{color: 'green'}}> (now available)</span></p>
+            <p>Click <a href="https://my.chateval.org/dstc11_data/">here</a> to download DSTC11.T4 data.<span style={{color: 'green'}}> (now available)</span></p>
+            <p>Click <a href="https://my.chateval.org/dstc11submit/">here</a> to submit your results.<span style={{color: 'green'}}> (now available)</span></p>
+            <p>Click <a href="https://github.com/karthik19967829/DSTC11-Benchmark">here</a> to use the baseline model.<span style={{color: 'green'}}> (now available)</span></p>
             <hr/>
           
           <br/>
@@ -124,9 +124,9 @@ class DSTC11 extends Component {
                 <li><b>PERSONA-USR (PU)</b> (Mehri & Eskenazi, 2020b)</li>
                 <li><b>PERSONA-ZHAO (PZ)</b> (Zhao et al., 2020)</li>
                 <li><b>TOPICAL-USR (TU)</b> (Mehri & Eskenazi, 2020b)</li>
-                <li><b>JSALT (JS)</b> (Rudnicky et al., 2020)</li>
+                {/* <li><b>JSALT (JS)</b> (Rudnicky et al., 2020)</li>
                 <li><b>CHATEVAL (CS)</b> (Sedoc et al., 2019)</li>
-                <li><b>DSTC10 (D10)</b> (Zhang et al., 2021)</li>
+                <li><b>DSTC10 (D10)</b> (Zhang et al., 2021)</li> */}
               </ul>
               This development data can help participants to check the multilingualism or robustness capabilities of their trained models in terms of correlations with human-annotations. Additional databases, not mentioned here, will be added when available to increase the size of the benchmarking.
               <br/><br/>
@@ -137,7 +137,7 @@ class DSTC11 extends Component {
                 <li><b>KdConv</b> (Zhou et al., 2020)</li>
                 <li><b>LCCC</b> (Wang et al., 2020)</li>
               </ul>
-              In addition, we will provide the same datasets translated into Chinese using the SotA <a href="https://www.tencentcloud.com/products/tmt">Tencent MT</a> system. These datasets will be provided to participants, together with automatic meta-data information (machine translation Quality Estimation (QE), toxicity, and sentiment analysis) for filtering and dialogue curation purposes, so the participants have a better reference of the dataset quality, being of great help for them to decide whether or not to use these translations/paraphrases in the training of their evaluation models, and optionally fine-tune multilingual pre-trained models allowing better performance on the proposed dialogue-oriented tasks.
+              In addition, we will provide the same datasets translated into English using the SotA <a href="https://www.tencentcloud.com/products/tmt">Tencent MT</a> system. These datasets will be provided to participants, together with automatic meta-data information (machine translation Quality Estimation (QE), toxicity, and sentiment analysis) for filtering and dialogue curation purposes, so the participants have a better reference of the dataset quality, being of great help for them to decide whether or not to use these translations/paraphrases in the training of their evaluation models, and optionally fine-tune multilingual pre-trained models allowing better performance on the proposed dialogue-oriented tasks.
               <br/><br/>
               Since the quality of the back-translated sentences can play an important role in estimating the metric scores. QE metric scores will be given to the participants using our QE system and other existing models (e.g., <a href="https://github.com/Unbabel/COMET">COMET</a> (Rei et al., 2020)). This information will be given to participants so they can optionally use it for discarding dialogues or turns that do not show high quality when training their metrics. Participants will be welcome to use the data and ideas from the MT field to propose QE metrics that can, optionally, be included to provide final scores. Finally, the organizers may provide new translated dialogue datasets to allow participants to create more robust and better-trained systems.
               <br/><br/>
@@ -705,6 +705,30 @@ class DSTC11 extends Component {
             <br/>
             <p>If you have further questions regarding the data, please let us know by the following email address at <a href="mailto:dstc11-robust-multilingual-automatic-evaluation@googlegroups.com">dstc11-robust-multilingual-automatic-evaluation@googlegroups.com</a>.</p>
             <hr/>
+          
+          <br/>
+          <h3 className="font-weight-bold">Citation</h3>
+            <br/>
+            <p>Please cite the paper, code or data from DSTC 11 Track 4:</p>
+            <p style={{backgroundColor: '#f6f8fa', borderRadius: '5px', backgroundSize: 20 + 'px ' + 60 + 'px'}}>
+              <br/>
+              <p style={{margin: 0 + 'px ' + 20 + 'px'}}>
+                <tagname style={{color: '#cf222e'}}>@inproceedings</tagname>&#123;
+                <tagname style={{color: '#8250df'}}>rodriguezcantelar2023dstc11t4,</tagname>
+                <ul style={{listStyleType: 'none'}}>
+                  <li>author    = "Mario Rodríguez-Cantelar and Chen Zhang and Chengguang Tang and Ke Shi and Sarik Ghazarian and João Sedoc and Luis Fernando D'Haro and Alexander Rudnicky",</li>
+                  <li>title     = "Overview of Robust and Multilingual Automatic Evaluation Metrics for Open-Domain Dialogue Systems at DSTC 11 Track 4",</li>
+                  <li>booktitle = "DSTC11: The Eleventh Dialog System Technology Challenge",</li>
+                  <li>series    = "24th Meeting of the Special Interest Group on Discourse and Dialogue (SIGDIAL)",</li>
+                  <li>year      = 2023,</li>
+                  <li>month     = "September",</li>
+                  <li>address   = "Prague, Czechia"</li>
+                  &#125;
+                </ul>
+              </p>
+              <br/>
+            </p>
+            <hr/>
 
           <br/>
           <h3 className="font-weight-bold">Acknowledgement</h3>
@@ -718,7 +742,7 @@ class DSTC11 extends Component {
             <p>This research project is supported by the NYU ChatEval Team led by João Sedoc.</p>
             <p>This research project is supported in part by a grant from Amazon to Alexander Rudnicky, Carnegie Mellon University.</p>
             <p>Thanks to Karthik Ganesan, Sarik Ghazarian, James Hagerty, Zhang Chen and Alex Rudnicky for developing the baseline model as part of the challenge tasks.</p>
-            <p>This work is supported by the European Commission through Project ASTOUND (101071191 — HORIZON-EIC-2021-PATHFINDERCHALLENGES-01). <img src="./static/img/Logo_EC.png" alt="Logo_EC" style={{width: 375 + 'px', height : 75 + 'px'}}/>
+            <p>This work is supported by the European Commission through Project ASTOUND (101071191 — HORIZON-EIC-2021-PATHFINDERCHALLENGES-01). <img src="./static/img/Logo_EC.png" alt="Logo_EC" style={{width: 375 + 'px', height: 75 + 'px'}}/>
             </p>
             <hr/>
 
