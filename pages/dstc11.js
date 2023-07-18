@@ -86,7 +86,7 @@ class DSTC11 extends Component {
               <li id="provided-datasets"><b>Provided Datasets</b></li>
             </ul>
             <p style={{marginLeft: 60 + 'px'}} align='justify'>
-            After the organizers' participation in the <a href="https://github.com/CHANEL-JSALT-2020/datasets">CHANEL@JSALT2020</a> workshop (Rudnicky et al., 2020) at John Hopkins University, they have automatically translated back-and-forth (using the same MS Azure translation service) a total of 18 well-known human-human dialogue datasets. These data sets will be used as training data. The total amount of dialogues is 393k (approx. 3M turns).
+            After the organizers' participation in the <a href="https://github.com/CHANEL-JSALT-2020/datasets">CHANEL@JSALT2020</a> workshop (Rudnicky et al., 2020) at Johns Hopkins University, they have automatically translated back-and-forth (using the same MS Azure translation service) a total of 18 well-known human-human dialogue datasets. These data sets will be used as training data. The total amount of dialogues is 393k (approx. 3M turns).
               <br/><br/>
               <ul>
                 <li><b>DBDC</b> (Higashinaka et al., 2016)</li>
@@ -130,7 +130,7 @@ class DSTC11 extends Component {
               </ul>
               This development data can help participants to check the multilingualism or robustness capabilities of their trained models in terms of correlations with human-annotations. Additional databases, not mentioned here, will be added when available to increase the size of the benchmarking.
               <br/><br/>
-              Moreover, the datasets provided by <a href="https://github.com/thu-coai">THU-COAI</a> group (Conversational AI groups from Tsinghua University) will be used, naming this set of data CDial. They contain open domain human-human dialogs. They are originally in Chinese and contain of 3,470 dialogs (approx. 130k turns).
+              Moreover, the datasets provided by <a href="https://github.com/thu-coai">THU-COAI</a> group (Conversational AI groups from Tsinghua University) will be used, naming this set of data CDIAL. They contain open domain human-human dialogs. They are originally in Chinese and contain of 3,470 dialogs (approx. 130k turns).
               <br/><br/>
               <ul>
                 <li><b>ECM</b> (Zhou et al., 2018)</li>
@@ -143,7 +143,7 @@ class DSTC11 extends Component {
               <br/><br/>
               Regarding the paraphrases, all the original English sentences of each dataset will have multiple paraphrases, as well as annotations so that each participant can evaluate the quality of each paraphrase. The model used will be <a href="https://github.com/jsedoc/Parrot_Paraphraser">PARROT</a> (Damodaran P., 2021).
               <br/><br/>
-              Additionally, ~3k random H-H turns (~1k dialogues) of CDial in Chinese were manually annotated by Tencent AI. Also, ~5k new H-C Chinese turns (~500 dialogues) were generated with three different SotA chatbots (Tencent's model, Microsoft's Xiaoice (Zhou et al., 2020) and Baidu's Plato (Bao et al., 2019)). Both turn-level and dialogue-level annotations were manually annotated by Tencent AI.
+              Additionally, ~3k random H-H turns (~1k dialogues) of CDIAL in Chinese were manually annotated by Tencent AI. Also, ~5k new H-C Chinese turns (~500 dialogues) were generated with three different SotA chatbots (Tencent's model, Microsoft's Xiaoice (Zhou et al., 2020) and Baidu's Plato (Bao et al., 2019)). Both turn-level and dialogue-level annotations were manually annotated by Tencent AI.
               <br/><br/>
               During the test phase, a new set of 2k turn-level (~700 dialogue-level) manually curated multilingual corpus (Spanish and Chinese) along with their turn-level and dialogue-level human evaluation annotations will be provided to participants to test models for both tasks. This corpus will be manually checked to guarantee its quality and high correlation with the original dialogues.
               <br/><br/>
@@ -821,7 +821,7 @@ DSTC11.getInitialProps = async function() {
         description: ""
       },
       info: [
-        {id: 'num_dataset', name: '# Datsets', chanel: '18', dstc10: '7', cdial: '3'},
+        {id: 'num_dataset', name: '# Datasets', chanel: '18', dstc10: '7', cdial: '3'},
         {id: 'language', name: 'Language', chanel: 'English, Spanish/Chinese,\nand English back-translation', dstc10: 'English, Spanish/Chinese,\nand English back-translation', cdial: 'Chinese, English,\nand Chinese back-translation'},
         {id: 'dialogues_type', name: 'Dialogues Type', chanel: 'Human-Human Open-Domain', dstc10: 'Human-Chatbot Open-Domain', cdial: 'Human-Human Open-Domain'},
         {id: 'num_dialogues_utterances', name: '# Dialogues/\nUtterances', chanel: '+ 390.000 / + 3.000.000', dstc10: '+ 18.000 / + 55.000', cdial: '+ 3.470 / +130.000'},
