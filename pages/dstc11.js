@@ -42,7 +42,7 @@ class DSTC11 extends Component {
               <br/><br/>
               <ol>
                 <li>Participants will develop effective automatic open-ended and multilingual dialogue evaluation metrics that perform similarly when evaluated over a new language.</li>
-                <li>Participants will develop effective automatic open-ended dialogue evaluation metrics that perform robustly when evaluated over back-translated/paraphrased sentences in English.</li>
+                <li>Participants will develop effective automatic open-ended dialogue evaluation metrics that perform robustly when evaluated over paraphrased/back-translated sentences in English.</li>
               </ol>
               For both tasks, proposed metrics are expected to show the following two important properties as indicated in (Deriu et al., 2019):
               <br/><br/>
@@ -66,7 +66,7 @@ class DSTC11 extends Component {
             <p style={{marginLeft: 60 + 'px'}} align='justify'>
               In this task, the goal for participants is to propose effective automatic dialogue evaluation metrics that exhibit previously mentioned properties (Track Details section) and perform well on a multilingual setup (English, Spanish and Chinese). In concrete, participants will propose a single multilingual model obtaining high correlations with human-annotations when evaluated on multilingual dialogues (development set in Provided Datasets section) and perform well on the hidden multilingual test set. Participants are expected to use pre-trained multilingual models and train them to predict multidimensional quality metrics by using self-supervised techniques and optionally fine-tune their system over a subset of the development data.
               <br/><br/>
-              Finally, participants will then evaluate their models over the development and test sets, and expect to show similar performance, in terms of correlations with human-annotations on the English, Spanish and Chinese utterances. (Note: only dev and test sets will have human-annotations, and only test sets will be manually translated or back-translated/paraphrased to guarantee the correlations with the original human-annotations on the English data).
+              Finally, participants will then evaluate their models over the development and test sets, and expect to show similar performance, in terms of correlations with human-annotations on the English, Spanish and Chinese utterances. (Note: only dev and test sets will have human-annotations, and only test sets will be manually translated or paraphrased/back-translated to guarantee the correlations with the original human-annotations on the English data).
             </p>
             <hr/>
 
@@ -74,9 +74,9 @@ class DSTC11 extends Component {
               <li><b>Task 2: Robust Automatic Evaluation Metrics</b></li>
             </ul>
             <p style={{marginLeft: 60 + 'px'}} align='justify'>
-              In this task, the goal for participants is to propose robust metrics for automatic evaluation of just English dialogues that exhibit previously mentioned properties (Track Details section) while being robust when dealing with back-translated/paraphrased English sentences. The expected performance must be on par with the correlations with human-annotations obtained over the original sentences. As robustness criteria proposed, back-translated/paraphrased sentences should have the same semantic meaning as the original sentence, but different wording.
+              In this task, the goal for participants is to propose robust metrics for automatic evaluation of just English dialogues that exhibit previously mentioned properties (Track Details section) while being robust when dealing with paraphrased/back-translated English sentences. The expected performance must be on par with the correlations with human-annotations obtained over the original sentences. As robustness criteria proposed, paraphrased/back-translated sentences should have the same semantic meaning as the original sentence, but different wording.
               <br/><br/>
-              Additionally, participants will have the opportunity of testing robustness over alternative machine translations that the organizers will provide. Finally, the influence on the metric will be also evaluated when providing the back-translated/paraphrased current turn sentences instead of the original ones, always along with their respective back-translated/paraphrased context.
+              Additionally, participants will have the opportunity of testing robustness over alternative machine translations that the organizers will provide. Finally, the influence on the metric will be also evaluated when providing the paraphrased/back-translated current turn sentences instead of the original ones, always along with their respective paraphrased/back-translated context.
               <br/><br/>
               During the test phase, hidden and manually curated back-translated test data will be provided to participants to evaluate their proposed metrics.
             </p>
@@ -124,9 +124,9 @@ class DSTC11 extends Component {
                 <li><b>PERSONA-USR (PU)</b> (Mehri & Eskenazi, 2020b)</li>
                 <li><b>PERSONA-ZHAO (PZ)</b> (Zhao et al., 2020)</li>
                 <li><b>TOPICAL-USR (TU)</b> (Mehri & Eskenazi, 2020b)</li>
-                {/* <li><b>JSALT (JS)</b> (Rudnicky et al., 2020)</li>
+                <li><b>JSALT (JS)</b> (Rudnicky et al., 2020)</li>
                 <li><b>CHATEVAL (CS)</b> (Sedoc et al., 2019)</li>
-                <li><b>DSTC10 (D10)</b> (Zhang et al., 2021)</li> */}
+                <li><b>DSTC10 (D10)</b> (Zhang et al., 2021)</li>
               </ul>
               This development data can help participants to check the multilingualism or robustness capabilities of their trained models in terms of correlations with human-annotations. Additional databases, not mentioned here, will be added when available to increase the size of the benchmarking.
               <br/><br/>
@@ -137,7 +137,7 @@ class DSTC11 extends Component {
                 <li><b>KdConv</b> (Zhou et al., 2020)</li>
                 <li><b>LCCC</b> (Wang et al., 2020)</li>
               </ul>
-              In addition, we will provide the same datasets translated into English using the SotA <a href="https://www.tencentcloud.com/products/tmt">Tencent MT</a> system. These datasets will be provided to participants, together with automatic meta-data information (machine translation Quality Estimation (QE), toxicity, and sentiment analysis) for filtering and dialogue curation purposes, so the participants have a better reference of the dataset quality, being of great help for them to decide whether or not to use these translations/paraphrases in the training of their evaluation models, and optionally fine-tune multilingual pre-trained models allowing better performance on the proposed dialogue-oriented tasks.
+              In addition, we will provide the same datasets translated into English using the SotA <a href="https://www.tencentcloud.com/products/tmt">Tencent MT</a> system. These datasets will be provided to participants, together with automatic meta-data information (machine translation Quality Estimation (QE), toxicity, and sentiment analysis) for filtering and dialogue curation purposes, so the participants have a better reference of the dataset quality, being of great help for them to decide whether or not to use these paraphrases/translations in the training of their evaluation models, and optionally fine-tune multilingual pre-trained models allowing better performance on the proposed dialogue-oriented tasks.
               <br/><br/>
               Since the quality of the back-translated sentences can play an important role in estimating the metric scores. QE metric scores will be given to the participants using our QE system and other existing models (e.g., <a href="https://github.com/Unbabel/COMET">COMET</a> (Rei et al., 2020)). This information will be given to participants so they can optionally use it for discarding dialogues or turns that do not show high quality when training their metrics. Participants will be welcome to use the data and ideas from the MT field to propose QE metrics that can, optionally, be included to provide final scores. Finally, the organizers may provide new translated dialogue datasets to allow participants to create more robust and better-trained systems.
               <br/><br/>
@@ -184,6 +184,115 @@ class DSTC11 extends Component {
             </p>
             <hr/>
              
+            <ul>
+              <li><b>Datasets Statistics</b></li>
+            </ul>
+            <p style={{marginLeft: 60 + 'px'}} align='justify'>
+              {this.props.provided_datasets_chanel_statistics_train.map(datasets_table => (
+                <div key={datasets_table.id}>
+                  <h5 className="card-title"> {datasets_table.datasets.name} </h5>
+                  <p> {datasets_table.datasets.description} </p>
+                  <table className="table" style={STYLE.cell}>
+                    <thead>
+                      <tr>
+                        <th scope="col">Name</th>
+                        <th scope="col">#Turns</th>
+                        <th scope="col">#Dialogues</th>
+                        <th scope="col">Average<br/>Turn/Dial</th>
+                        <th scope="col">Average<br/>Words/Turn</th>
+                        <th scope="col">Annotation<br/>Granularity</th>
+                        <th scope="col">Original<br/>Language</th>
+                        <th scope="col">Translation</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {datasets_table.info.map(info => (
+                        <tr key={info.id}>
+                          <td key="td1" style={STYLE.td}>{info.name}</td>
+                          <td key="td2" style={STYLE.td}>{info.turns}</td>
+                          <td key="td3" style={STYLE.td}>{info.dialogues}</td>
+                          <td key="td4" style={STYLE.td}>{info.average_turn_dial}</td>
+                          <td key="td5" style={STYLE.td}>{info.average_words_turn}</td>
+                          <td key="td6" style={STYLE.td}>{info.annotation_granularity}</td>
+                          <td key="td7" style={STYLE.td}>{info.original_language}</td>
+                          <td key="td8" style={STYLE.td}>{info.translation}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              ))}
+              {this.props.provided_datasets_chanel_statistics_dev.map(datasets_table => (
+                <div key={datasets_table.id}>
+                  <h5 className="card-title"> {datasets_table.datasets.name} </h5>
+                  <p> {datasets_table.datasets.description} </p>
+                  <table className="table" style={STYLE.cell}>
+                    <thead>
+                      <tr>
+                        <th scope="col">Name</th>
+                        <th scope="col">#Turns</th>
+                        <th scope="col">#Dialogues</th>
+                        <th scope="col">Average<br/>Turn/Dial</th>
+                        <th scope="col">Average<br/>Words/Turn</th>
+                        <th scope="col">Annotation<br/>Granularity</th>
+                        <th scope="col">Original<br/>Language</th>
+                        <th scope="col">Translation</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {datasets_table.info.map(info => (
+                        <tr key={info.id}>
+                          <td key="td1" style={STYLE.td}>{info.name}</td>
+                          <td key="td2" style={STYLE.td}>{info.turns}</td>
+                          <td key="td3" style={STYLE.td}>{info.dialogues}</td>
+                          <td key="td4" style={STYLE.td}>{info.average_turn_dial}</td>
+                          <td key="td5" style={STYLE.td}>{info.average_words_turn}</td>
+                          <td key="td6" style={STYLE.td}>{info.annotation_granularity}</td>
+                          <td key="td7" style={STYLE.td}>{info.original_language}</td>
+                          <td key="td8" style={STYLE.td}>{info.translation}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              ))}
+              {this.props.provided_datasets_chanel_statistics_test.map(datasets_table => (
+                <div key={datasets_table.id}>
+                  <h5 className="card-title"> {datasets_table.datasets.name} </h5>
+                  <p> {datasets_table.datasets.description} </p>
+                  <table className="table" style={STYLE.cell}>
+                    <thead>
+                      <tr>
+                        <th scope="col">Name</th>
+                        <th scope="col">#Turns</th>
+                        <th scope="col">#Dialogues</th>
+                        <th scope="col">Average<br/>Turn/Dial</th>
+                        <th scope="col">Average<br/>Words/Turn</th>
+                        <th scope="col">Annotation<br/>Granularity</th>
+                        <th scope="col">Original<br/>Language</th>
+                        <th scope="col">Translation</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {datasets_table.info.map(info => (
+                        <tr key={info.id}>
+                          <td key="td1" style={STYLE.td}>{info.name}</td>
+                          <td key="td2" style={STYLE.td}>{info.turns}</td>
+                          <td key="td3" style={STYLE.td}>{info.dialogues}</td>
+                          <td key="td4" style={STYLE.td}>{info.average_turn_dial}</td>
+                          <td key="td5" style={STYLE.td}>{info.average_words_turn}</td>
+                          <td key="td6" style={STYLE.td}>{info.annotation_granularity}</td>
+                          <td key="td7" style={STYLE.td}>{info.original_language}</td>
+                          <td key="td8" style={STYLE.td}>{info.translation}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              ))}
+            </p>
+            <hr/>
+
             <ul>
               <li><b>Datasets Information</b></li>
             </ul>
@@ -303,50 +412,6 @@ class DSTC11 extends Component {
             </p>
             <hr/>
 
-            {/* <ul>
-              <li><b>Datasets Statistics</b></li>
-            </ul>
-            <p style={{marginLeft: 60 + 'px'}} align='justify'>
-              {this.props.provided_datasets_chanel_statistics.map(datasets_table => (
-                <div key={datasets_table.id}>
-                  <h5 className="card-title"> {datasets_table.datasets.name} </h5>
-                  <p> {datasets_table.datasets.description} </p>
-                  <table className="table" style={STYLE.cell}>
-                    <thead>
-                      <tr>
-                        <th scope="col">CHANEL</th>
-                        <th scope="col">Spanish<br/>Translation</th>
-                        <th scope="col">Chinese<br/>Translation</th>
-                        <th scope="col">English<br/>Translation</th>
-                        <th scope="col">English<br/>Back-translation</th>
-                        <th scope="col">Paraphrases</th>
-                        <th scope="col">Sentiment<br/>Analysis</th>
-                        <th scope="col">Content<br/>Moderate</th>
-                        <th scope="col">Human<br/>Annotations</th>
-                        
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {datasets_table.info.map(info => (
-                        <tr key={info.id}>
-                          <td key="td1" style={STYLE.td}>{info.name_dataset}</td>
-                          <td key="td2" style={STYLE.td}>{info.spanish_translation}</td>
-                          <td key="td3" style={STYLE.td}>{info.chinese_translation}</td>
-                          <td key="td4" style={STYLE.td}>{info.english_translation}</td>
-                          <td key="td5" style={STYLE.td}>{info.english_Back_translation}</td>
-                          <td key="td6" style={STYLE.td}>{info.paraphrases}</td>
-                          <td key="td7" style={STYLE.td}>{info.sentiment_analysis}</td>
-                          <td key="td8" style={STYLE.td}>{info.content_moderate}</td>
-                          <td key="td9" style={STYLE.td}>{info.human_annotations}</td>
-                        </tr>
-                      ))}
-                    </tbody>
-                  </table>
-                </div>
-              ))}
-            </p>
-            <hr/> */}
-
             <ul>
               <li><b>Data Format</b></li>
             </ul>
@@ -359,9 +424,9 @@ class DSTC11 extends Component {
               <li><b>Baseline Model</b></li>
             </ul>
             <p style={{marginLeft: 60 + 'px'}} align='justify'>
-              The default choice is Deep AM-FM (Zhang et al, 2020) (used for DSTC-10 and previously). This model has been adapted to be able to evaluate multilingual datasets, as well as to work with paraphrased and backtranslated sentences.
+              The default choice is Deep AM-FM (Zhang et al, 2020) (used for DSTC-10 and previously). This model has been adapted to be able to evaluate multilingual datasets, as well as to work with paraphrased and back-translated sentences.
               <br/><br/>
-              This project has investigated more recent approaches, based on fine-tuned large language models. Zhang et al note that their approach may be limited due to domain specificity. On the other hand, LLMs are trained from large corpora that in priciple are less domain-dependent. This is an empirical question.
+              This project has investigated more recent approaches, based on fine-tuned large language models. Zhang et al note that their approach may be limited due to domain specificity. On the other hand, LLMs are trained from large corpora that in principle are less domain-dependent. This is an empirical question.
               <br/><br/>
               All information related to the baseline model, such as code and data, can be found in this <a href="https://github.com/karthik19967829/DSTC11-Benchmark">GitHub</a> repository.
             </p>
@@ -418,7 +483,7 @@ class DSTC11 extends Component {
             <p style={{marginLeft: 60 + 'px'}} align='justify'>
               The leaderboard shows names of submissions and their corresponding Spearman Correlation Coefficients for each development dataset. The name of each column corresponds to an <a href="https://chateval.org/dstc11#provided-datasets">abbreviation</a> of the development datasets respectively.
               <br/><br/>
-              All the results obtained by the baseline model are very similar, proving that the metric is multilingually adequate, as well as robust when working with paraphrases or backtranslations.
+              All the results obtained by the baseline model are very similar, proving that the metric is multilingually adequate, as well as robust when working with paraphrases or back-translations.
               <br/><br/>
               {this.props.multilingual_dev.map(evaluation => (
                 <div key={evaluation.id}>
@@ -761,7 +826,7 @@ class DSTC11 extends Component {
               <li>Zhang, C., D'Haro, L. F., Friedrichs, T., & Li, H. (2021). MDD-Eval: Self-Training on Augmented Data for Multi-Domain Dialogue Evaluation. arXiv preprint arXiv:2112.07194.</li>
               <li>Zhang, C., D'Haro, L. F., Banchs, R. E., Friedrichs, T., & Li, H. (2020). Deep AM-FM: Toolkit for Automatic Dialogue Evaluation. In Conversational Dialogue Systems for the Next Decade (pp. 53-69). Springer, Singapore.</li>
               <li>Zhang, C., Sadoc, J., D'Haro, L. F., Banchs, R., & Rudnicky, A. (2021). Automatic Evaluation and Moderation of Open-domain Dialogue Systems. arXiv preprint arXiv:2111.02110.</li>
-              {/* <li>Hori, C., & Hori, T. (2017). End-to-end conversation modeling track in DSTC6. arXiv preprint arXiv:1706.07440.</li> */}
+              <li>Hori, C., & Hori, T. (2017). End-to-end conversation modeling track in DSTC6. arXiv preprint arXiv:1706.07440.</li>
               <li>Huang, L., Ye, Z., Qin, J., Lin, L., & Liang, X. (2020, November). GRADE: Automatic Graph-Enhanced Coherence Metric for Evaluating Open-Domain Dialogue Systems. In Proceedings of the 2020 Conference on Empirical Methods in Natural Language Processing (EMNLP) (pp. 9230-9240).</li>
               <li>Gupta, P., Mehri, S., Zhao, T., Pavel, A., Eskenazi, M., & Bigham, J. P. (2019, September). Investigating Evaluation of Open-Domain Dialogue Systems With Human Generated Multiple References. In Proceedings of the 20th Annual SIGdial Meeting on Discourse and Dialogue (pp. 379-391).</li>
               <li>Zhao, T., Lala, D., & Kawahara, T. (2020, July). Designing Precise and Robust Dialogue Response Evaluators. In Proceedings of the 58th Annual Meeting of the Association for Computational Linguistics (pp. 26-33).</li>
@@ -821,13 +886,13 @@ DSTC11.getInitialProps = async function() {
         description: ""
       },
       info: [
-        {id: 'num_dataset', name: '# Datasets', chanel: '18', dstc10: '7', cdial: '3'},
+        {id: 'num_dataset', name: '#Datasets', chanel: '18', dstc10: '7', cdial: '3'},
         {id: 'language', name: 'Language', chanel: 'English, Spanish/Chinese,\nand English back-translation', dstc10: 'English, Spanish/Chinese,\nand English back-translation', cdial: 'Chinese, English,\nand Chinese back-translation'},
         {id: 'dialogues_type', name: 'Dialogues Type', chanel: 'Human-Human Open-Domain', dstc10: 'Human-Chatbot Open-Domain', cdial: 'Human-Human Open-Domain'},
         {id: 'num_dialogues_utterances', name: '# Dialogues/\nUtterances', chanel: '+ 390.000 / + 3.000.000', dstc10: '+ 18.000 / + 55.000', cdial: '+ 3.470 / +130.000'},
         {id: 'annotations', name: 'Annotations', chanel: 'Sentiment analysis and Toxicity', dstc10: 'Sentiment analysis and Toxicity\nTurn/dialogue level human scores', cdial: 'Turn/dialogue level human scores'},
         {id: 'task1_set', name: 'Task 1 Set', chanel: 'Public: Train', dstc10: 'Public: Dev, Test\nHidden: Automatic Translations', cdial: 'Public: Train/Dev/Test'},
-        {id: 'task2_set', name: 'Task 2 Set', chanel: 'Public: Train', dstc10: 'Public: Dev, Test\nHidden: Manually back-translation/paraphrased', cdial: '—'},
+        {id: 'task2_set', name: 'Task 2 Set', chanel: 'Public: Train', dstc10: 'Public: Dev, Test\nHidden: Manually paraphrased/back-translation', cdial: '—'},
       ]
     }
   ]
@@ -837,7 +902,7 @@ DSTC11.getInitialProps = async function() {
       id: 'provided_datasets_chanel_informtaion',
       datasets: {
         name: "",
-        description: "CHANEL dataset is Task 1 and Task 2 oriented. The source language is English."
+        description: "CHANEL datasets is Task 1 and Task 2 oriented. The source language is English."
       },
       info: [
         {id: 'dbdc_dataset',
@@ -1047,7 +1112,7 @@ DSTC11.getInitialProps = async function() {
       id: 'provided_datasets_dstc10_informtation',
       datasets: {
         name: "",
-        description: "DSTC10 dataset is Task 1 and Task 2 oriented. The source language is English."
+        description: "DSTC10 datasets is Task 1 and Task 2 oriented. The source language is English."
       },
       info: [
         {id: 'convai-grade_dataset',
@@ -1239,194 +1304,434 @@ DSTC11.getInitialProps = async function() {
     }
   ]
 
-  const provided_datasets_chanel_statistics = [
+  const provided_datasets_chanel_statistics_train = [
     {
-      id: 'provided_datasets_chanel_statistics',
+      id: 'provided_datasets_chanel_statistics_train',
       datasets: {
         name: "",
-        description: "CHANEL dataset is Task 1 and Task 2 oriented. The source language is English."
+        description: "Data sets that make up the train set."
       },
       info: [
         {id: 'dbdc_dataset',
-        name_dataset: 'DBDC',
-        spanish_translation: '✔',
-        chinese_translation: '',
-        english_translation: '',
-        english_Back_translation: '✔',
-        paraphrases: '✔',
-        sentiment_analysis: '✔',
-        content_moderate: '✔',
-        human_annotations: ''},
+        name: 'DBDC',
+        turns: '8,509',
+        dialogues: '415',
+        average_turn_dial: '20.50',
+        average_words_turn: '7.31',
+        annotation_granularity: 'Turn',
+        original_language: 'En',
+        translation: 'Zh/Es'},
         {id: 'cmu_dog_dataset',
-        name_dataset: 'CMU_DoG',
-        spanish_translation: '✔',
-        chinese_translation: '',
-        english_translation: '',
-        english_Back_translation: '✔',
-        paraphrases: '✔',
-        sentiment_analysis: '✔',
-        content_moderate: '✔',
-        human_annotations: ''},
+        name: 'CMU_DoG',
+        turns: '95,305',
+        dialogues: '4,221',
+        average_turn_dial: '22.58',
+        average_words_turn: '17.93',
+        annotation_granularity: 'Turn',
+        original_language: 'En',
+        translation: 'Zh/Es'},
         {id: 'cornell_movie_dialogs_dataset',
-        name_dataset: 'Cornell Movie-Dialogs',
-        spanish_translation: '✔',
-        chinese_translation: '',
-        english_translation: '',
-        english_Back_translation: '✔',
-        paraphrases: '✔',
-        sentiment_analysis: '✔',
-        content_moderate: '✔',
-        human_annotations: ''},
+        name: 'Cornell Movie-Dialogs',
+        turns: '304,713',
+        dialogues: '83,097',
+        average_turn_dial: '3.67',
+        average_words_turn: '13.72',
+        annotation_granularity: 'Turn',
+        original_language: 'En',
+        translation: 'Zh/Es'},
         {id: 'dailydialog_dataset',
-        name_dataset: 'DailyDialog',
-        spanish_translation: '✔',
-        chinese_translation: '✔',
-        english_translation: '',
-        english_Back_translation: '✔',
-        paraphrases: '✔',
-        sentiment_analysis: '✔',
-        content_moderate: '✔',
-        human_annotations: ''},
+        name: 'DailyDialog',
+        turns: '102,960',
+        dialogues: '13,116',
+        average_turn_dial: '7.85',
+        average_words_turn: '13.96',
+        annotation_granularity: 'Turn',
+        original_language: 'En',
+        translation: 'Zh/Es'},
         {id: 'decode_dataset',
-        name_dataset: 'DECODE',
-        spanish_translation: '✔',
-        chinese_translation: '',
-        english_translation: '',
-        english_Back_translation: '✔',
-        paraphrases: '✔',
-        sentiment_analysis: '✔',
-        content_moderate: '✔',
-        human_annotations: ''},
+        name: 'DECODE',
+        turns: '296,105',
+        dialogues: '35,426',
+        average_turn_dial: '8.36',
+        average_words_turn: '15.05',
+        annotation_granularity: 'Turn',
+        original_language: 'En',
+        translation: 'Zh/Es'},
         {id: 'emotionlines_dataset',
-        name_dataset: 'EmotionLines',
-        spanish_translation: '✔',
-        chinese_translation: '',
-        english_translation: '',
-        english_Back_translation: '✔',
-        paraphrases: '✔',
-        sentiment_analysis: '✔',
-        content_moderate: '✔',
-        human_annotations: ''},
+        name: 'EmotionLines',
+        turns: '14,503',
+        dialogues: '1,000',
+        average_turn_dial: '14.50',
+        average_words_turn: '10.53',
+        annotation_granularity: 'Turn',
+        original_language: 'En',
+        translation: 'Zh/Es'},
         {id: 'empathicdialogues_dataset',
-        name_dataset: 'EmpathicDialogues',
-        spanish_translation: '✔',
-        chinese_translation: '✔',
-        english_translation: '',
-        english_Back_translation: '✔',
-        paraphrases: '✔',
-        sentiment_analysis: '✔',
-        content_moderate: '✔',
-        human_annotations: ''},
+        name: 'EmpathicDialogues',
+        turns: '107,220',
+        dialogues: '24,850',
+        average_turn_dial: '4.31',
+        average_words_turn: '15.88',
+        annotation_granularity: 'Turn',
+        original_language: 'En',
+        translation: 'Zh/Es'},
         {id: 'holl_e_dataset',
-        name_dataset: 'Holl-E',
-        spanish_translation: '✔',
-        chinese_translation: '',
-        english_translation: '',
-        english_Back_translation: '✔',
-        paraphrases: '✔',
-        sentiment_analysis: '✔',
-        content_moderate: '✔',
-        human_annotations: ''},
+        name: 'Holl-E',
+        turns: '91,452',
+        dialogues: '9,071',
+        average_turn_dial: '10.08',
+        average_words_turn: '17.74',
+        annotation_granularity: 'Turn',
+        original_language: 'En',
+        translation: 'Zh/Es'},
         {id: 'meena_dataset',
-        name_dataset: 'MEENA',
-        spanish_translation: '✔',
-        chinese_translation: '',
-        english_translation: '',
-        english_Back_translation: '✔',
-        paraphrases: '✔',
-        sentiment_analysis: '✔',
-        content_moderate: '✔',
-        human_annotations: ''},
+        name: 'MEENA',
+        turns: '3,675',
+        dialogues: '193',
+        average_turn_dial: '19.04',
+        average_words_turn: '9.14',
+        annotation_granularity: 'Turn',
+        original_language: 'En',
+        translation: 'Zh/Es'},
         {id: 'meld_dataset',
-        name_dataset: 'MELD',
-        spanish_translation: '✔',
-        chinese_translation: '',
-        english_translation: '',
-        english_Back_translation: '✔',
-        paraphrases: '✔',
-        sentiment_analysis: '✔',
-        content_moderate: '✔',
-        human_annotations: ''},
+        name: 'MELD',
+        turns: '23,197',
+        dialogues: '1,592',
+        average_turn_dial: '14.57',
+        average_words_turn: '10.98',
+        annotation_granularity: 'Turn',
+        original_language: 'En',
+        translation: 'Zh/Es'},
         {id: 'metalwoz_dataset',
-        name_dataset: 'MetalWOz',
-        spanish_translation: '✔',
-        chinese_translation: '',
-        english_translation: '',
-        english_Back_translation: '✔',
-        paraphrases: '✔',
-        sentiment_analysis: '✔',
-        content_moderate: '✔',
-        human_annotations: ''},
+        name: 'MetalWOz',
+        turns: '432,036',
+        dialogues: '37,884',
+        average_turn_dial: '11.40',
+        average_words_turn: '8.47',
+        annotation_granularity: 'Turn',
+        original_language: 'En',
+        translation: 'Zh/Es'},
         {id: 'movie_dic_dataset',
-        name_dataset: 'Movie-DiC',
-        spanish_translation: '✔',
-        chinese_translation: '',
-        english_translation: '',
-        english_Back_translation: '✔',
-        paraphrases: '✔',
-        sentiment_analysis: '✔',
-        content_moderate: '✔',
-        human_annotations: ''},
+        name: 'Movie-DiC',
+        turns: '512,582',
+        dialogues: '65,215',
+        average_turn_dial: '7.86',
+        average_words_turn: '13.82',
+        annotation_granularity: 'Turn',
+        original_language: 'En',
+        translation: 'Zh/Es'},
         {id: 'personachat_dataset',
-        name_dataset: 'PersonaChat',
-        spanish_translation: '✔',
-        chinese_translation: '✔',
-        english_translation: '',
-        english_Back_translation: '✔',
-        paraphrases: '✔',
-        sentiment_analysis: '✔',
-        content_moderate: '✔',
-        human_annotations: ''},
+        name: 'PersonaChat',
+        turns: '162,064',
+        dialogues: '10,907',
+        average_turn_dial: '14.86',
+        average_words_turn: '11.72',
+        annotation_granularity: 'Turn',
+        original_language: 'En',
+        translation: 'Zh/Es'},
         {id: 'sentimentliar_dataset',
-        name_dataset: 'SentimentLIAR',
-        spanish_translation: '✔',
-        chinese_translation: '',
-        english_translation: '',
-        english_Back_translation: '✔',
-        paraphrases: '✔',
-        sentiment_analysis: '✔',
-        content_moderate: '✔',
-        human_annotations: ''},
+        name: 'SentimentLIAR',
+        turns: '12,781',
+        dialogues: '12,781',
+        average_turn_dial: '1.00',
+        average_words_turn: '20.16',
+        annotation_granularity: 'Turn',
+        original_language: 'En',
+        translation: 'Zh/Es'},
         {id: 'switchboard_coherence_dataset',
-        name_dataset: 'Switchboard Coherence',
-        spanish_translation: '✔',
-        chinese_translation: '',
-        english_translation: '',
-        english_Back_translation: '✔',
-        paraphrases: '✔',
-        sentiment_analysis: '✔',
-        content_moderate: '✔',
-        human_annotations: ''},
+        name: 'Switchboard Coherence',
+        turns: '12,059',
+        dialogues: '1,000',
+        average_turn_dial: '12.06',
+        average_words_turn: '20.55',
+        annotation_granularity: 'Turn',
+        original_language: 'En',
+        translation: 'Zh/Es'},
         {id: 'topical_chat_dataset',
-        name_dataset: 'Topical-Chat',
-        spanish_translation: '✔',
-        chinese_translation: '✔',
-        english_translation: '',
-        english_Back_translation: '✔',
-        paraphrases: '✔',
-        sentiment_analysis: '✔',
-        content_moderate: '✔',
-        human_annotations: ''},
+        name: 'Topical-Chat',
+        turns: '235,281',
+        dialogues: '10,784',
+        average_turn_dial: '21.82',
+        average_words_turn: '23.23',
+        annotation_granularity: 'Turn',
+        original_language: 'En',
+        translation: 'Zh/Es'},
         {id: 'wizard_of_wikipedia_dataset',
-        name_dataset: 'Wizard of Wikipedia',
-        spanish_translation: '✔',
-        chinese_translation: '✔',
-        english_translation: '',
-        english_Back_translation: '✔',
-        paraphrases: '✔',
-        sentiment_analysis: '✔',
-        content_moderate: '✔',
-        human_annotations: ''},
+        name: 'Wizard of Wikipedia',
+        turns: '201,999',
+        dialogues: '22,311',
+        average_turn_dial: '9.05',
+        average_words_turn: '18.83',
+        annotation_granularity: 'Turn',
+        original_language: 'En',
+        translation: 'Zh/Es'},
         {id: 'wochat_dataset',
-        name_dataset: 'WOCHAT',
-        spanish_translation: '✔',
-        chinese_translation: '',
-        english_translation: '',
-        english_Back_translation: '✔',
-        paraphrases: '✔',
-        sentiment_analysis: '✔',
-        content_moderate: '✔',
-        human_annotations: ''},
+        name: 'Wochat',
+        turns: '19,881',
+        dialogues: '607',
+        average_turn_dial: '32.75',
+        average_words_turn: '6.75',
+        annotation_granularity: 'Turn',
+        original_language: 'En',
+        translation: 'Zh/Es'},
+        {id: 'total_train',
+        name: 'Total',
+        turns: '2,636,322',
+        dialogues: '334,470',
+        average_turn_dial: '236.26',
+        average_words_turn: '255.77',
+        annotation_granularity: '',
+        original_language: '',
+        translation: ''},
+      ]
+    }
+  ]
+
+  const provided_datasets_chanel_statistics_dev = [
+    {
+      id: 'provided_datasets_chanel_statistics_dev',
+      datasets: {
+        name: "",
+        description: "Data sets that make up the development set."
+      },
+      info: [
+        {id: 'convai-grade_dataset',
+        name: 'ConvAI2-GRADE',
+        turns: '1,800',
+        dialogues: '600',
+        average_turn_dial: '3.00',
+        average_words_turn: '12.07',
+        annotation_granularity: 'Turn',
+        original_language: 'En',
+        translation: 'Zh/Es'},
+        {id: 'dailydialog-grade_dataset',
+        name: 'DailyDialog-GRADE',
+        turns: '900',
+        dialogues: '300',
+        average_turn_dial: '3.00',
+        average_words_turn: '12.60',
+        annotation_granularity: 'Turn',
+        original_language: 'En',
+        translation: 'Zh/Es'},
+        {id: 'dailydialog-gupta_dataset',
+        name: 'DailyDialog-GUPTA',
+        turns: '2,460',
+        dialogues: '500',
+        average_turn_dial: '4.92',
+        average_words_turn: '12.37',
+        annotation_granularity: 'Turn',
+        original_language: 'En',
+        translation: 'Zh/Es'},
+        {id: 'dailydialog-zhao_dataset',
+        name: 'DailyDialog-ZHAO',
+        turns: '4,248',
+        dialogues: '900',
+        average_turn_dial: '4.72',
+        average_words_turn: '12.41',
+        annotation_granularity: 'Turn',
+        original_language: 'En',
+        translation: 'Zh/Es'},
+        {id: 'dstc7_dataset',
+        name: 'DSTC7',
+        turns: '34,650',
+        dialogues: '9,990',
+        average_turn_dial: '3.47',
+        average_words_turn: '15.39',
+        annotation_granularity: 'Turn',
+        original_language: 'En',
+        translation: 'Zh/Es'},
+        {id: 'empathetic-grade_dataset',
+        name: 'Empathetic-GRADE',
+        turns: '900',
+        dialogues: '300',
+        average_turn_dial: '3.00',
+        average_words_turn: '16.65',
+        annotation_granularity: 'Turn',
+        original_language: 'En',
+        translation: 'Zh/Es'},
+        {id: 'fed-dial_dataset',
+        name: 'FED-Dial',
+        turns: '1,715',
+        dialogues: '125',
+        average_turn_dial: '13.72',
+        average_words_turn: '11.10',
+        annotation_granularity: 'Dial',
+        original_language: 'En',
+        translation: 'Zh/Es'},
+        {id: 'fed-turn_dataset',
+        name: 'FED-Turn',
+        turns: '3,888',
+        dialogues: '375',
+        average_turn_dial: '10.37',
+        average_words_turn: '10.78',
+        annotation_granularity: 'Turn',
+        original_language: 'En',
+        translation: 'Zh/Es'},
+        {id: 'humod_dataset',
+        name: 'HUMOD',
+        turns: '37,468',
+        dialogues: '9,499',
+        average_turn_dial: '3.94',
+        average_words_turn: '7.97',
+        annotation_granularity: 'Turn',
+        original_language: 'En',
+        translation: 'Zh/Es'},
+        {id: 'persona-see_dataset',
+        name: 'Persona-SEE',
+        turns: '39,792',
+        dialogues: '3,316',
+        average_turn_dial: '12.00',
+        average_words_turn: '9.00',
+        annotation_granularity: 'Dial',
+        original_language: 'En',
+        translation: 'Zh/Es'},
+        {id: 'persona-usr_dataset',
+        name: 'PersonaChat-USR',
+        turns: '2,790',
+        dialogues: '300',
+        average_turn_dial: '9.30',
+        average_words_turn: '12.08',
+        annotation_granularity: 'Turn',
+        original_language: 'En',
+        translation: 'Zh/Es'},
+        {id: 'persona-zhao_dataset',
+        name: 'PersonaChat-ZHAO',
+        turns: '4,614',
+        dialogues: '900',
+        average_turn_dial: '5.13',
+        average_words_turn: '12.06',
+        annotation_granularity: 'Turn',
+        original_language: 'En',
+        translation: 'Zh/Es'},
+        {id: 'topical-usr_dataset',
+        name: 'TOPICAL-USR',
+        turns: '4,032',
+        dialogues: '360',
+        average_turn_dial: '11.20',
+        average_words_turn: '23.16',
+        annotation_granularity: 'Turn',
+        original_language: 'En',
+        translation: 'Zh/Es'},
+        {id: 'ecm_dataset',
+        name: 'ECM-Eval',
+        turns: '3,004',
+        dialogues: '1,502',
+        average_turn_dial: '2.00',
+        average_words_turn: '13.13',
+        annotation_granularity: 'Turn',
+        original_language: 'Zh',
+        translation: 'En'},
+        {id: 'kdconv_dataset',
+        name: 'KdConv-Eval',
+        turns: '3,499',
+        dialogues: '354',
+        average_turn_dial: '9.88',
+        average_words_turn: '21.11',
+        annotation_granularity: 'Turn',
+        original_language: 'Zh',
+        translation: 'En'},
+        {id: 'lccc_dataset',
+        name: 'LCCC-Eval',
+        turns: '3,009',
+        dialogues: '589',
+        average_turn_dial: '5.11',
+        average_words_turn: '11.72',
+        annotation_granularity: 'Turn',
+        original_language: 'Zh',
+        translation: 'En'},
+        {id: 'total_dev',
+        name: 'Total',
+        turns: '148,769',
+        dialogues: '29,910',
+        average_turn_dial: '104.76',
+        average_words_turn: '212.64',
+        annotation_granularity: '',
+        original_language: '',
+        translation: ''},
+      ]
+    }
+  ]
+
+  const provided_datasets_chanel_statistics_test = [
+    {
+      id: 'provided_datasets_chanel_statistics_test',
+      datasets: {
+        name: "",
+        description: "Data sets that make up the test set."
+      },
+      info: [
+        {id: 'blenderbot3_dataset',
+        name: 'BlenderBot3',
+        turns: '679',
+        dialogues: '21',
+        average_turn_dial: '32.33',
+        average_words_turn: '16.96',
+        annotation_granularity: 'Turn/Dial',
+        original_language: 'En',
+        translation: 'Zh/Es'},
+        {id: 'chatgpt_dataset',
+        name: 'ChatGPT',
+        turns: '462',
+        dialogues: '21',
+        average_turn_dial: '22.00',
+        average_words_turn: '91.07',
+        annotation_granularity: 'Turn/Dial',
+        original_language: 'En',
+        translation: 'Zh/Es'},
+        {id: 'gpt-3.5_dataset',
+        name: 'GPT-3.5',
+        turns: '560',
+        dialogues: '17',
+        average_turn_dial: '32.94',
+        average_words_turn: '23.73',
+        annotation_granularity: 'Turn/Dial',
+        original_language: 'En',
+        translation: 'Zh/Es'},
+        {id: 'hcchinese_dataset',
+        name: 'HCChinese',
+        turns: '2,017',
+        dialogues: '187',
+        average_turn_dial: '10.79',
+        average_words_turn: '8.08',
+        annotation_granularity: 'Turn/Dial',
+        original_language: 'Zh',
+        translation: 'En'},
+        {id: 'chateval_dataset',
+        name: 'ChatEval',
+        turns: '400',
+        dialogues: '200',
+        average_turn_dial: '2.00',
+        average_words_turn: '8.13',
+        annotation_granularity: 'Turn',
+        original_language: 'En',
+        translation: 'Zh/Es'},
+        {id: 'dstc10_dataset',
+        name: 'DSTC10',
+        turns: '112',
+        dialogues: '28',
+        average_turn_dial: '4.00',
+        average_words_turn: '14.00',
+        annotation_granularity: 'Turn',
+        original_language: 'En',
+        translation: 'Zh/Es'},
+        {id: 'jsalt_dataset',
+        name: 'JSALT',
+        turns: '46',
+        dialogues: '13',
+        average_turn_dial: '3.54',
+        average_words_turn: '17.26',
+        annotation_granularity: 'Turn',
+        original_language: 'En',
+        translation: 'Zh/Es'},
+        {id: 'total_test',
+        name: 'Total',
+        turns: '4,276',
+        dialogues: '487',
+        average_turn_dial: '107.60',
+        average_words_turn: '179.23',
+        annotation_granularity: '',
+        original_language: '',
+        translation: ''},
       ]
     }
   ]
@@ -1916,7 +2221,7 @@ DSTC11.getInitialProps = async function() {
     }
   ]
 
-  return { provided_datasets_summary, provided_datasets_chanel_informtaion, provided_datasets_dstc10_informtation, provided_datasets_cdial_information, provided_datasets_chanel_statistics, multilingual_dev, robust_dev, multilingual_test_turn, multilingual_test_dial, robust_test_turn, robust_test_dial }
+  return { provided_datasets_summary, provided_datasets_chanel_informtaion, provided_datasets_dstc10_informtation, provided_datasets_cdial_information, provided_datasets_chanel_statistics_train, provided_datasets_chanel_statistics_dev, provided_datasets_chanel_statistics_test, multilingual_dev, robust_dev, multilingual_test_turn, multilingual_test_dial, robust_test_turn, robust_test_dial }
 
 };
 
