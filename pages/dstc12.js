@@ -227,11 +227,10 @@ class DSTC12 extends Component {
           <h3 className="font-weight-bold">Acknowledgement</h3>
             <br/>
             <p>This research was supported by the Portuguese Recovery and Resilience Plan through project C645008882-00000055 (Responsible.AI), by Portuguese national funds through Fundação para a Ciência e Tecnologia (FCT) with references PRT/BD/152198/2021 and DOI:10.54499/UIDB/50021/2020.</p>
-            <p>This research project is supported by the Comunidad de Madrid through the call Research Grants for Young Investigators from Universidad Politécnica de Madrid (GENIUS:APOYO-JOVENES-21-TAXTYC-32-K61X37).</p>
             <p>This work is supported by the European Commission through Project ASTOUND (101071191 — HORIZON EIC-2021- PATHFINDERCHALLENGES-01), and by project BEWORD (PID2021-126061OB-C43) funded by MCIN/AEI/10.13039/501100011033 and, as appropriate, by “ERDF A way of making Europe”, by the “European Union”. </p>
             <p>We also want to give thanks to MS Azure services (especially to Irving Kwong) for their sponsorship to continue processing new datasets that could be interesting for the dialogue community.</p>
             <p>This research project is supported by the NYU ChatEval Team led by João Sedoc.</p>
-            <p>. <img src="./static/img/Logo_EC.png" alt="Logo_EC" style={{width: 375 + 'px', height: 75 + 'px'}}/> <img src="./static/img/Logo_PRR.png" alt="Logo_PRR" style={{width: 214 + 'px', height: 74 + 'px'}}/>
+            <p> <img src="./static/img/Logo_EC.png" alt="Logo_EC" style={{width: 375 + 'px', height: 75 + 'px'}}/> <img src="./static/img/Logo_PRR.png" alt="Logo_PRR" style={{width: 214 + 'px', height: 74 + 'px'}}/>
             </p>
             <hr/>
           <h3 className="font-weight-bold">FAQ</h3>
