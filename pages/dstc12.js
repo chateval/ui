@@ -25,7 +25,9 @@ class DSTC12 extends Component {
           <h1 className="mt-5 font-weight-bold">DSTC12: Dialogue System Technology Challenge 12</h1>
           <h2 className="mt-5 font-weight-bold">Track 1: Dialog System Evaluation: Dimensionality, Language, Culture and Safety</h2>
             <br/>
-            <p> <b>(19/03)</b> Task Schedule has been updated to reflect data release delays. Submission deadline is now <span style={{color: 'green'}}> Apr 25 (23:59 Anywhere on Earth (AoE), UTC-12)</span>.</p>
+            <p> <b>(19/04)</b> Task1 Codabench website and test data now online. Click <a href="https://www.codabench.org/competitions/7579/">here</a> for access!</p>
+            <p> <b>(19/04)</b> Task2 Codabench website and test data now online. Click <a href="https://www.codabench.org/competitions/7204/">here</a> for access!</p>
+            <p> <b>(19/03)</b> Task Schedule has been updated to reflect data release delays. Submission deadline is now <span style={{color: 'green'}}> Apr 28 (23:59 Anywhere on Earth (AoE), UTC-12)</span>.</p>
             <p> <b>(10/03)</b> Task1 development data and baseline results are <span style={{color: 'green'}}> now available.</span></p>
             <p> <b>(03/01)</b> Task2 development data and baseline results are <span style={{color: 'green'}}> now available.</span></p>
             <p> <b>(19/12)</b> Click <a href="https://forms.gle/J8GrZchnFEacJ7Y47">here</a> to register for DSTC12.T1.</p>
@@ -205,7 +207,7 @@ class DSTC12 extends Component {
             <br/>
             <ul>
               <li><b>Test data release</b>: Apr 18</li>
-              <li><b>Entry submission deadline</b>: Apr 25 (23:59 Anywhere on Earth (AoE), UTC-12)</li>
+              <li><b>Entry submission deadline</b>: Apr 28 (23:59 Anywhere on Earth (AoE), UTC-12)</li>
               <li><b>Final result announcement</b>: May 2</li>
               <li><b>Paper submission</b>: Jun 1</li>
               <li><b>Workshop (SIGDIAL) </b>: Aug 28</li>
