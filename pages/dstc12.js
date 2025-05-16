@@ -347,7 +347,7 @@ class DSTC12 extends Component {
             
                         <pre><code className="bibtex">
             {`@inproceedings{mendonca2025dstc12t1,
-                author = "John Mendonça and Lining Zhang and Rahul Mallidi and Luis Fernando D'Haro and João Sedoc",
+                author = "John Mendonça and Lining Zhang and Rahul Mallidi and Alon Lavie and Isabel Trancoso and Luis Fernando D'Haro and João Sedoc",
                 title = "Overview of Dialog System Evaluation Track: Dimensionality, Language, Culture and Safety at DSTC 12",
                 booktitle = "DSTC12: The Twelfth Dialog System Technology Challenge",
                 series = "26th Meeting of the Special Interest Group on Discourse and Dialogue (SIGDIAL)",
